@@ -12,9 +12,14 @@ public actor TauntService {
     public static let shared = TauntService()
     
     // Securely pull from Info.plist to avoid hardcoded secrets in the repo
+    private static var hasWarnedMissingKey = false
+    
     private var apiKey: String {
         guard let key = Bundle.main.object(forInfoDictionaryKey: "ANTHROPIC_API_KEY") as? String, !key.isEmpty else {
-            print("Warning: ANTHROPIC_API_KEY not found in Info.plist")
+            if !Self.hasWarnedMissingKey {
+                print("Warning: ANTHROPIC_API_KEY not found in Info.plist")
+                Self.hasWarnedMissingKey = true
+            }
             return ""
         }
         return key

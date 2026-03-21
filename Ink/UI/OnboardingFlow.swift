@@ -10,6 +10,7 @@ import SwiftUI
 public struct OnboardingFlow: View {
     @Binding var onboardingComplete: Bool
     @State private var currentPage = 0
+    @ObservedObject private var scoreManager = ScoreManager.shared
     
     public init(onboardingComplete: Binding<Bool>) {
         self._onboardingComplete = onboardingComplete
@@ -20,14 +21,14 @@ public struct OnboardingFlow: View {
             Spacer()
             
             // Title Graphic treated like aggressive notebook graffiti
-            Text("INK & IRONY")
+            Text(LocalizationService.t("INK & IRONY", lang: scoreManager.uiLanguage))
                 .font(.custom("Marker Felt", size: 52).bold())
                 .sketchbookInkText(isError: true) // Using teacher red for the main title
                 .padding(.bottom, 20)
                 .rotationEffect(.degrees(CGFloat.random(in: -3...3)))
             
             // Subtitle / Intro
-            Text(currentPage == 0 ? "Welcome to the\nSavage Sketchbook." : "The Teacher is waiting...\nDon't fail.")
+            Text(LocalizationService.t(currentPage == 0 ? "Welcome to the\nSavage Sketchbook." : "The Teacher is waiting...\nDon't fail.", lang: scoreManager.uiLanguage))
                 .font(.custom("Noteworthy", size: 28))
                 .sketchbookInkText()
                 .multilineTextAlignment(.center)
@@ -48,7 +49,7 @@ public struct OnboardingFlow: View {
                     }
                 }
             }) {
-                Text(currentPage == 0 ? "NEXT" : "ENTER")
+                Text(LocalizationService.t(currentPage == 0 ? "NEXT" : "ENTER", lang: scoreManager.uiLanguage))
                     .frame(width: 120)
             }
             .doodleButtonStyle() // Inherits our custom drawing component styles

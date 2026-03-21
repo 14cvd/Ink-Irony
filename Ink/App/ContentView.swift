@@ -96,12 +96,13 @@ public struct MainMenu: View {
     @Binding var path: NavigationPath
     @State private var animateTitle = false
     @State private var showLeaderboard = false
+    @ObservedObject private var scoreManager = ScoreManager.shared
     
     public var body: some View {
         VStack(spacing: 40) {
             Spacer()
             
-            Text("INK & IRONY")
+            Text(LocalizationService.t("INK & IRONY", lang: scoreManager.uiLanguage))
                 .font(.custom("Marker Felt", size: 60).bold())
                 .sketchbookInkText(isError: true)
                 .rotationEffect(.degrees(animateTitle ? -2 : 2))
@@ -110,7 +111,7 @@ public struct MainMenu: View {
             
             Spacer()
             
-            Button("START EXAM") {
+            Button(LocalizationService.t("START EXAM", lang: scoreManager.uiLanguage)) {
                 HapticService.shared.playPenStrike()
                 AudioService.shared.play(.penScratch)
                 path.append(AppRoute.setup)
@@ -118,7 +119,7 @@ public struct MainMenu: View {
             .doodleButtonStyle()
             .padding(.horizontal, 50)
             
-            Button("RECORDS") {
+            Button(LocalizationService.t("RECORDS", lang: scoreManager.uiLanguage)) {
                 HapticService.shared.playPenStrike()
                 showLeaderboard = true
             }

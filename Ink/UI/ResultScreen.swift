@@ -56,9 +56,9 @@ public struct ResultScreen: View {
             // "Graded Paper" Identification Area
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("NAME: ") + Text("Player 1").font(.custom("Noteworthy", size: 24))
-                    Text("SUBJECT: ") + Text("Execution").font(.custom("Noteworthy", size: 24))
-                    Text("DIFFICULTY: ") + Text(difficulty.rawValue).font(.custom("Noteworthy", size: 24))
+                    Text(LocalizationService.t("NAME: ", lang: scoreManager.uiLanguage)) + Text(LocalizationService.t("Player 1", lang: scoreManager.uiLanguage)).font(.custom("Noteworthy", size: 24))
+                    Text(LocalizationService.t("SUBJECT: ", lang: scoreManager.uiLanguage)) + Text(LocalizationService.t("Execution", lang: scoreManager.uiLanguage)).font(.custom("Noteworthy", size: 24))
+                    Text(LocalizationService.t("DIFFICULTY: ", lang: scoreManager.uiLanguage)) + Text(LocalizationService.t(difficulty.rawValue.uppercased(), lang: scoreManager.uiLanguage)).font(.custom("Noteworthy", size: 24))
                 }
                 .font(.custom("Courier", size: 16).bold())
                 .sketchbookInkText()
@@ -96,7 +96,7 @@ public struct ResultScreen: View {
             
             // Truth / Word Reveal Area
             VStack(spacing: 15) {
-                Text(isWin ? "VOCABULARY MASTERED:" : "FATAL ERROR. CORRECT WORD:")
+                Text(LocalizationService.t(isWin ? "VOCABULARY MASTERED:" : "FATAL ERROR. CORRECT WORD:", lang: scoreManager.uiLanguage))
                     .font(.custom("Courier", size: 18).bold())
                     .sketchbookInkText(isError: !isWin)
                 
@@ -126,11 +126,11 @@ public struct ResultScreen: View {
             
             // SwiftData Analytics / Streak Summary
             VStack(spacing: 15) {
-                Text("CURRENT STREAK: \(scoreManager.currentStreak)")
+                Text(LocalizationService.t("CURRENT STREAK: ", lang: scoreManager.uiLanguage) + "\(scoreManager.currentStreak)")
                     .font(.custom("Noteworthy", size: 24).bold())
                     .sketchbookInkText()
                 
-                Text("HIGH SCORE STREAK: \(scoreManager.highestStreak)")
+                Text(LocalizationService.t("HIGH SCORE STREAK: ", lang: scoreManager.uiLanguage) + "\(scoreManager.highestStreak)")
                     .font(.custom("Noteworthy", size: 20))
                     // Highlight in red if they just tied or beat their all-time record
                     .sketchbookInkText(isError: scoreManager.highestStreak == scoreManager.currentStreak && scoreManager.highestStreak > 0)
@@ -146,7 +146,7 @@ public struct ResultScreen: View {
                     AudioService.shared.play(.penScratch)
                     actionPlayAgain()
                 }) {
-                    Text(isWin ? "CONTINUE STREAK" : "TRY AGAIN")
+                    Text(LocalizationService.t(isWin ? "CONTINUE STREAK" : "TRY AGAIN", lang: scoreManager.uiLanguage))
                         .frame(maxWidth: .infinity)
                 }
                 .doodleButtonStyle()
@@ -156,7 +156,7 @@ public struct ResultScreen: View {
                     AudioService.shared.play(.pencilSnap)
                     actionMenu()
                 }) {
-                    Text("RETURN TO MAIN MENU")
+                    Text(LocalizationService.t("RETURN TO MAIN MENU", lang: scoreManager.uiLanguage))
                         .frame(maxWidth: .infinity)
                 }
                 .doodleButtonStyle(isDestructive: true) // Draws an angry red button border
