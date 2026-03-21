@@ -2,6 +2,10 @@
 
 ---
 
+<p align="center">
+  <img src="AppIcon.png" width="200" alt="Ink & Irony App Icon">
+</p>
+
 # Ink & Irony (Savage Sketchbook) 🖋️📓
 
 **Ink & Irony** is a premium, beautifully crafted iOS word-guessing game (Hangman-style) built entirely with **SwiftUI** and **SwiftData**. It offers a unique "hand-drawn sketchbook" aesthetic, complete with dynamic jittery ink animations, immersive haptics, and a brutal offline taunting system that reacts to every mistake you make.
