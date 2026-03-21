@@ -40,12 +40,12 @@ public struct ResultScreen: View {
     }
     
     private var inkColor: Color {
-        colorScheme == .dark ? ThemeManager.Colors.graphiteGray : ThemeManager.Colors.ballpointBlue
+        ThemeManager.Colors.inkPrimary(for: colorScheme)
     }
     
     // The grade stamp is unconditionally red (A+ or F) to maintain the teacher aesthetic
     private var gradeColor: Color {
-        ThemeManager.Colors.teacherRed
+        ThemeManager.Colors.errorInk(for: colorScheme)
     }
     
     public var body: some View {
@@ -55,12 +55,26 @@ public struct ResultScreen: View {
             
             // "Graded Paper" Identification Area
             HStack {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(LocalizationService.t("NAME: ", lang: scoreManager.uiLanguage)) + Text(LocalizationService.t("Player 1", lang: scoreManager.uiLanguage)).font(.custom("Noteworthy", size: 24))
-                    Text(LocalizationService.t("SUBJECT: ", lang: scoreManager.uiLanguage)) + Text(LocalizationService.t("Execution", lang: scoreManager.uiLanguage)).font(.custom("Noteworthy", size: 24))
-                    Text(LocalizationService.t("DIFFICULTY: ", lang: scoreManager.uiLanguage)) + Text(LocalizationService.t(difficulty.rawValue.uppercased(), lang: scoreManager.uiLanguage)).font(.custom("Noteworthy", size: 24))
+                VStack(alignment: .leading, spacing: ThemeManager.Layout.spacingXS) {
+                    Group {
+                        Text(LocalizationService.t("NAME: ", lang: scoreManager.uiLanguage))
+                            .font(ThemeManager.Typography.micro(for: colorScheme))
+                        + Text(LocalizationService.t("Player 1", lang: scoreManager.uiLanguage))
+                            .font(ThemeManager.Typography.h2(for: colorScheme))
+                    }
+                    Group {
+                        Text(LocalizationService.t("SUBJECT: ", lang: scoreManager.uiLanguage))
+                            .font(ThemeManager.Typography.micro(for: colorScheme))
+                        + Text(LocalizationService.t("Execution", lang: scoreManager.uiLanguage))
+                            .font(ThemeManager.Typography.h2(for: colorScheme))
+                    }
+                    Group {
+                        Text(LocalizationService.t("DIFFICULTY: ", lang: scoreManager.uiLanguage))
+                            .font(ThemeManager.Typography.micro(for: colorScheme))
+                        + Text(LocalizationService.t(difficulty.rawValue.uppercased(), lang: scoreManager.uiLanguage))
+                            .font(ThemeManager.Typography.h2(for: colorScheme))
+                    }
                 }
-                .font(.custom("Courier", size: 16).bold())
                 .sketchbookInkText()
                 
                 Spacer()
@@ -69,12 +83,12 @@ public struct ResultScreen: View {
                 ZStack {
                     if isWin {
                         Text("A+")
-                            .font(.custom("Marker Felt", size: 90).bold())
+                            .font(.custom("Caveat-Bold", size: 90))
                             .foregroundColor(gradeColor)
                             .rotationEffect(.degrees(-12))
                     } else {
                         Text("F")
-                            .font(.custom("Marker Felt", size: 100).bold())
+                            .font(.custom("Caveat-Bold", size: 100))
                             .foregroundColor(gradeColor)
                             .rotationEffect(.degrees(10))
                         
@@ -95,14 +109,14 @@ public struct ResultScreen: View {
                 .padding(.horizontal, 40)
             
             // Truth / Word Reveal Area
-            VStack(spacing: 15) {
+            VStack(spacing: ThemeManager.Layout.spacingMD) {
                 Text(LocalizationService.t(isWin ? "VOCABULARY MASTERED:" : "FATAL ERROR. CORRECT WORD:", lang: scoreManager.uiLanguage))
-                    .font(.custom("Courier", size: 18).bold())
+                    .font(ThemeManager.Typography.body(for: colorScheme))
                     .sketchbookInkText(isError: !isWin)
                 
                 // The actual word, displayed large
                 Text(wordText)
-                    .font(.custom("Courier", size: 40).bold())
+                    .font(ThemeManager.Typography.h1(for: colorScheme))
                     .sketchbookInkText()
                     .tracking(6)
                     .overlay(
@@ -125,22 +139,22 @@ public struct ResultScreen: View {
             .padding(.top, 20)
             
             // SwiftData Analytics / Streak Summary
-            VStack(spacing: 15) {
+            VStack(spacing: ThemeManager.Layout.spacingMD) {
                 Text(LocalizationService.t("CURRENT STREAK: ", lang: scoreManager.uiLanguage) + "\(scoreManager.currentStreak)")
-                    .font(.custom("Noteworthy", size: 24).bold())
+                    .font(ThemeManager.Typography.h2(for: colorScheme))
                     .sketchbookInkText()
                 
                 Text(LocalizationService.t("HIGH SCORE STREAK: ", lang: scoreManager.uiLanguage) + "\(scoreManager.highestStreak)")
-                    .font(.custom("Noteworthy", size: 20))
+                    .font(ThemeManager.Typography.h2(for: colorScheme).lowercaseSmallCaps())
                     // Highlight in red if they just tied or beat their all-time record
                     .sketchbookInkText(isError: scoreManager.highestStreak == scoreManager.currentStreak && scoreManager.highestStreak > 0)
             }
-            .padding(.top, 20)
+            .padding(.top, ThemeManager.Layout.spacingLG)
             
             Spacer()
             
             // Action Buttons
-            VStack(spacing: 20) {
+            VStack(spacing: ThemeManager.Layout.spacingLG) {
                 Button(action: {
                     HapticService.shared.playPenStrike()
                     AudioService.shared.play(.penScratch)
@@ -161,8 +175,8 @@ public struct ResultScreen: View {
                 }
                 .doodleButtonStyle(isDestructive: true) // Draws an angry red button border
             }
-            .padding(.horizontal, 50)
-            .padding(.bottom, 50)
+            .padding(.horizontal, ThemeManager.Layout.spacingXL)
+            .padding(.bottom, ThemeManager.Layout.spacingXL)
             
         }
         .sketchbookBackground()

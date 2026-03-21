@@ -22,17 +22,17 @@ public struct TauntBubbleView: View {
     
     // Claude's Savage taunts are always written in the strict teacher's red ink
     private var inkColor: Color {
-        colorScheme == .dark ? ThemeManager.Colors.teacherRed.opacity(0.8) : ThemeManager.Colors.teacherRed
+        ThemeManager.Colors.errorInk(for: colorScheme)
     }
     
     // The background paper color so it obscures the notebook lines behind it
     private var paperColor: Color {
-        colorScheme == .dark ? ThemeManager.Colors.charcoalPaper : ThemeManager.Colors.parchmentBackground
+        ThemeManager.Colors.bgPrimary(for: colorScheme)
     }
     
     public var body: some View {
         Text("\"\(text)\"")
-            .font(.custom("Noteworthy", size: 20).italic())
+            .font(ThemeManager.Typography.body(for: colorScheme).italic())
             .foregroundColor(inkColor)
             .multilineTextAlignment(.center)
             .padding(.horizontal, 24)

@@ -27,7 +27,7 @@ public struct GameView: View {
     
     // Dynamic ink color helper for borders
     private var inkColor: Color {
-        colorScheme == .dark ? ThemeManager.Colors.graphiteGray : ThemeManager.Colors.ballpointBlue
+        ThemeManager.Colors.inkPrimary(for: colorScheme)
     }
     
     public var body: some View {
@@ -36,34 +36,34 @@ public struct GameView: View {
             // Header: Difficulty, Timer, Lives
             HStack {
                 Text(LocalizationService.t(viewModel.difficulty.rawValue.uppercased(), lang: scoreManager.uiLanguage))
-                    .font(.custom("Noteworthy", size: 18).bold())
+                    .font(ThemeManager.Typography.micro(for: colorScheme).bold())
                     .sketchbookInkText()
                 
                 Spacer()
                 
                 if viewModel.difficulty != .easy {
                     Text(viewModel.formattedTime)
-                        .font(.custom("Noteworthy", size: 20).bold())
+                        .font(ThemeManager.Typography.micro(for: colorScheme).bold())
                         .sketchbookInkText(isError: viewModel.timeRemaining < 10 && viewModel.timeRemaining > 0)
                 }
                 
                 Spacer()
                 
                 Text(LocalizationService.t("LIVES: ", lang: scoreManager.uiLanguage) + "\(viewModel.remainingLives)")
-                    .font(.custom("Noteworthy", size: 18).bold())
+                    .font(ThemeManager.Typography.micro(for: colorScheme).bold())
                     .sketchbookInkText(isError: viewModel.remainingLives <= 2)
             }
-            .padding(.horizontal, 45) // Placed inside the red notebook margin
-            .padding(.top, 20)
+            .padding(.horizontal, ThemeManager.Layout.spacingMajor) // Placed inside the red notebook margin
+            .padding(.top, ThemeManager.Layout.spacingLG)
             
             Spacer().frame(height: 20)
             
             // Rive Animation Sketch Area
             ZStack {
-                RoundedRectangle(cornerRadius: 12)
-                    .handDrawnStroke(color: inkColor, lineWidth: 2, jitter: 1.5)
+                RoundedRectangle(cornerRadius: ThemeManager.Layout.cornerMD)
+                    .handDrawnStroke(color: inkColor, lineWidth: ThemeManager.Layout.strokeKey, jitter: 1.5)
                     .frame(height: 220)
-                    .padding(.horizontal, 50)
+                    .padding(.horizontal, ThemeManager.Layout.spacingMajor)
                 
                 // Pure SwiftUI Sketching Animation automatically scaling mistakes to exactly 8 drawing parts
                 let mistakes = viewModel.difficulty.lives - viewModel.remainingLives
@@ -82,9 +82,9 @@ public struct GameView: View {
                         .transition(.scale.combined(with: .opacity))
                 } else {
                     Text(statusMessage)
-                        .font(.custom("Noteworthy", size: 22))
+                        .font(ThemeManager.Typography.h2(for: colorScheme))
                         .sketchbookInkText(isError: viewModel.gameState == .lost)
-                        .padding(.horizontal, 50)
+                        .padding(.horizontal, ThemeManager.Layout.spacingMajor)
                 }
             }
             .frame(height: 100)
@@ -94,12 +94,12 @@ public struct GameView: View {
             
             // Masked Word Display
             Text(viewModel.maskedWord)
-                .font(.custom("Courier", size: 36).bold()) // Monospace to look like rigid sketching
+                .font(.custom("Caveat-Bold", size: 52)) // Token "Letter Blanks"
                 .sketchbookInkText()
                 .tracking(6)
                 .lineLimit(2)
                 .minimumScaleFactor(0.5)
-                .padding(.horizontal, 45)
+                .padding(.horizontal, ThemeManager.Layout.spacingMajor)
             
             Spacer()
             
@@ -111,8 +111,8 @@ public struct GameView: View {
                     viewModel.guess(letter: char)
                 }
             )
-            .padding(.leading, 35) // Offset to sit to the right of the vertical notebook line
-            .padding(.bottom, 20)
+            .padding(.leading, ThemeManager.Layout.spacingXL) // Offset to sit to the right of the vertical notebook line
+            .padding(.bottom, ThemeManager.Layout.spacingLG)
             // Visually disable interaction if the game abruptly ends
             .disabled(viewModel.gameState == .won || viewModel.gameState == .lost)
             .opacity(viewModel.gameState == .won || viewModel.gameState == .lost ? 0.4 : 1.0)

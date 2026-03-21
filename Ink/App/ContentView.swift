@@ -97,13 +97,14 @@ public struct MainMenu: View {
     @State private var animateTitle = false
     @State private var showLeaderboard = false
     @ObservedObject private var scoreManager = ScoreManager.shared
+    @Environment(\.colorScheme) private var colorScheme
     
     public var body: some View {
-        VStack(spacing: 40) {
+        VStack(spacing: ThemeManager.Layout.spacingXL) {
             Spacer()
             
             Text(LocalizationService.t("INK & IRONY", lang: scoreManager.uiLanguage))
-                .font(.custom("Marker Felt", size: 60).bold())
+                .font(.custom("Caveat-Bold", size: 60))
                 .sketchbookInkText(isError: true)
                 .rotationEffect(.degrees(animateTitle ? -2 : 2))
                 .animation(.easeInOut(duration: 0.15).repeatForever(autoreverses: true), value: animateTitle)
@@ -117,7 +118,7 @@ public struct MainMenu: View {
                 path.append(AppRoute.setup)
             }
             .doodleButtonStyle()
-            .padding(.horizontal, 50)
+            .padding(.horizontal, ThemeManager.Layout.spacingXL)
             
             Button(LocalizationService.t("RECORDS", lang: scoreManager.uiLanguage)) {
                 HapticService.shared.playPenStrike()
@@ -125,7 +126,7 @@ public struct MainMenu: View {
             }
             .doodleButtonStyle()
             .opacity(0.8)
-            .padding(.horizontal, 50)
+            .padding(.horizontal, ThemeManager.Layout.spacingXL)
             .sheet(isPresented: $showLeaderboard) {
                 LeaderboardView()
             }

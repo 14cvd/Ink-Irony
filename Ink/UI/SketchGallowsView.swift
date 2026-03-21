@@ -18,7 +18,7 @@ public struct SketchGallowsView: View {
     
     // Natively adheres to the Sketchbook ink tokens
     private var inkColor: Color {
-        colorScheme == .dark ? ThemeManager.Colors.graphiteGray : ThemeManager.Colors.ballpointBlue
+        ThemeManager.Colors.inkPrimary(for: colorScheme)
     }
     
     // Modular helper to draw and animate paths sequentially

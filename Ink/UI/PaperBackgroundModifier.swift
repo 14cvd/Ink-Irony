@@ -18,7 +18,7 @@ public struct PaperBackgroundModifier: ViewModifier {
     public func body(content: Content) -> some View {
         ZStack {
             // Aged parchment / Dark Charcoal base paper color
-            (colorScheme == .dark ? ThemeManager.Colors.charcoalPaper : ThemeManager.Colors.parchmentBackground)
+            ThemeManager.Colors.bgPrimary(for: colorScheme)
                 .ignoresSafeArea()
             
             // Notebook Lines Geometry
@@ -33,8 +33,8 @@ public struct PaperBackgroundModifier: ViewModifier {
                     }
                 }
                 .stroke(
-                    colorScheme == .dark ? ThemeManager.Colors.darkNotebookLine : ThemeManager.Colors.notebookLineBlue,
-                    lineWidth: 1
+                    (colorScheme == .dark ? ThemeManager.Colors.inkSecondaryDark : ThemeManager.Colors.inkSecondaryLight).opacity(0.15),
+                    lineWidth: ThemeManager.Layout.strokeHair
                 )
                 
                 // Vertical Margin lines (Red margins characteristic of composition notebooks)
@@ -47,8 +47,8 @@ public struct PaperBackgroundModifier: ViewModifier {
                     path.addLine(to: CGPoint(x: xOffset + 4, y: geometry.size.height))
                 }
                 .stroke(
-                    colorScheme == .dark ? ThemeManager.Colors.darkNotebookMargin : ThemeManager.Colors.notebookMarginRed,
-                    lineWidth: 1
+                    ThemeManager.Colors.errorInk(for: colorScheme).opacity(0.3),
+                    lineWidth: ThemeManager.Layout.strokeHair
                 )
             }
             .ignoresSafeArea()
