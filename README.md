@@ -3,7 +3,7 @@
 ---
 
 <p align="center">
-  <img src="AppIcon.png" width="200" alt="Ink & Irony App Icon">
+  <img width="1024" height="1024" alt="Ink Irony" src="https://github.com/user-attachments/assets/033c1824-d6fc-4184-8d34-ca439122fcd5" />
 </p>
 
 # Ink & Irony (Savage Sketchbook) 🖋️📓
