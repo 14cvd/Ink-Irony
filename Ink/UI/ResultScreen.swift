@@ -116,7 +116,7 @@ public struct ResultScreen: View {
                                         path.move(to: CGPoint(x: -10, y: geometry.size.height * 0.6))
                                         path.addLine(to: CGPoint(x: geometry.size.width + 10, y: geometry.size.height * 0.4))
                                     }
-                                    .handDrawnStroke(color: gradeColor, lineWidth: 4, jitter: 2.0)
+                                    .handDrawnStroke(color: gradeColor.opacity(0.4), lineWidth: 2, jitter: 1.5)
                                 }
                             }
                         }
