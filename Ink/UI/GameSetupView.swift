@@ -19,18 +19,19 @@ public struct GameSetupView: View {
         self._isSetupComplete = isSetupComplete
         self._chosenLanguage = chosenLanguage
         self._chosenDifficulty = chosenDifficulty
+        self._selectedLanguage = State(initialValue: ScoreManager.shared.uiLanguage)
     }
     
     public var body: some View {
         VStack(spacing: 30) {
-            Text("NEW GAME")
+            Text(LocalizationService.t("NEW GAME", lang: selectedLanguage))
                 .font(.custom("Marker Felt", size: 42).bold())
                 .sketchbookInkText(isError: true)
                 .padding(.top, 50)
             
             // Language Selection
             VStack(alignment: .leading, spacing: 15) {
-                Text("Select Language:")
+                Text(LocalizationService.t("Select Language:", lang: selectedLanguage))
                     .font(.custom("Noteworthy", size: 24).bold())
                     .sketchbookInkText()
                     .padding(.leading, 10)
@@ -54,7 +55,7 @@ public struct GameSetupView: View {
             
             // Difficulty Selection
             VStack(alignment: .leading, spacing: 15) {
-                Text("Select Difficulty:")
+                Text(LocalizationService.t("Select Difficulty:", lang: selectedLanguage))
                     .font(.custom("Noteworthy", size: 24).bold())
                     .sketchbookInkText()
                     .padding(.leading, 10)
@@ -83,12 +84,13 @@ public struct GameSetupView: View {
                 AudioService.shared.play(.checkmark)
                 
                 withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
+                    ScoreManager.shared.uiLanguage = selectedLanguage
                     chosenLanguage = selectedLanguage
                     chosenDifficulty = selectedDifficulty
                     isSetupComplete = true
                 }
             }) {
-                Text("START SKETCHING")
+                Text(LocalizationService.t("START SKETCHING", lang: selectedLanguage))
                     .frame(maxWidth: .infinity)
             }
             .doodleButtonStyle()

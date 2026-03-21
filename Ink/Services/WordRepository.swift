@@ -74,10 +74,10 @@ public actor WordRepository {
     // Fail-safe mechanism ensures the hangman flow never completely breaks if localization files go missing
     private func generateEmergencyFallback(for language: Language) -> LocalizedWordBank {
         return LocalizedWordBank(difficulties: [
-            "Easy": [WordCategory(name: "Fallback", words: ["CAT", "DOG"])],
-            "Medium": [WordCategory(name: "Emergency", words: ["SKETCHBOOK", "HANGMAN", "PUNISHMENT", "ERASER"])],
-            "Hard": [WordCategory(name: "Fallback", words: ["ASTRONOMY", "PHYSICS"])],
-            "Nightmare": [WordCategory(name: "Fallback", words: ["SYCOPHANT", "OBFUSCATE"])]
+            "Easy": [WordCategory(name: "Animals", words: ["CAT", "DOG", "BIRD", "FISH", "LION", "BEAR", "WOLF", "FROG", "DUCK", "DEER"])],
+            "Medium": [WordCategory(name: "General", words: ["SKETCHBOOK", "HANGMAN", "PUNISHMENT", "ERASER", "PENCIL", "TEACHER", "LIBRARY", "STUDENT", "CLASSROOM", "HOMEWORK", "VACATION", "HOSPITAL"])],
+            "Hard": [WordCategory(name: "Science", words: ["ASTRONOMY", "PHYSICS", "CHEMISTRY", "BIOLOGY", "MOLECULE", "RADIATION", "PARTICLE", "ECOSYSTEM", "GENETICS", "EVOLUTION"])],
+            "Nightmare": [WordCategory(name: "Advanced Data", words: ["SYCOPHANT", "OBFUSCATE", "OMNIPOTENT", "INEFFABLE", "MELANCHOLY", "EPIPHANY", "EQUILIBRIUM", "PARADIGM", "UBIQUITOUS"])]
         ])
     }
 }

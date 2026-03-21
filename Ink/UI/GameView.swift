@@ -10,6 +10,7 @@ import SwiftUI
 public struct GameView: View {
     @StateObject private var viewModel = GameViewModel()
     @Environment(\.colorScheme) private var colorScheme
+    @ObservedObject private var scoreManager = ScoreManager.shared
     
     // External Word/Difficulty for MVP testing
     let startingWord: Word
@@ -34,7 +35,7 @@ public struct GameView: View {
             
             // Header: Difficulty, Timer, Lives
             HStack {
-                Text(viewModel.difficulty.rawValue.uppercased())
+                Text(LocalizationService.t(viewModel.difficulty.rawValue.uppercased(), lang: scoreManager.uiLanguage))
                     .font(.custom("Noteworthy", size: 18).bold())
                     .sketchbookInkText()
                 
@@ -48,7 +49,7 @@ public struct GameView: View {
                 
                 Spacer()
                 
-                Text("LIVES: \(viewModel.remainingLives)")
+                Text(LocalizationService.t("LIVES: ", lang: scoreManager.uiLanguage) + "\(viewModel.remainingLives)")
                     .font(.custom("Noteworthy", size: 18).bold())
                     .sketchbookInkText(isError: viewModel.remainingLives <= 2)
             }
@@ -128,9 +129,9 @@ public struct GameView: View {
     
     private var statusMessage: String {
         switch viewModel.gameState {
-        case .idle, .inProgress: return "Guess a letter..."
-        case .won: return "YOU SURVIVED."
-        case .lost: return "GAME OVER."
+        case .idle, .inProgress: return LocalizationService.t("Guess a letter...", lang: scoreManager.uiLanguage)
+        case .won: return LocalizationService.t("YOU SURVIVED.", lang: scoreManager.uiLanguage)
+        case .lost: return LocalizationService.t("GAME OVER.", lang: scoreManager.uiLanguage)
         }
     }
     

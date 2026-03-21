@@ -11,6 +11,7 @@ import SwiftData
 public struct LeaderboardView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject private var scoreManager = ScoreManager.shared
     
     @State private var filterLanguage: Language = .english
     
@@ -42,7 +43,7 @@ public struct LeaderboardView: View {
                         .padding()
                 }
                 Spacer()
-                Text("LEADERBOARD")
+                Text(LocalizationService.t("LEADERBOARD", lang: scoreManager.uiLanguage))
                     .font(.custom("Marker Felt", size: 32).bold())
                     .sketchbookInkText()
                 Spacer()
@@ -64,7 +65,7 @@ public struct LeaderboardView: View {
             // Results List Frame
             if filteredSessions.isEmpty {
                 Spacer()
-                Text("No victorious records found\nfor this language.")
+                Text(LocalizationService.t("No victorious records found\nfor this language.", lang: scoreManager.uiLanguage))
                     .font(.custom("Noteworthy", size: 24))
                     .sketchbookInkText(isError: true)
                     .multilineTextAlignment(.center)

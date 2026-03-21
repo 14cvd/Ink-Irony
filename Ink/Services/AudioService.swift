@@ -54,7 +54,7 @@ public class AudioService: ObservableObject {
                     print("Failed to load sound \(effect.rawValue): \(error.localizedDescription)")
                 }
             } else {
-                print("Warning: Sound file \(effect.rawValue).mp3 not found in main bundle.")
+                // Sound file not found, silently ignore to avoid simulator warning loops
             }
         }
     }

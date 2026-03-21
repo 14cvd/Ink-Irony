@@ -11,124 +11,75 @@ import Foundation
 public actor TauntService {
     public static let shared = TauntService()
     
-    // Securely pull from Info.plist to avoid hardcoded secrets in the repo
-    private var apiKey: String {
-        guard let key = Bundle.main.object(forInfoDictionaryKey: "ANTHROPIC_API_KEY") as? String, !key.isEmpty else {
-            print("Warning: ANTHROPIC_API_KEY not found in Info.plist")
-            return ""
-        }
-        return key
-    }
-    
-    private let apiURL = URL(string: "https://api.anthropic.com/v1/messages")!
-    
-    // Rate Limiting & Offline Handling
-    private var lastRequestTime: Date = .distantPast
-    private let rateLimitInterval: TimeInterval = 2.0 // Minimum seconds between API calls
-    
-    // Cache for generated taunts to reuse when offline/rate-limited
-    private var cachedTaunts: [String: [String]] = [:]
-    
-    // Offline Fallback Arrays - Exactly 10 taunts per language
+    // Offline Fallback Arrays - 25 taunts per language
     private let fallbackTauntsEN: [String] = [
         "Are you even trying?", "My grandmother guesses better.", "That was pathetic.",
         "Drawing the noose tighter...", "Did you skip school?", "A step closer to the gallows.",
-        "Is that your best?", "You're embarrassing yourself.", "Truly abysmal.", "Hopeless."
+        "Is that your best?", "You're embarrassing yourself.", "Truly abysmal.", "Hopeless.",
+        "I expected nothing, yet I'm disappointed.", "Just give up already.",
+        "Words are clearly not your strong suit.", "Another mistake, another nail in the coffin.",
+        "Are your eyes closed?", "Even a toddler could do this.", "The hangman is laughing at you.",
+        "You call that a guess?", "Such a tragic display of ignorance.", "Is this a joke to you?",
+        "I'm running out of ink for your mistakes.", "Try using your brain next time.",
+        "A monkey hitting a keyboard would do better.", "Disgraceful.", "You're writing your own doom."
     ]
     
     private let fallbackTauntsES: [String] = [
         "¿Siquiera lo intentas?", "Mi abuela adivina mejor.", "Eso fue patético.",
         "Apretando el nudo...", "¿Faltaste a la escuela?", "Un paso hacia la soga.",
-        "¿Es lo mejor que tienes?", "Estás dando vergüenza.", "Verdaderamente abismal.", "Sin esperanza."
+        "¿Es lo mejor que tienes?", "Estás dando vergüenza.", "Verdaderamente abismal.", "Sin esperanza.",
+        "No esperaba nada y aún así me decepcionas.", "Solo ríndete de una vez.",
+        "Claramente las palabras no son lo tuyo.", "Otro error, otro clavo en el ataúd.",
+        "¿Acaso tienes los ojos cerrados?", "Incluso un niño pequeño podría hacerlo.",
+        "El verdugo se ríe de ti.", "¿A eso le llamas adivinar?", "Qué trágica muestra de ignorancia.",
+        "¿Te parece una broma?", "Me estoy quedando sin tinta para tus errores.",
+        "Intenta usar tu cerebro la próxima vez.", "Un mono golpeando un teclado lo haría mejor.",
+        "Vergonzoso.", "Estás escribiendo tu propia perdición."
     ]
     
     private let fallbackTauntsRU: [String] = [
         "Ты вообще стараешься?", "Моя бабушка лучше угадывает.", "Это было жалко.",
         "Петля затягивается...", "Ты прогуливал школу?", "Шаг к виселице.",
-        "Это твой максимум?", "Ты позоришься.", "Просто ужасно.", "Безнадежно."
+        "Это твой максимум?", "Ты позоришься.", "Просто ужасно.", "Безнадежно.",
+        "Я ничего не ждал, но всё равно разочарован.", "Просто сдавайся уже.",
+        "Слова явно не твой конек.", "Еще одна ошибка, еще один гвоздь в крышку гроба.",
+        "Ты угадываешь с закрытыми глазами?", "Даже ребенок справился бы.",
+        "Палач смеется над тобой.", "И это ты называешь догадкой?",
+        "Какое трагическое проявление невежества.", "Для тебя это шутка?",
+        "У меня заканчиваются чернила на твои ошибки.", "В следующий раз попробуй использовать мозг.",
+        "Обезьяна, бьющая по клавиатуре, справилась бы лучше.", "Позор.", "Ты сам пишешь свой приговор."
     ]
     
     private let fallbackTauntsTR: [String] = [
         "Hiç çabalıyor musun?", "Ninem bile daha iyi bilir.", "Bu çok acınasıydı.",
         "İlmek daralıyor...", "Okulu mu astın?", "Darağacına bir adım daha.",
-        "En iyisi bu mu?", "Kendini utandırıyorsun.", "Gerçekten berbat.", "Umutsuz vaka."
+        "En iyisi bu mu?", "Kendini utandırıyorsun.", "Gerçekten berbat.", "Umutsuz vaka.",
+        "Hiçbir şey beklemiyordum, yine de hayal kırıklığına uğradım.", "Pes et gitsin.",
+        "Kelimeler senin güçlü yanın değil.", "Bir hata daha, tabuta bir çivi daha.",
+        "Gözlerin kapalı mı tahmin ediyorsun?", "Küçük bir çocuk bile bunu yapabilirdi.",
+        "Cellat sana gülüyor.", "Buna tahmin mi diyorsun?", "Ne kadar trajik bir cehalet gösterisi.",
+        "Bu senin için bir şaka mı?", "Hatalarını çizmekten mürekkebim bitti.",
+        "Bir dahaki sefere beynini kullanmayı dene.", "Klavyeye rastgele basan bir maymun daha iyi yapardı.",
+        "Rezalet.", "Kendi sonunu hazırlıyorsun."
     ]
     
     private let fallbackTauntsAZ: [String] = [
         "Heç cəhd edirsən?", "Nənəm daha yaxşı tapır.", "Bu çox acınacaqlı idi.",
         "İlmək daralır...", "Məktəbdən qaçmısan?", "Dar ağacına bir addım.",
-        "Ən yaxşın budur?", "Özünü biabır edirsən.", "Həqiqətən bərbat.", "Ümidsiz vəziyyət."
+        "Ən yaxşın budur?", "Özünü biabır edirsən.", "Həqiqətən bərbat.", "Ümidsiz vəziyyət.",
+        "Hec nə gözləmirdim, amma yenə də məyus oldum.", "Sadəcə təslim ol.",
+        "Sözlər sənin güclü tərəfin deyil.", "Daha bir səhv, tabuta bir mismar da.",
+        "Gözlərin bağla tapırsan?", "Bunu bir uşaq da edə bilərdi.",
+        "Cəllad sənə gülür.", "Buna təxmin deyirsən?", "Necə də faciəvi bir cəhalət nümayişidir.",
+        "Bu sənin üçün zarafatdır?", "Səhvlərini yazmaqdan mürəkkəbim bitdi.",
+        "Növbəti dəfə beynini işlətməyə çalış.", "Klaviatura düymələrinə sıxan bir meymun daha yaxşı edərdi.",
+        "Rüsvayçılıq.", "Öz sonunu hazırlayırsan."
     ]
     
     private init() {}
     
     // MARK: - Public Fetch Method
-    
-    /// Fetches a snarky taunt dynamically contextualized by the player state
     public func fetchTaunt(language: Language, wrongCount: Int, difficulty: Difficulty) async -> String {
-        // Enforce rate limiting strictly, and drop safely to fallback if no key is supplied
-        let now = Date()
-        if now.timeIntervalSince(lastRequestTime) < rateLimitInterval || apiKey.isEmpty {
-            return getOfflineTaunt(for: language)
-        }
-        
-        lastRequestTime = now
-        
-        do {
-            let apiTaunt = try await fetchTauntFromClaude(language: language, wrongCount: wrongCount, difficulty: difficulty)
-            cacheTaunt(apiTaunt, for: language)
-            return apiTaunt
-        } catch {
-            print("Claude API Failed/Offline: \(error.localizedDescription). Using fallback.")
-            return getOfflineTaunt(for: language)
-        }
-    }
-    
-    // MARK: - API Call & Fallbacks
-    
-    private func fetchTauntFromClaude(language: Language, wrongCount: Int, difficulty: Difficulty) async throws -> String {
-        var request = URLRequest(url: apiURL)
-        request.httpMethod = "POST"
-        request.addValue(apiKey, forHTTPHeaderField: "x-api-key")
-        request.addValue("2023-06-01", forHTTPHeaderField: "anthropic-version")
-        request.addValue("application/json", forHTTPHeaderField: "content-type")
-        
-        let systemPrompt = "You are the 'Savage AI', a snarky, merciless hangman game announcer. Your goal is to mock the player for guessing wrong. Keep your response under 20 words. No emojis. Match the requested language perfectly. Sound like a harsh teacher."
-        let userPrompt = "The player made wrong guess number \(wrongCount) on \(difficulty.rawValue) difficulty. Taunt them in \(language.rawValue)."
-        
-        // Claude Haiku is explicitly fast and cheap for this real-time gaming scenario
-        let body: [String: Any] = [
-            "model": "claude-3-5-haiku-20241022",
-            "max_tokens": 50,
-            "system": systemPrompt,
-            "messages": [
-                ["role": "user", "content": userPrompt]
-            ]
-        ]
-        
-        request.httpBody = try JSONSerialization.data(withJSONObject: body)
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard let httpResponse = response as? HTTPURLResponse,
-              (200...299).contains(httpResponse.statusCode) else {
-            throw URLError(.badServerResponse)
-        }
-        
-        let json = try JSONDecoder().decode(ClaudeResponse.self, from: data)
-        guard let tauntText = json.content.first?.text else {
-            throw URLError(.cannotParseResponse)
-        }
-        
-        return tauntText.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-    
-    private func getOfflineTaunt(for language: Language) -> String {
-        // Option to draw securely from the cache to keep taunts varied without pinging the API repeatedly
-        if let cached = cachedTaunts[language.id], !cached.isEmpty, Bool.random() {
-            return cached.randomElement()!
-        }
-        
         switch language {
         case .english: return fallbackTauntsEN.randomElement()!
         case .spanish: return fallbackTauntsES.randomElement()!
@@ -137,24 +88,4 @@ public actor TauntService {
         case .azerbaijani: return fallbackTauntsAZ.randomElement()!
         }
     }
-    
-    private func cacheTaunt(_ taunt: String, for language: Language) {
-        var tauntsForLang = cachedTaunts[language.id] ?? []
-        // Cap cache limit gracefully to prevent memory leaks over thousands of games
-        if tauntsForLang.count >= 100 {
-            tauntsForLang.removeFirst()
-        }
-        tauntsForLang.append(taunt)
-        cachedTaunts[language.id] = tauntsForLang
-    }
-}
-
-// MARK: - API Response Models
-fileprivate struct ClaudeResponse: Decodable {
-    let content: [ClaudeContent]
-}
-
-fileprivate struct ClaudeContent: Decodable {
-    let type: String
-    let text: String
 }

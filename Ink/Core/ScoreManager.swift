@@ -39,6 +39,11 @@ public class ScoreManager: ObservableObject {
     // Core SwiftData container encapsulating game results
     public let modelContainer: ModelContainer
     
+    // Global language state persisted natively
+    @Published public var uiLanguage: Language = .english {
+        didSet { UserDefaults.standard.set(uiLanguage.rawValue, forKey: "uiLanguage") }
+    }
+    
     // Published stats computed on the fly for live UI binding
     @Published public private(set) var currentStreak: Int = 0
     @Published public private(set) var highestStreak: Int = 0
@@ -46,6 +51,10 @@ public class ScoreManager: ObservableObject {
     @Published public private(set) var totalLosses: Int = 0
     
     private init() {
+        if let savedRaw = UserDefaults.standard.string(forKey: "uiLanguage"), let savedLang = Language(rawValue: savedRaw) {
+            self.uiLanguage = savedLang
+        }
+        
         do {
             modelContainer = try ModelContainer(for: GameSession.self)
             Task { @MainActor in
