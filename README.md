@@ -3,7 +3,7 @@
 ---
 
 <p align="center">
-  <img width="512" height="512" alt="Ink Irony" src="https://github.com/user-attachments/assets/033c1824-d6fc-4184-8d34-ca439122fcd5" />
+  <img width="256" height="256" alt="Ink Irony" src="https://github.com/user-attachments/assets/033c1824-d6fc-4184-8d34-ca439122fcd5" />
 </p>
 
 # Ink & Irony (Savage Sketchbook) 🖋️📓
