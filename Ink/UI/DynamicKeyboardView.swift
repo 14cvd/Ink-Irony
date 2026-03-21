@@ -30,14 +30,14 @@ public struct DynamicKeyboardView: View {
             // Uniquely mapping Language.alphabet ensuring localized traits ("Ə", "Ş") render correctly locally!
             ForEach(language.alphabet, id: \.self) { char in
                 let isGuessed = guessedLetters.contains(char)
-                let inkColor = colorScheme == .dark ? ThemeManager.Colors.graphiteGray : ThemeManager.Colors.ballpointBlue
-                let errorInkColor = colorScheme == .dark ? ThemeManager.Colors.teacherRed.opacity(0.8) : ThemeManager.Colors.teacherRed
+                let inkColor = ThemeManager.Colors.inkPrimary(for: colorScheme)
+                let errorInkColor = ThemeManager.Colors.errorInk(for: colorScheme)
                 
                 Button(action: {
                     onGuess(char)
                 }) {
                     Text(String(char))
-                        .font(.custom("Noteworthy", size: 24).bold())
+                        .font(ThemeManager.Typography.h2(for: colorScheme))
                         .sketchbookInkText(isError: false)
                         .frame(width: 44, height: 44)
                         .overlay(

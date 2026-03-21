@@ -23,21 +23,21 @@ public struct GameSetupView: View {
     }
     
     public var body: some View {
-        VStack(spacing: 30) {
+        VStack(spacing: ThemeManager.Layout.spacingLG) {
             Text(LocalizationService.t("NEW GAME", lang: selectedLanguage))
-                .font(.custom("Marker Felt", size: 42).bold())
+                .font(ThemeManager.Typography.h1(for: selectedLanguage == .english ? .light : .dark)) // Generic theme usage
                 .sketchbookInkText(isError: true)
-                .padding(.top, 50)
+                .padding(.top, ThemeManager.Layout.spacingMajor)
             
             // Language Selection
-            VStack(alignment: .leading, spacing: 15) {
+            VStack(alignment: .leading, spacing: ThemeManager.Layout.spacingMD) {
                 Text(LocalizationService.t("Select Language:", lang: selectedLanguage))
-                    .font(.custom("Noteworthy", size: 24).bold())
+                    .font(ThemeManager.Typography.h2(for: .light))
                     .sketchbookInkText()
-                    .padding(.leading, 10)
+                    .padding(.leading, ThemeManager.Layout.spacingSM)
                 
                 // Adaptive grid supports languages expanding flexibly
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 80, maximum: 120))], spacing: 15) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 80, maximum: 120))], spacing: ThemeManager.Layout.spacingMD) {
                     ForEach(Language.allCases) { lang in
                         SelectionDoodleButton(
                             title: lang.rawValue,
@@ -54,13 +54,13 @@ public struct GameSetupView: View {
             .padding(.horizontal, 40) // Align inside notebook margins
             
             // Difficulty Selection
-            VStack(alignment: .leading, spacing: 15) {
+            VStack(alignment: .leading, spacing: ThemeManager.Layout.spacingMD) {
                 Text(LocalizationService.t("Select Difficulty:", lang: selectedLanguage))
-                    .font(.custom("Noteworthy", size: 24).bold())
+                    .font(ThemeManager.Typography.h2(for: .light))
                     .sketchbookInkText()
-                    .padding(.leading, 10)
+                    .padding(.leading, ThemeManager.Layout.spacingSM)
                 
-                VStack(spacing: 12) {
+                VStack(spacing: ThemeManager.Layout.spacingSM) {
                     ForEach(Difficulty.allCases) { diff in
                         SelectionDoodleButton(
                             title: "\(diff.rawValue.uppercased()) (\(diff.lives) Lives)",
@@ -94,8 +94,8 @@ public struct GameSetupView: View {
                     .frame(maxWidth: .infinity)
             }
             .doodleButtonStyle()
-            .padding(.horizontal, 40)
-            .padding(.bottom, 50)
+            .padding(.horizontal, ThemeManager.Layout.spacingXL)
+            .padding(.bottom, ThemeManager.Layout.spacingMajor)
         }
         .sketchbookBackground()
     }
@@ -114,30 +114,30 @@ fileprivate struct SelectionDoodleButton: View {
     private var inkColor: Color {
         // Teacher red when selected to look like a chosen/circled answer, ballpoint pen when unselected
         if isSelected {
-            return colorScheme == .dark ? ThemeManager.Colors.teacherRed.opacity(0.8) : ThemeManager.Colors.teacherRed
+            return ThemeManager.Colors.errorInk(for: colorScheme)
         } else {
-            return colorScheme == .dark ? ThemeManager.Colors.graphiteGray : ThemeManager.Colors.ballpointBlue
+            return ThemeManager.Colors.inkPrimary(for: colorScheme)
         }
     }
     
     var body: some View {
         Button(action: action) {
             Text(title)
-                .font(.custom("Noteworthy", size: 18).bold())
+                .font(ThemeManager.Typography.body(for: colorScheme).bold())
                 .foregroundColor(inkColor)
                 .frame(maxWidth: isFullWidth ? .infinity : nil)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 10)
+                .padding(.horizontal, ThemeManager.Layout.spacingMD)
+                .padding(.vertical, ThemeManager.Layout.spacingSM)
                 .background(
                     ZStack {
                         if isSelected {
-                            RoundedRectangle(cornerRadius: 8)
-                                .handDrawnStroke(color: inkColor, lineWidth: 3, jitter: 2.0)
+                            RoundedRectangle(cornerRadius: ThemeManager.Layout.cornerKey)
+                                .handDrawnStroke(color: inkColor, lineWidth: ThemeManager.Layout.strokeBtn, jitter: 2.0)
                                 // Slight rotation to signify it's firmly circled manually
                                 .rotationEffect(.degrees(CGFloat.random(in: -2...2)))
                         } else {
-                            RoundedRectangle(cornerRadius: 8)
-                                .handDrawnStroke(color: inkColor, lineWidth: 1.5, jitter: 1.0)
+                            RoundedRectangle(cornerRadius: ThemeManager.Layout.cornerKey)
+                                .handDrawnStroke(color: inkColor.opacity(0.3), lineWidth: ThemeManager.Layout.strokeHair, jitter: 1.0)
                         }
                     }
                 )

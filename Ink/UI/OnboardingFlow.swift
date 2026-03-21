@@ -22,17 +22,17 @@ public struct OnboardingFlow: View {
             
             // Title Graphic treated like aggressive notebook graffiti
             Text(LocalizationService.t("INK & IRONY", lang: scoreManager.uiLanguage))
-                .font(.custom("Marker Felt", size: 52).bold())
+                .font(ThemeManager.Typography.h1(for: .light)) // Token H1 is 40px
                 .sketchbookInkText(isError: true) // Using teacher red for the main title
-                .padding(.bottom, 20)
+                .padding(.bottom, ThemeManager.Layout.spacingLG)
                 .rotationEffect(.degrees(CGFloat.random(in: -3...3)))
             
             // Subtitle / Intro
             Text(LocalizationService.t(currentPage == 0 ? "Welcome to the\nSavage Sketchbook." : "The Teacher is waiting...\nDon't fail.", lang: scoreManager.uiLanguage))
-                .font(.custom("Noteworthy", size: 28))
+                .font(ThemeManager.Typography.h2(for: .light))
                 .sketchbookInkText()
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 40)
+                .padding(.horizontal, ThemeManager.Layout.spacingXL)
             
             Spacer()
             
@@ -53,7 +53,7 @@ public struct OnboardingFlow: View {
                     .frame(width: 120)
             }
             .doodleButtonStyle() // Inherits our custom drawing component styles
-            .padding(.bottom, 60)
+            .padding(.bottom, ThemeManager.Layout.spacingMajor)
         }
         .sketchbookBackground()
     }

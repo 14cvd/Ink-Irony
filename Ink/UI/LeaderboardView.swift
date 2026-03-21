@@ -25,7 +25,7 @@ public struct LeaderboardView: View {
     }
     
     private var inkColor: Color {
-        colorScheme == .dark ? ThemeManager.Colors.graphiteGray : ThemeManager.Colors.ballpointBlue
+        ThemeManager.Colors.inkPrimary(for: colorScheme)
     }
     
     public var body: some View {
@@ -44,7 +44,7 @@ public struct LeaderboardView: View {
                 }
                 Spacer()
                 Text(LocalizationService.t("LEADERBOARD", lang: scoreManager.uiLanguage))
-                    .font(.custom("Marker Felt", size: 32).bold())
+                    .font(ThemeManager.Typography.h1(for: colorScheme))
                     .sketchbookInkText()
                 Spacer()
                 // Placeholder balancing spacer
@@ -59,25 +59,26 @@ public struct LeaderboardView: View {
                 }
             }
             .pickerStyle(.segmented)
-            .padding(.horizontal, 40)
-            .padding(.bottom, 20)
+            .padding(.horizontal, ThemeManager.Layout.spacingXL)
+            .padding(.bottom, ThemeManager.Layout.spacingLG)
             
             // Results List Frame
             if filteredSessions.isEmpty {
                 Spacer()
                 Text(LocalizationService.t("No victorious records found\nfor this language.", lang: scoreManager.uiLanguage))
-                    .font(.custom("Noteworthy", size: 24))
+                    .font(ThemeManager.Typography.h2(for: colorScheme))
                     .sketchbookInkText(isError: true)
                     .multilineTextAlignment(.center)
+                    .padding(.horizontal, ThemeManager.Layout.spacingXL)
                 Spacer()
             } else {
                 ScrollView {
-                    VStack(spacing: 15) {
+                    VStack(spacing: ThemeManager.Layout.spacingMD) {
                         ForEach(Array(filteredSessions.enumerated()), id: \.element.id) { index, session in
                             LeaderboardRow(rank: index + 1, session: session, inkColor: inkColor)
                         }
                     }
-                    .padding(.horizontal, 30)
+                    .padding(.horizontal, ThemeManager.Layout.spacingLG)
                 }
             }
         }
@@ -93,17 +94,17 @@ fileprivate struct LeaderboardRow: View {
     var body: some View {
         HStack {
             Text("#\(rank)")
-                .font(.custom("Noteworthy", size: 24).bold())
-                .foregroundColor(ThemeManager.Colors.teacherRed)
+                .font(ThemeManager.Typography.h2(for: .light).bold())
+                .foregroundColor(ThemeManager.Colors.errorInkLight)
                 .frame(width: 50, alignment: .leading)
             
             VStack(alignment: .leading) {
                 Text(session.word)
-                    .font(.custom("Courier", size: 20).bold())
+                    .font(ThemeManager.Typography.body(for: .light).bold())
                     .sketchbookInkText()
                 
                 Text("\(session.difficulty) - \(session.date.formatted(date: .numeric, time: .shortened))")
-                    .font(.custom("Noteworthy", size: 14))
+                    .font(ThemeManager.Typography.micro(for: .light))
                     .sketchbookInkText()
                     .opacity(0.7)
             }
@@ -111,13 +112,13 @@ fileprivate struct LeaderboardRow: View {
             Spacer()
             
             Text("\(session.score) pts")
-                .font(.custom("Marker Felt", size: 22))
+                .font(ThemeManager.Typography.body(for: .light))
                 .sketchbookInkText()
         }
-        .padding()
+        .padding(ThemeManager.Layout.spacingMD)
         .background(
-            RoundedRectangle(cornerRadius: 8)
-                .handDrawnStroke(color: inkColor, lineWidth: 1.5, jitter: 1.0)
+            RoundedRectangle(cornerRadius: ThemeManager.Layout.cornerKey)
+                .handDrawnStroke(color: inkColor, lineWidth: ThemeManager.Layout.strokeHair * 1.5, jitter: 1.0)
         )
     }
 }
