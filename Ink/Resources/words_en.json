@@ -1,0 +1,21 @@
+{
+  "difficulties": {
+    "Easy": [
+      { "name": "Animals", "words": ["CAT", "DOG", "BIRD", "FISH", "BEAR", "LION", "TIGER", "WOLF"] },
+      { "name": "Colors", "words": ["RED", "BLUE", "GREEN", "YELLOW", "ORANGE", "PURPLE", "BLACK", "WHITE"] }
+    ],
+    "Medium": [
+      { "name": "School", "words": ["TEACHER", "PENCIL", "NOTEBOOK", "HOMEWORK", "ERASER", "PRINCIPAL", "DETENTION"] },
+      { "name": "Theme", "words": ["HANGMAN", "SKETCHBOOK", "REVENGE", "DOODLE", "GALLOWS", "PUNISHMENT", "EXECUTION"] }
+    ],
+    "Hard": [
+      { "name": "Science", "words": ["ASTRONOMY", "PHYSICS", "BIOLOGY", "CHEMISTRY", "MICROSCOPE", "MOMENTUM", "RADIATION"] },
+      { "name": "History", "words": ["PHARAOH", "GLADIATOR", "REVOLUTION", "EMPIRE", "MONARCHY", "CIVILIZATION", "GUILLOTINE"] }
+    ],
+    "Nightmare": [
+      { "name": "Vocabulary", "words": ["UBIQUITOUS", "SYCOPHANT", "OBFUSCATE", "CACOPHONY", "EPHEMERAL", "QUINTESSENTIAL", "MELANCHOLY"] },
+      { "name": "Medical", "words": ["ERYTHROCYTE", "PHLEBOTOMY", "NEUROPATHY", "ARRHYTHMIA", "OSTEOPOROSIS", "CARDIOMYOPATHY"] }
+    ]
+  }
+}
+
