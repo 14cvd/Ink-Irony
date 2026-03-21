@@ -56,12 +56,7 @@ public struct ResultScreen: View {
             // "Graded Paper" Identification Area
             HStack {
                 VStack(alignment: .leading, spacing: ThemeManager.Layout.spacingXS) {
-                    Group {
-                        Text(LocalizationService.t("NAME: ", lang: scoreManager.uiLanguage))
-                            .font(ThemeManager.Typography.micro(for: colorScheme))
-                        + Text(LocalizationService.t("Player 1", lang: scoreManager.uiLanguage))
-                            .font(ThemeManager.Typography.h2(for: colorScheme))
-                    }
+
                     Group {
                         Text(LocalizationService.t("SUBJECT: ", lang: scoreManager.uiLanguage))
                             .font(ThemeManager.Typography.micro(for: colorScheme))
