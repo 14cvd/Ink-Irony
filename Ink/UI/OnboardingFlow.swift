@@ -10,6 +10,7 @@ import SwiftUI
 public struct OnboardingFlow: View {
     @Binding var onboardingComplete: Bool
     @State private var currentPage = 0
+    @State private var titleRotation: Double = Double.random(in: -3...3)
     @ObservedObject private var scoreManager = ScoreManager.shared
     
     public init(onboardingComplete: Binding<Bool>) {
@@ -25,7 +26,7 @@ public struct OnboardingFlow: View {
                 .font(ThemeManager.Typography.h1(for: .light)) // Token H1 is 40px
                 .sketchbookInkText(isError: true) // Using teacher red for the main title
                 .padding(.bottom, ThemeManager.Layout.spacingLG)
-                .rotationEffect(.degrees(CGFloat.random(in: -3...3)))
+                .rotationEffect(.degrees(titleRotation))
             
             // Subtitle / Intro
             Text(LocalizationService.t(currentPage == 0 ? "Welcome to the\nSavage Sketchbook." : "The Teacher is waiting...\nDon't fail.", lang: scoreManager.uiLanguage))
