@@ -106,7 +106,5 @@ SOFTWARE.
 Created by **Cavid Abbasaliyev**
 
 If you have any questions, feedback, or just want to say hi, feel free to reach out:
-- **Email:** [your-email@example.com](mailto:your-email@example.com)
-- **LinkedIn:** [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
-- **Twitter / X:** [@YourHandle](https://twitter.com/YourHandle)
-- **Portfolio:** [your-website.com](https://your-website.com)
+- **Email:** [your-email@example.com](mailto:abbas3liyev@gmail.com)
+- **LinkedIn:** [linkedin.com/in/your-profile](https://www.linkedin.com/in/abbas3liyev/)
