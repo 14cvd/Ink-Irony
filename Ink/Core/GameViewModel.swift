@@ -13,7 +13,7 @@ import SwiftUI
 @MainActor
 public class GameViewModel: ObservableObject {
     
-    // MARK: - Published Properties
+    // MARK: - Published Properties 
     @Published public private(set) var currentWord: Word?
     @Published public private(set) var difficulty: Difficulty = .medium
     @Published public private(set) var language: Language = .english
