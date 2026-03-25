@@ -1,14 +1,35 @@
-### macOS
-# Finder metadata
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+## User-specific
+xcuserdata/
+
+## Build results
+build/
+DerivedData/
+
+## Results of some testing tools
+*.gcno
+*.gcda
+*.gcov
+TestResults/
+
+## Swift Package Manager
+.build/
+.swiftpm/
+
+## Misc
+*.moved-aside
+*.xcuserstate
+*.xccheckout
+*.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+
+## macOS
 .DS_Store
-
-# Thumbnails
 ._*
-
-# Custom folder icons
-Icon
-
-# Volume root files
+Icon
 .DocumentRevisions-V100
 .fseventsd
 .Spotlight-V100
