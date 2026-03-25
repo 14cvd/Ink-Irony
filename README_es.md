@@ -10,6 +10,8 @@
 
 **Ink & Irony** es un juego de palabras estilo ahorcado para iOS, creado con **SwiftUI** y **SwiftData**. Ofrece una estética de "cuaderno dibujado a mano" con animaciones dinámicas de tinta temblorosa, respuesta háptica inmersiva y un sistema de inteligencia artificial fuera de línea que se burla de cada error que cometes.
 
+[**Descargar en el App Store**](https://apps.apple.com/app/id6760973464)
+
 ---
 
 ## 🎨 Características

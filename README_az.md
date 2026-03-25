@@ -10,6 +10,8 @@
 
 **Ink & Irony**, tamamilə **SwiftUI** və **SwiftData** ilə yaradılmış premium, mükəmməl dizayna sahib iOS söz tapma (Adam Asdı tipli) oyunudur. Tətbiq gözəl "əllə çəkilmiş eskiz" estetikası, titrəyən mürəkkəb animasiyaları, xüsusi toxunma hissləri (haptics) və hər səhvinizə reaksiya verən təhqiramiz "offline AI" sistemi ilə fərqlənir.
 
+[**App Store-dan Endir**](https://apps.apple.com/app/id6760973464)
+
 ---
 
 ## 🎨 Xüsusiyyətlər
