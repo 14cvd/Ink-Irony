@@ -10,6 +10,8 @@
 
 **Ink & Irony**, tamamen **SwiftUI** ve **SwiftData** ile oluşturulmuş, özenle tasarlanmış premium bir iOS kelime tahmin oyunudur (Adam Asmaca stili). Dinamik titreyen mürekkep animasyonları, sürükleyici dokunsal geri bildirimler ve her hataya tepki veren acımasız bir masaarası alay (taunt) sistemi ile tamamlanan benzersiz bir "el çizimi eskiz defteri" estetiği sunar.
 
+[**App Store'dan İndir**](https://apps.apple.com/app/id6760973464)
+
 ---
 
 ## 🎨 Özellikler & Öne Çıkanlar

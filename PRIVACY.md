@@ -1,5 +1,7 @@
 # Privacy Policy for Ink & Irony
 
+[**View on App Store**](https://apps.apple.com/app/id6760973464)
+
 **Effective Date:** March 22, 2026
 
 ## 1. Data Collection & Usage

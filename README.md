@@ -10,6 +10,8 @@
 
 **Ink & Irony** is a premium, beautifully crafted iOS word-guessing game (Hangman-style) built entirely with **SwiftUI** and **SwiftData**. It offers a unique "hand-drawn sketchbook" aesthetic, complete with dynamic jittery ink animations, immersive haptics, and a brutal offline taunting system that reacts to every mistake you make.
 
+[**Download on the App Store**](https://apps.apple.com/app/id6760973464)
+
 ---
 
 ## 🎨 Features & Highlights
