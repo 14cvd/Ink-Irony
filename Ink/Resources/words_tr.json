@@ -1,23 +1,264 @@
 {
   "difficulties": {
     "Easy": [
-      { "name": "Hayvanlar", "words": ["KEDI", "KOPEK", "KUS", "BALIK", "AYI", "ASLAN", "KAPLAN", "KURT", "KURBAGA", "ORDEK", "GEYIK", "INEK", "DOMUZ", "KECI", "KOYUN", "AT", "FARE", "TAVSAN", "YILAN", "BALINA"] },
-      { "name": "Renkler", "words": ["KIRMIZI", "MAVI", "YESIL", "SARI", "TURUNCU", "MOR", "SIYAH", "BEYAZ", "KAHVERENGI", "PEMBE", "GRI", "GUMUS", "ALTIN", "BEJ", "LACIVERT", "TURKUAZ"] },
-      { "name": "Meyveler", "words": ["ELMA", "ARMUT", "CILEK", "UZUM", "LIMON", "MUZ", "KAYISI", "SEFTALI", "ERIK", "KIRAZ", "VISNE", "KAVUN", "KARPUZ", "INCIR", "DUT", "NAR"] }
+      {
+        "name": "Hayvanlar",
+        "words": [
+          "KEDI",
+          "KOPEK",
+          "KUS",
+          "BALIK",
+          "AYI",
+          "ASLAN",
+          "KAPLAN",
+          "KURT",
+          "KURBAGA",
+          "ORDEK",
+          "GEYIK",
+          "INEK",
+          "DOMUZ",
+          "KECI",
+          "KOYUN",
+          "AT",
+          "FARE",
+          "TAVSAN",
+          "YILAN",
+          "BALINA"
+        ]
+      },
+      {
+        "name": "Renkler",
+        "words": [
+          "KIRMIZI",
+          "MAVI",
+          "YESIL",
+          "SARI",
+          "TURUNCU",
+          "MOR",
+          "SIYAH",
+          "BEYAZ",
+          "KAHVERENGI",
+          "PEMBE",
+          "GRI",
+          "GUMUS",
+          "ALTIN",
+          "BEJ",
+          "LACIVERT",
+          "TURKUAZ"
+        ]
+      },
+      {
+        "name": "Meyveler",
+        "words": [
+          "ELMA",
+          "ARMUT",
+          "CILEK",
+          "UZUM",
+          "LIMON",
+          "MUZ",
+          "KAYISI",
+          "SEFTALI",
+          "ERIK",
+          "KIRAZ",
+          "VISNE",
+          "KAVUN",
+          "KARPUZ",
+          "INCIR",
+          "DUT",
+          "NAR"
+        ]
+      },
+      {
+        "name": "Temel",
+        "words": [
+          "GUNES",
+          "AY",
+          "SU",
+          "ATES",
+          "EV",
+          "AGAC",
+          "ARABA",
+          "KITAP",
+          "KAPI",
+          "PENCERE",
+          "YEMEK",
+          "MASA"
+        ]
+      }
     ],
     "Medium": [
-      { "name": "Okul", "words": ["OGRETMEN", "KALEM", "DEFTER", "ODEV", "SILGI", "MUDUR", "KUTUPHANE", "KAMPUS", "AKADEMIK", "DERS", "KONU", "TARIH", "BILIM", "OFIS", "SINIF", "KANTIN", "SINAV"] },
-      { "name": "Tema", "words": ["CELLAT", "DEFTER", "INTIKAM", "CIZIM", "SEHPA", "CEZA", "IDAM", "HAYATTA", "IHANET", "YARGI", "YALNIZLIK", "KEDER", "ZAFER", "YENILGI", "TRAJEDI"] },
-      { "name": "Doga", "words": ["DAG", "GOKGURULTUSU", "VOLKAN", "BUZUL", "KANYON", "COL", "ORMAN", "ADA", "VADI", "DERE", "OKYANUS", "ORMAN", "OVA", "MAGARA", "UFUQ"] }
+      {
+        "name": "Okul",
+        "words": [
+          "OGRETMEN",
+          "KALEM",
+          "DEFTER",
+          "ODEV",
+          "SILGI",
+          "MUDUR",
+          "KUTUPHANE",
+          "KAMPUS",
+          "AKADEMIK",
+          "DERS",
+          "KONU",
+          "TARIH",
+          "BILIM",
+          "OFIS",
+          "SINIF",
+          "KANTIN",
+          "SINAV"
+        ]
+      },
+      {
+        "name": "Tema",
+        "words": [
+          "CELLAT",
+          "DEFTER",
+          "INTIKAM",
+          "CIZIM",
+          "SEHPA",
+          "CEZA",
+          "IDAM",
+          "HAYATTA",
+          "IHANET",
+          "YARGI",
+          "YALNIZLIK",
+          "KEDER",
+          "ZAFER",
+          "YENILGI",
+          "TRAJEDI"
+        ]
+      },
+      {
+        "name": "Doga",
+        "words": [
+          "DAG",
+          "GOKGURULTUSU",
+          "VOLKAN",
+          "BUZUL",
+          "KANYON",
+          "COL",
+          "ORMAN",
+          "ADA",
+          "VADI",
+          "DERE",
+          "OKYANUS",
+          "ORMAN",
+          "OVA",
+          "MAGARA",
+          "UFUQ"
+        ]
+      },
+      {
+        "name": "Temel",
+        "words": [
+          "GUNES",
+          "AY",
+          "SU",
+          "ATES",
+          "EV",
+          "AGAC",
+          "ARABA",
+          "KITAP",
+          "KAPI",
+          "PENCERE",
+          "YEMEK",
+          "MASA"
+        ]
+      }
     ],
     "Hard": [
-      { "name": "Bilim", "words": ["ASTRONOMI", "FIZIK", "BIYOLOJI", "KIMYA", "MIKROSKOP", "MOMENTUM", "RADYASYON", "PARCACIK", "GENETIK", "EVRIM", "KUANTUM", "SINERJI", "KATALIZOR", "YERCEKIMI", "TUTULMA"] },
-      { "name": "Tarih", "words": ["FIRAVUN", "GLADYATOR", "DEVRIM", "IMPARATORLUK", "MONARSI", "UYGARLIK", "GIYOTIN", "RONSANS", "ORTACAG", "ANTIK", "HANEDAN", "SOMURGE", "HACLI", "KRALLIK"] },
-      { "name": "Teknoloji", "words": ["ALGORITMA", "VERITABANI", "ISLEMCI", "AG", "YAZILIM", "DONANIM", "INTERNET", "GAVENLIK", "SIFRELEME", "PROTOKOL", "GUVENLIK", "TERMINAL", "KONSOL"] }
+      {
+        "name": "Bilim",
+        "words": [
+          "ASTRONOMI",
+          "FIZIK",
+          "BIYOLOJI",
+          "KIMYA",
+          "MIKROSKOP",
+          "MOMENTUM",
+          "RADYASYON",
+          "PARCACIK",
+          "GENETIK",
+          "EVRIM",
+          "KUANTUM",
+          "SINERJI",
+          "KATALIZOR",
+          "YERCEKIMI",
+          "TUTULMA"
+        ]
+      },
+      {
+        "name": "Tarih",
+        "words": [
+          "FIRAVUN",
+          "GLADYATOR",
+          "DEVRIM",
+          "IMPARATORLUK",
+          "MONARSI",
+          "UYGARLIK",
+          "GIYOTIN",
+          "RONSANS",
+          "ORTACAG",
+          "ANTIK",
+          "HANEDAN",
+          "SOMURGE",
+          "HACLI",
+          "KRALLIK"
+        ]
+      },
+      {
+        "name": "Teknoloji",
+        "words": [
+          "ALGORITMA",
+          "VERITABANI",
+          "ISLEMCI",
+          "AG",
+          "YAZILIM",
+          "DONANIM",
+          "INTERNET",
+          "GAVENLIK",
+          "SIFRELEME",
+          "PROTOKOL",
+          "GUVENLIK",
+          "TERMINAL",
+          "KONSOL"
+        ]
+      }
     ],
     "Nightmare": [
-      { "name": "Kelime Hazinesi", "words": ["MUNZAVI", "MUZEKKERE", "MUTEFERRIKA", "MUTEAL", "MUKERREM", "MUKESSEF", "MUKemmel", "MUTEBASSI", "MUTEBESSIM", "MUTEVAAZI", "MUZEVVER"] },
-      { "name": "Tibbi", "words": ["ERITROSIT", "FLEBOTOMI", "NOROPATI", "ARITMI", "OSTEOPOROZ", "KARDIMIYOPATI", "EPIDEMIYOLOJI", "METABOLIZMA", "HEMOGLOBIN", "ANESTEZI", "STETOSKOP"] }
+      {
+        "name": "Kelime Hazinesi",
+        "words": [
+          "MUNZAVI",
+          "MUZEKKERE",
+          "MUTEFERRIKA",
+          "MUTEAL",
+          "MUKERREM",
+          "MUKESSEF",
+          "MUKemmel",
+          "MUTEBASSI",
+          "MUTEBESSIM",
+          "MUTEVAAZI",
+          "MUZEVVER"
+        ]
+      },
+      {
+        "name": "Tibbi",
+        "words": [
+          "ERITROSIT",
+          "FLEBOTOMI",
+          "NOROPATI",
+          "ARITMI",
+          "OSTEOPOROZ",
+          "KARDIMIYOPATI",
+          "EPIDEMIYOLOJI",
+          "METABOLIZMA",
+          "HEMOGLOBIN",
+          "ANESTEZI",
+          "STETOSKOP"
+        ]
+      }
     ]
   }
 }

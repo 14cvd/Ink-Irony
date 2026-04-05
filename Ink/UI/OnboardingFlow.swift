@@ -23,8 +23,8 @@ public struct OnboardingFlow: View {
             
             // Title Graphic treated like aggressive notebook graffiti
             Text(LocalizationService.t("INK & IRONY", lang: scoreManager.uiLanguage))
-                .font(ThemeManager.Typography.h1(for: .light)) // Token H1 is 40px
-                .sketchbookInkText(isError: true) // Using teacher red for the main title
+                .font(.custom("Caveat-Bold", size: 32)) 
+                .sketchbookInkText(isError: true)
                 .padding(.bottom, ThemeManager.Layout.spacingLG)
                 .rotationEffect(.degrees(titleRotation))
             

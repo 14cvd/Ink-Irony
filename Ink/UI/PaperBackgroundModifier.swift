@@ -33,7 +33,7 @@ public struct PaperBackgroundModifier: ViewModifier {
                     }
                 }
                 .stroke(
-                    (colorScheme == .dark ? ThemeManager.Colors.inkSecondaryDark : ThemeManager.Colors.inkSecondaryLight).opacity(0.15),
+                    (colorScheme == .dark ? ThemeManager.Colors.inkSecondaryDark : ThemeManager.Colors.inkSecondaryLight).opacity(0.25),
                     lineWidth: ThemeManager.Layout.strokeHair
                 )
                 
@@ -43,12 +43,12 @@ public struct PaperBackgroundModifier: ViewModifier {
                     path.move(to: CGPoint(x: xOffset, y: 0))
                     path.addLine(to: CGPoint(x: xOffset, y: geometry.size.height))
                     
-                    path.move(to: CGPoint(x: xOffset + 4, y: 0))
-                    path.addLine(to: CGPoint(x: xOffset + 4, y: geometry.size.height))
+                    path.move(to: CGPoint(x: xOffset + 6, y: 0))
+                    path.addLine(to: CGPoint(x: xOffset + 6, y: geometry.size.height))
                 }
                 .stroke(
-                    ThemeManager.Colors.errorInk(for: colorScheme).opacity(0.3),
-                    lineWidth: ThemeManager.Layout.strokeHair
+                    ThemeManager.Colors.errorInk(for: colorScheme).opacity(0.4),
+                    lineWidth: ThemeManager.Layout.strokeKey
                 )
             }
             .ignoresSafeArea()

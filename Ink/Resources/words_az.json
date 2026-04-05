@@ -1,23 +1,264 @@
 {
   "difficulties": {
     "Easy": [
-      { "name": "Heyvanlar", "words": ["PIŞIK", "IT", "QUŞ", "BALIQ", "AYI", "ASLAN", "PƏLƏNG", "QURD", "QURBAĞA", "ÖRDƏK", "MARAL", "İNEK", "DONUZ", "KEÇİ", "QOYUN", "AT", "SIÇAN", "DOVŞAN", "İLAN", "BALİNA"] },
-      { "name": "Rənglər", "words": ["QIRMIZI", "MAVİ", "YAŞIL", "SARI", "NARINCI", "BƏNÖVŞƏYİ", "QARA", "AĞ", "QƏHVƏYİ", "ÇƏHRAYI", "BOZ", "GÜMÜŞÜ", "QIZILI", "BEJ", "LACİVƏRD", "TURKUAZ"] },
-      { "name": "Meyvələr", "words": ["ALMA", "ARMUD", "ÇİYƏLƏK", "ÜZÜM", "LİMON", "BANAN", "ƏRİK", "ŞAFTALI", "ALÇA", "ALBALI", "GİLAS", "YEMİŞ", "QARPIZ", "ƏNCİR", "TUT", "NAR"] }
+      {
+        "name": "Heyvanlar",
+        "words": [
+          "PIŞIK",
+          "IT",
+          "QUŞ",
+          "BALIQ",
+          "AYI",
+          "ASLAN",
+          "PƏLƏNG",
+          "QURD",
+          "QURBAĞA",
+          "ÖRDƏK",
+          "MARAL",
+          "İNEK",
+          "DONUZ",
+          "KEÇİ",
+          "QOYUN",
+          "AT",
+          "SIÇAN",
+          "DOVŞAN",
+          "İLAN",
+          "BALİNA"
+        ]
+      },
+      {
+        "name": "Rənglər",
+        "words": [
+          "QIRMIZI",
+          "MAVİ",
+          "YAŞIL",
+          "SARI",
+          "NARINCI",
+          "BƏNÖVŞƏYİ",
+          "QARA",
+          "AĞ",
+          "QƏHVƏYİ",
+          "ÇƏHRAYI",
+          "BOZ",
+          "GÜMÜŞÜ",
+          "QIZILI",
+          "BEJ",
+          "LACİVƏRD",
+          "TURKUAZ"
+        ]
+      },
+      {
+        "name": "Meyvələr",
+        "words": [
+          "ALMA",
+          "ARMUD",
+          "ÇİYƏLƏK",
+          "ÜZÜM",
+          "LİMON",
+          "BANAN",
+          "ƏRİK",
+          "ŞAFTALI",
+          "ALÇA",
+          "ALBALI",
+          "GİLAS",
+          "YEMİŞ",
+          "QARPIZ",
+          "ƏNCİR",
+          "TUT",
+          "NAR"
+        ]
+      },
+      {
+        "name": "Əsas",
+        "words": [
+          "GÜNƏŞ",
+          "AY",
+          "SU",
+          "OD",
+          "EV",
+          "AĞAC",
+          "MAŞIN",
+          "KİTAB",
+          "QAPI",
+          "PƏNCƏRƏ",
+          "YEMƏK",
+          "MASA"
+        ]
+      }
     ],
     "Medium": [
-      { "name": "Məktəb", "words": ["MÜƏLLİM", "QƏLƏM", "DƏFTƏR", "TAPSIRIQ", "POZAN", "MÜDİR", "KİTABXANA", "KAMPUS", "AKADEMİK", "DƏRS", "MÖVZU", "TARİX", "ELM", "OFİS", "SİNİF", "KANTİN", "İMTAHAN"] },
-      { "name": "Tema", "words": ["CƏLLAD", "DƏFTƏR", "İNTİQAM", "ÇƏKİLİŞ", "DARXAÇI", "CƏZA", "EDAM", "SAĞ-SALAMAT", "XƏYANƏT", "YARĞI", "TƏNHALIQ", "KƏDƏR", "ZƏFƏR", "MƏĞLUBİYYƏT", "FACİƏ"] },
-      { "name": "Təbiət", "words": ["DAĞ", "GÖY_GURULTUSU", "VULKAN", "BUZLAQ", "KANYON", "SƏHRA", "MEŞƏ", "ADA", "VADİ", "ÇAY", "OKEAN", "CƏNGƏLLİK", "ÇÖL", "MAĞARA", "ÜFÜQ"] }
+      {
+        "name": "Məktəb",
+        "words": [
+          "MÜƏLLİM",
+          "QƏLƏM",
+          "DƏFTƏR",
+          "TAPSIRIQ",
+          "POZAN",
+          "MÜDİR",
+          "KİTABXANA",
+          "KAMPUS",
+          "AKADEMİK",
+          "DƏRS",
+          "MÖVZU",
+          "TARİX",
+          "ELM",
+          "OFİS",
+          "SİNİF",
+          "KANTİN",
+          "İMTAHAN"
+        ]
+      },
+      {
+        "name": "Tema",
+        "words": [
+          "CƏLLAD",
+          "DƏFTƏR",
+          "İNTİQAM",
+          "ÇƏKİLİŞ",
+          "DARXAÇI",
+          "CƏZA",
+          "EDAM",
+          "SAĞ-SALAMAT",
+          "XƏYANƏT",
+          "YARĞI",
+          "TƏNHALIQ",
+          "KƏDƏR",
+          "ZƏFƏR",
+          "MƏĞLUBİYYƏT",
+          "FACİƏ"
+        ]
+      },
+      {
+        "name": "Təbiət",
+        "words": [
+          "DAĞ",
+          "GÖY_GURULTUSU",
+          "VULKAN",
+          "BUZLAQ",
+          "KANYON",
+          "SƏHRA",
+          "MEŞƏ",
+          "ADA",
+          "VADİ",
+          "ÇAY",
+          "OKEAN",
+          "CƏNGƏLLİK",
+          "ÇÖL",
+          "MAĞARA",
+          "ÜFÜQ"
+        ]
+      },
+      {
+        "name": "Əsas",
+        "words": [
+          "GÜNƏŞ",
+          "AY",
+          "SU",
+          "OD",
+          "EV",
+          "AĞAC",
+          "MAŞIN",
+          "KİTAB",
+          "QAPI",
+          "PƏNCƏRƏ",
+          "YEMƏK",
+          "MASA"
+        ]
+      }
     ],
     "Hard": [
-      { "name": "Elm", "words": ["ASTRONOMİYA", "FİZİKA", "BİOLOGİYA", "KİMYA", "MİKROSKOP", "IMPULS", "RADİASİYA", "ZƏRRƏCİK", "GENETİKA", "TƏKAMÜL", "KVANT", "SİNERGİYA", "KATALİZATOR", "CAZİBƏ", "TUTULMA"] },
-      { "name": "Tarix", "words": ["FİROUN", "QLADİATOR", "İNQİLAB", "İMPERİYA", "MONARXİYA", "SİVİLİZASİYA", "GİLYOTİN", "RENESSANS", "ORTA_ƏSRLƏR", "ANTİK", "SÜLALƏ", "MÜSTƏMLƏKƏ", "SƏLİBÇİ", "KRALLIQ"] },
-      { "name": "Texnologiya", "words": ["ALQORİTM", "MƏLUMAT_BAZASI", "PROSESSOR", "ŞƏBƏKƏ", "PROQRAM", "AVADANLIQ", "İNTERNET", "TƏHLÜKƏSİZLİK", "ŞİFRƏLƏMƏ", "PROTOKOL", "FAYERVALL", "TERMİNAL", "KONSOL"] }
+      {
+        "name": "Elm",
+        "words": [
+          "ASTRONOMİYA",
+          "FİZİKA",
+          "BİOLOGİYA",
+          "KİMYA",
+          "MİKROSKOP",
+          "IMPULS",
+          "RADİASİYA",
+          "ZƏRRƏCİK",
+          "GENETİKA",
+          "TƏKAMÜL",
+          "KVANT",
+          "SİNERGİYA",
+          "KATALİZATOR",
+          "CAZİBƏ",
+          "TUTULMA"
+        ]
+      },
+      {
+        "name": "Tarix",
+        "words": [
+          "FİROUN",
+          "QLADİATOR",
+          "İNQİLAB",
+          "İMPERİYA",
+          "MONARXİYA",
+          "SİVİLİZASİYA",
+          "GİLYOTİN",
+          "RENESSANS",
+          "ORTA_ƏSRLƏR",
+          "ANTİK",
+          "SÜLALƏ",
+          "MÜSTƏMLƏKƏ",
+          "SƏLİBÇİ",
+          "KRALLIQ"
+        ]
+      },
+      {
+        "name": "Texnologiya",
+        "words": [
+          "ALQORİTM",
+          "MƏLUMAT_BAZASI",
+          "PROSESSOR",
+          "ŞƏBƏKƏ",
+          "PROQRAM",
+          "AVADANLIQ",
+          "İNTERNET",
+          "TƏHLÜKƏSİZLİK",
+          "ŞİFRƏLƏMƏ",
+          "PROTOKOL",
+          "FAYERVALL",
+          "TERMİNAL",
+          "KONSOL"
+        ]
+      }
     ],
     "Nightmare": [
-      { "name": "Söz Ehtiyatı", "words": ["MÜTƏRƏQQİ", "MÜŞKÜLAT", "MÜSİBƏT", "MÜTƏAL", "MÜKƏRRƏM", "MÜKƏSSƏF", "MÜKƏMMƏL", "MÜTƏBASSİR", "MÜTƏBƏSSİM", "MÜTƏVAZİ", "MÜZƏVVƏR"] },
-      { "name": "Tibbi", "words": ["ERİTROSİT", "FLEBOTOMİYA", "NEYROPATİYA", "ARİTMİYA", "OSTEOPOROZ", "KARDİOMİOPATİYA", "EPİDEMİOLOGİYA", "METABOLİZM", "HEMOQLOBİN", "ANESTEZİYA", "STETOSKOP"] }
+      {
+        "name": "Söz Ehtiyatı",
+        "words": [
+          "MÜTƏRƏQQİ",
+          "MÜŞKÜLAT",
+          "MÜSİBƏT",
+          "MÜTƏAL",
+          "MÜKƏRRƏM",
+          "MÜKƏSSƏF",
+          "MÜKƏMMƏL",
+          "MÜTƏBASSİR",
+          "MÜTƏBƏSSİM",
+          "MÜTƏVAZİ",
+          "MÜZƏVVƏR"
+        ]
+      },
+      {
+        "name": "Tibbi",
+        "words": [
+          "ERİTROSİT",
+          "FLEBOTOMİYA",
+          "NEYROPATİYA",
+          "ARİTMİYA",
+          "OSTEOPOROZ",
+          "KARDİOMİOPATİYA",
+          "EPİDEMİOLOGİYA",
+          "METABOLİZM",
+          "HEMOQLOBİN",
+          "ANESTEZİYA",
+          "STETOSKOP"
+        ]
+      }
     ]
   }
 }

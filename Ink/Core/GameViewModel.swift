@@ -13,7 +13,7 @@ import SwiftUI
 @MainActor
 public class GameViewModel: ObservableObject {
     
-    // MARK: - Published Properties 
+    // MARK: - Published Properties
     @Published public private(set) var currentWord: Word?
     @Published public private(set) var difficulty: Difficulty = .medium
     @Published public private(set) var language: Language = .english
@@ -32,6 +32,7 @@ public class GameViewModel: ObservableObject {
     // These closures act as hooks for Audio, Haptic, Rive and Taunt services.
     public var onWrongGuess: ((_ remainingLives: Int, _ language: Language) -> Void)?
     public var onGameOver: ((_ won: Bool) -> Void)?
+    public var onTimeWarning: ((_ timeLeft: Int, _ language: Language) -> Void)?
     
     public init() {}
     
@@ -90,6 +91,9 @@ public class GameViewModel: ObservableObject {
         
         guessedLetters.insert(upperChar)
         
+        // Reset timer on every valid guess
+        self.timeRemaining = 60
+        
         // Initial light tap representing the physical friction of writing a letter
         HapticService.shared.playPenStrike()
         AudioService.shared.play(.penScratch)
@@ -147,17 +151,13 @@ public class GameViewModel: ObservableObject {
     private func setupTimer() {
         timer?.cancel()
         
-        if let totalSeconds = difficulty.timerSeconds {
-            self.timeRemaining = totalSeconds
-            
-            timer = Timer.publish(every: 1.0, on: .main, in: .common)
-                .autoconnect()
-                .sink { [weak self] _ in
-                    self?.tick()
-                }
-        } else {
-            self.timeRemaining = 0 // Easy mode has no timer
-        }
+        self.timeRemaining = 60
+        
+        timer = Timer.publish(every: 1.0, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                self?.tick()
+            }
     }
     
     private func tick() {
@@ -165,6 +165,10 @@ public class GameViewModel: ObservableObject {
         
         if timeRemaining > 0 {
             timeRemaining -= 1
+            
+            if timeRemaining == 30 || timeRemaining == 10 {
+                onTimeWarning?(timeRemaining, language)
+            }
             
             if timeRemaining == 0 {
                 // Time's up! Running out of time means losing the game.
@@ -175,9 +179,6 @@ public class GameViewModel: ObservableObject {
     
     // Helper to format time remaining as MM:SS (e.g., 01:30)
     public var formattedTime: String {
-        if difficulty == .easy {
-            return "∞"
-        }
         let minutes = timeRemaining / 60
         let seconds = timeRemaining % 60
         return String(format: "%02d:%02d", minutes, seconds)

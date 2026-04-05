@@ -1,23 +1,264 @@
 {
   "difficulties": {
     "Easy": [
-      { "name": "Animales", "words": ["GATO", "PERRO", "AVE", "PEZ", "OSO", "LEON", "TIGRE", "LOBO", "RANA", "PATO", "CIERVO", "VACA", "CERDO", "CABRA", "OVEJA", "CABALLO", "RATON", "CONEJO", "SERPIENTE", "BALLENA"] },
-      { "name": "Colores", "words": ["ROJO", "AZUL", "VERDE", "AMARILLO", "NARANJA", "MORADO", "NEGRO", "BLANCO", "MARRON", "ROSA", "GRIS", "PLATA", "ORO", "BEIGE", "AZUL_CLARO", "CIAN"] },
-      { "name": "Frutas", "words": ["MANZANA", "PERA", "FRESA", "UVA", "LIMON", "PLATANO", "ALBARICOQUE", "MELOCOTON", "CIRUELA", "CEREZA", "GUINDA", "MELON", "SANDIA", "HIGO", "MORA", "GRANADA"] }
+      {
+        "name": "Animales",
+        "words": [
+          "GATO",
+          "PERRO",
+          "AVE",
+          "PEZ",
+          "OSO",
+          "LEON",
+          "TIGRE",
+          "LOBO",
+          "RANA",
+          "PATO",
+          "CIERVO",
+          "VACA",
+          "CERDO",
+          "CABRA",
+          "OVEJA",
+          "CABALLO",
+          "RATON",
+          "CONEJO",
+          "SERPIENTE",
+          "BALLENA"
+        ]
+      },
+      {
+        "name": "Colores",
+        "words": [
+          "ROJO",
+          "AZUL",
+          "VERDE",
+          "AMARILLO",
+          "NARANJA",
+          "MORADO",
+          "NEGRO",
+          "BLANCO",
+          "MARRON",
+          "ROSA",
+          "GRIS",
+          "PLATA",
+          "ORO",
+          "BEIGE",
+          "AZUL_CLARO",
+          "CIAN"
+        ]
+      },
+      {
+        "name": "Frutas",
+        "words": [
+          "MANZANA",
+          "PERA",
+          "FRESA",
+          "UVA",
+          "LIMON",
+          "PLATANO",
+          "ALBARICOQUE",
+          "MELOCOTON",
+          "CIRUELA",
+          "CEREZA",
+          "GUINDA",
+          "MELON",
+          "SANDIA",
+          "HIGO",
+          "MORA",
+          "GRANADA"
+        ]
+      },
+      {
+        "name": "Básico",
+        "words": [
+          "SOL",
+          "LUNA",
+          "AGUA",
+          "FUEGO",
+          "CASA",
+          "ARBOL",
+          "COCHE",
+          "LIBRO",
+          "PUERTA",
+          "VENTANA",
+          "COMIDA",
+          "MESA"
+        ]
+      }
     ],
     "Medium": [
-      { "name": "Colegio", "words": ["MAESTRO", "LAPIZ", "CUADERNO", "TAREA", "BORRADOR", "DIRECTOR", "BIBLIOTECA", "CAMPUS", "ACADEMICO", "CLASE", "TEMA", "HISTORIA", "CIENCIA", "OFICINA", "AULA", "CAFETERIA", "EXAMEN"] },
-      { "name": "Tema", "words": ["VERDUGO", "LIBRETA", "VENGANZA", "DIBUJO", "PATIBULO", "CASTIGO", "EJECUCION", "SUPERVIVENCIA", "TRAICION", "JUEZ", "SOLEDAD", "TRISTEZA", "VICTORIA", "DERROTA", "TRAGEDIA"] },
-      { "name": "Naturaleza", "words": ["MONTA\u00D1A", "TRUENO", "VOLCAN", "GLACIAR", "CA\u00D1ON", "DESIERTO", "BOSQUE", "ISLA", "VALLE", "ARROYO", "OCEANO", "JUNGLA", "LLANURA", "CUEVA", "HORIZONTE"] }
+      {
+        "name": "Colegio",
+        "words": [
+          "MAESTRO",
+          "LAPIZ",
+          "CUADERNO",
+          "TAREA",
+          "BORRADOR",
+          "DIRECTOR",
+          "BIBLIOTECA",
+          "CAMPUS",
+          "ACADEMICO",
+          "CLASE",
+          "TEMA",
+          "HISTORIA",
+          "CIENCIA",
+          "OFICINA",
+          "AULA",
+          "CAFETERIA",
+          "EXAMEN"
+        ]
+      },
+      {
+        "name": "Tema",
+        "words": [
+          "VERDUGO",
+          "LIBRETA",
+          "VENGANZA",
+          "DIBUJO",
+          "PATIBULO",
+          "CASTIGO",
+          "EJECUCION",
+          "SUPERVIVENCIA",
+          "TRAICION",
+          "JUEZ",
+          "SOLEDAD",
+          "TRISTEZA",
+          "VICTORIA",
+          "DERROTA",
+          "TRAGEDIA"
+        ]
+      },
+      {
+        "name": "Naturaleza",
+        "words": [
+          "MONTAÑA",
+          "TRUENO",
+          "VOLCAN",
+          "GLACIAR",
+          "CAÑON",
+          "DESIERTO",
+          "BOSQUE",
+          "ISLA",
+          "VALLE",
+          "ARROYO",
+          "OCEANO",
+          "JUNGLA",
+          "LLANURA",
+          "CUEVA",
+          "HORIZONTE"
+        ]
+      },
+      {
+        "name": "Básico",
+        "words": [
+          "SOL",
+          "LUNA",
+          "AGUA",
+          "FUEGO",
+          "CASA",
+          "ARBOL",
+          "COCHE",
+          "LIBRO",
+          "PUERTA",
+          "VENTANA",
+          "COMIDA",
+          "MESA"
+        ]
+      }
     ],
     "Hard": [
-      { "name": "Ciencia", "words": ["ASTRONOMIA", "FISICA", "BIOLOGIA", "QUIMICA", "MICROSCOPIO", "MOMENTO", "RADIACION", "PARTICULA", "GENETICA", "EVOLUCION", "CUANTICO", "SINERGIA", "CATALIZADOR", "GRAVEDAD", "ECLIPSE"] },
-      { "name": "Historia", "words": ["FARAON", "GLADIADOR", "REVOLUCION", "IMPERIO", "MONARQUIA", "CIVILIZACION", "GUILLOTINA", "RENACIMIENTO", "MEDIEVAL", "ANTIGUO", "DINASTIA", "COLONIA", "CRUZADA", "REINO"] },
-      { "name": "Tecnologia", "words": ["ALGORITMO", "BASE_DE_DATOS", "PROCESADOR", "RED", "SOFTWARE", "HARDWARE", "INTERNET", "SEGURIDAD", "CIFRADO", "PROTOCOLO", "CORTAFUEGOS", "TERMINAL", "CONSOLA"] }
+      {
+        "name": "Ciencia",
+        "words": [
+          "ASTRONOMIA",
+          "FISICA",
+          "BIOLOGIA",
+          "QUIMICA",
+          "MICROSCOPIO",
+          "MOMENTO",
+          "RADIACION",
+          "PARTICULA",
+          "GENETICA",
+          "EVOLUCION",
+          "CUANTICO",
+          "SINERGIA",
+          "CATALIZADOR",
+          "GRAVEDAD",
+          "ECLIPSE"
+        ]
+      },
+      {
+        "name": "Historia",
+        "words": [
+          "FARAON",
+          "GLADIADOR",
+          "REVOLUCION",
+          "IMPERIO",
+          "MONARQUIA",
+          "CIVILIZACION",
+          "GUILLOTINA",
+          "RENACIMIENTO",
+          "MEDIEVAL",
+          "ANTIGUO",
+          "DINASTIA",
+          "COLONIA",
+          "CRUZADA",
+          "REINO"
+        ]
+      },
+      {
+        "name": "Tecnologia",
+        "words": [
+          "ALGORITMO",
+          "BASE_DE_DATOS",
+          "PROCESADOR",
+          "RED",
+          "SOFTWARE",
+          "HARDWARE",
+          "INTERNET",
+          "SEGURIDAD",
+          "CIFRADO",
+          "PROTOCOLO",
+          "CORTAFUEGOS",
+          "TERMINAL",
+          "CONSOLA"
+        ]
+      }
     ],
     "Nightmare": [
-      { "name": "Vocabulario", "words": ["UBICUO", "SICOFOANTE", "OFUSCAR", "CACOFONIA", "EFIMERO", "QUINTAESENCIAL", "MELANCOLIA", "EPIFANIA", "EQUILIBRIO", "PARADIGMA", "INSIDIOSO"] },
-      { "name": "Medico", "words": ["ERITROCITO", "FLEBOTOMIA", "NEUROPATIA", "ARRITMIA", "OSTEOPOROSIS", "CARDIOMIOPATIA", "EPIDEMIOLOGIA", "METABOLISMO", "HEMOGLOBINA", "ANESTESIA", "ESTETOSCOPIO"] }
+      {
+        "name": "Vocabulario",
+        "words": [
+          "UBICUO",
+          "SICOFOANTE",
+          "OFUSCAR",
+          "CACOFONIA",
+          "EFIMERO",
+          "QUINTAESENCIAL",
+          "MELANCOLIA",
+          "EPIFANIA",
+          "EQUILIBRIO",
+          "PARADIGMA",
+          "INSIDIOSO"
+        ]
+      },
+      {
+        "name": "Medico",
+        "words": [
+          "ERITROCITO",
+          "FLEBOTOMIA",
+          "NEUROPATIA",
+          "ARRITMIA",
+          "OSTEOPOROSIS",
+          "CARDIOMIOPATIA",
+          "EPIDEMIOLOGIA",
+          "METABOLISMO",
+          "HEMOGLOBINA",
+          "ANESTESIA",
+          "ESTETOSCOPIO"
+        ]
+      }
     ]
   }
 }
