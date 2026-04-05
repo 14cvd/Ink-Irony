@@ -41,11 +41,9 @@ public struct GameView: View {
                 
                 Spacer()
                 
-                if viewModel.difficulty != .easy {
-                    Text(viewModel.formattedTime)
-                        .font(ThemeManager.Typography.micro(for: colorScheme).bold())
-                        .sketchbookInkText(isError: viewModel.timeRemaining < 10 && viewModel.timeRemaining > 0)
-                }
+                Text(viewModel.formattedTime)
+                    .font(ThemeManager.Typography.micro(for: colorScheme).bold())
+                    .sketchbookInkText(isError: viewModel.timeRemaining <= 10)
                 
                 Spacer()
                 
@@ -97,9 +95,10 @@ public struct GameView: View {
                 .font(.custom("Caveat-Bold", size: 52)) // Token "Letter Blanks"
                 .sketchbookInkText()
                 .tracking(6)
-                .lineLimit(2)
-                .minimumScaleFactor(0.5)
+                .lineLimit(1)
+                .minimumScaleFactor(0.3)
                 .padding(.horizontal, ThemeManager.Layout.spacingMajor)
+                .animation(.spring(response: 0.3, dampingFraction: 0.5), value: viewModel.maskedWord)
             
             Spacer()
             
@@ -136,6 +135,25 @@ public struct GameView: View {
     }
     
     private func setupViewModel() {
+        viewModel.onTimeWarning = { [weak viewModel] timeLeft, language in
+            Task {
+                guard let viewModel = viewModel else { return }
+                
+                let taunt = await TauntService.shared.fetchTaunt(
+                    language: language,
+                    wrongCount: 0,
+                    difficulty: viewModel.difficulty
+                )
+                
+                await MainActor.run {
+                    let prefixStr = "⏱️ \(timeLeft)s: "
+                    viewModel.setTaunt(prefixStr + taunt)
+                }
+                
+                HapticService.shared.playPenStrike()
+            }
+        }
+        
         // Wire up TauntService to trigger when a life is lost
         viewModel.onWrongGuess = { [weak viewModel] livesLeft, language in
             Task {

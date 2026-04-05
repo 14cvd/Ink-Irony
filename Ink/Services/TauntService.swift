@@ -19,9 +19,12 @@ public actor TauntService {
         "I expected nothing, yet I'm disappointed.", "Just give up already.",
         "Words are clearly not your strong suit.", "Another mistake, another nail in the coffin.",
         "Are your eyes closed?", "Even a toddler could do this.", "The hangman is laughing at you.",
-        "You call that a guess?", "Such a tragic display of ignorance.", "Is this a joke to you?",
-        "I'm running out of ink for your mistakes.", "Try using your brain next time.",
-        "A monkey hitting a keyboard would do better.", "Disgraceful.", "You're writing your own doom."
+        "Is this a joke to you?", "I'm running out of ink for your mistakes.", "Try using your brain next time.",
+        "A monkey hitting a keyboard would do better.", "Disgraceful.", "You're writing your own doom.",
+        "My patience is wearing thinner than this paper.", "Did you even look at the word?",
+        "Another masterpiece of failure.", "I'd facepalm, but I'm just a drawing.",
+        "This is getting painful to watch.", "Can we just skip to the end?",
+        "You're making this too easy for me.", "Astonishingly bad.", "Are you trying to lose?"
     ]
     
     private let fallbackTauntsES: [String] = [
@@ -60,7 +63,10 @@ public actor TauntService {
         "Cellat sana gülüyor.", "Buna tahmin mi diyorsun?", "Ne kadar trajik bir cehalet gösterisi.",
         "Bu senin için bir şaka mı?", "Hatalarını çizmekten mürekkebim bitti.",
         "Bir dahaki sefere beynini kullanmayı dene.", "Klavyeye rastgele basan bir maymun daha iyi yapardı.",
-        "Rezalet.", "Kendi sonunu hazırlıyorsun."
+        "Rezalet.", "Kendi sonunu hazırlıyorsun.", "Sabrım bu kağıttan daha ince hale geliyor.",
+        "Kelimeye hiç baktın mı?", "Başarısızlığın bir başka şaheseri.",
+        "Bunu izlemek acı vermeye başladı.", "Doğrudan sona geçebilir miyiz?",
+        "İşimi çok kolaylaştırıyorsun.", "Şaşırtıcı derecede kötü.", "Özellikle mi kaybetmeye çalışıyorsun?"
     ]
     
     private let fallbackTauntsAZ: [String] = [
@@ -73,7 +79,10 @@ public actor TauntService {
         "Cəllad sənə gülür.", "Buna təxmin deyirsən?", "Necə də faciəvi bir cəhalət nümayişidir.",
         "Bu sənin üçün zarafatdır?", "Səhvlərini yazmaqdan mürəkkəbim bitdi.",
         "Növbəti dəfə beynini işlətməyə çalış.", "Klaviatura düymələrinə sıxan bir meymun daha yaxşı edərdi.",
-        "Rüsvayçılıq.", "Öz sonunu hazırlayırsan."
+        "Rüsvayçılıq.", "Öz sonunu hazırlayırsan.", "Səbrim bu kağızdan daha nazik olur.",
+        "Sözə heç baxdınmı?", "Uğursuzluğun başqa bir şah əsəri.",
+        "Buna baxmaq artıq əziyyət verir.", "Birbaşa sona keçə bilərikmi?",
+        "İşimi çox asanlaşdırırsan.", "Təəccüblü dərəcədə pis.", "Qəsdən uduzmağa çalışırsan?"
     ]
     
     private init() {}

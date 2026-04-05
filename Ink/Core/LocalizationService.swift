@@ -56,6 +56,7 @@ public struct LocalizationService {
         
         // GameView
         "LIVES: ": [.english: "LIVES: ", .spanish: "VIDAS: ", .turkish: "CAN: ", .azerbaijani: "CAN: ", .russian: "ЖИЗНИ: "],
+        "LIVES": [.english: "LIVES", .spanish: "VIDAS", .turkish: "CAN", .azerbaijani: "CAN", .russian: "ЖИЗНИ"],
         "Guess a letter...": [.english: "Guess a letter...", .spanish: "Adivina una letra...", .turkish: "Bir harf tahmin et...", .azerbaijani: "Bir hərf tap...", .russian: "Угадай букву..."],
         "YOU SURVIVED.": [.english: "YOU SURVIVED.", .spanish: "SOBREVIVISTE.", .turkish: "HAYATTA KALDIN.", .azerbaijani: "SAĞ QALDIN.", .russian: "ТЫ ВЫЖИЛ."],
         "GAME OVER.": [.english: "GAME OVER.", .spanish: "FIN DEL JUEGO.", .turkish: "OYUN BİTTİ.", .azerbaijani: "OYUN BİTDİ.", .russian: "ИГРА ОКОНЧЕНА."]

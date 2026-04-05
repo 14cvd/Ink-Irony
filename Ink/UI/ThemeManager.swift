@@ -16,10 +16,10 @@ public class ThemeManager: ObservableObject {
     
     // MARK: - Colors
     public struct Colors {
-        // Light — Aged Parchment
-        public static let bgPrimaryLight = Color(hex: "F5EDDA")
-        public static let bgSecondaryLight = Color(hex: "EDE0C4")
-        public static let bgTertiaryLight = Color(hex: "D9C9A8")
+        // Light — Pure White Paper Concept
+        public static let bgPrimaryLight = Color(hex: "FFFFFF")
+        public static let bgSecondaryLight = Color(hex: "F8F9FA")
+        public static let bgTertiaryLight = Color(hex: "E9ECEF")
         public static let inkPrimaryLight = Color(hex: "1A3A6B")
         public static let inkSecondaryLight = Color(hex: "2A5298")
         public static let errorInkLight = Color(hex: "C0131A")

@@ -1,23 +1,266 @@
 {
   "difficulties": {
     "Easy": [
-      { "name": "Animals", "words": ["CAT", "DOG", "BIRD", "FISH", "BEAR", "LION", "TIGER", "WOLF", "FROG", "DUCK", "DEER", "COW", "PIG", "GOAT", "SHEEP", "HORSE", "MOUSE", "RABBIT", "SNAKE", "WHALE"] },
-      { "name": "Colors", "words": ["RED", "BLUE", "GREEN", "YELLOW", "ORANGE", "PURPLE", "BLACK", "WHITE", "BROWN", "PINK", "GRAY", "SILVER", "GOLD", "BEIGE", "AZURE", "CYAN", "VIOLET", "MAROON"] },
-      { "name": "Fruits", "words": ["APPLE", "BANANA", "CHERRY", "GRAPE", "LEMON", "ORANGE", "PEACH", "PEAR", "MANGO", "KIWI", "BERRY", "MELON", "PLUM", "FIGS", "DATE", "LIME"] }
+      {
+        "name": "Animals",
+        "words": [
+          "CAT",
+          "DOG",
+          "BIRD",
+          "FISH",
+          "BEAR",
+          "LION",
+          "TIGER",
+          "WOLF",
+          "FROG",
+          "DUCK",
+          "DEER",
+          "COW",
+          "PIG",
+          "GOAT",
+          "SHEEP",
+          "HORSE",
+          "MOUSE",
+          "RABBIT",
+          "SNAKE",
+          "WHALE"
+        ]
+      },
+      {
+        "name": "Colors",
+        "words": [
+          "RED",
+          "BLUE",
+          "GREEN",
+          "YELLOW",
+          "ORANGE",
+          "PURPLE",
+          "BLACK",
+          "WHITE",
+          "BROWN",
+          "PINK",
+          "GRAY",
+          "SILVER",
+          "GOLD",
+          "BEIGE",
+          "AZURE",
+          "CYAN",
+          "VIOLET",
+          "MAROON"
+        ]
+      },
+      {
+        "name": "Fruits",
+        "words": [
+          "APPLE",
+          "BANANA",
+          "CHERRY",
+          "GRAPE",
+          "LEMON",
+          "ORANGE",
+          "PEACH",
+          "PEAR",
+          "MANGO",
+          "KIWI",
+          "BERRY",
+          "MELON",
+          "PLUM",
+          "FIGS",
+          "DATE",
+          "LIME"
+        ]
+      },
+      {
+        "name": "Basic",
+        "words": [
+          "SUN",
+          "MOON",
+          "WATER",
+          "FIRE",
+          "HOUSE",
+          "TREE",
+          "CAR",
+          "BOOK",
+          "DOOR",
+          "WINDOW",
+          "FOOD"
+        ]
+      }
     ],
     "Medium": [
-      { "name": "School", "words": ["TEACHER", "PENCIL", "NOTEBOOK", "HOMEWORK", "ERASER", "PRINCIPAL", "DETENTION", "STUDENT", "LIBRARY", "CAMPUS", "ACADEMIC", "LECTURE", "SUBJECT", "HISTORY", "SCIENCE", "OFFICE", "CLASSROOM"] },
-      { "name": "Theme", "words": ["HANGMAN", "SKETCHBOOK", "REVENGE", "DOODLE", "GALLOWS", "PUNISHMENT", "EXECUTION", "SURVIVAL", "BETRAYAL", "JUDGMENT", "SOLITUDE", "DESPAIR", "VICTORY", "DEFEAT", "TRAGEDY"] },
-      { "name": "Nature", "words": ["MOUNTAIN", "THUNDER", "VOLCANO", "GLACIER", "CANYON", "DESERT", "FOREST", "ISLAND", "VALLEY", "STREAM", "OCEAN", "JUNGLE", "PLAINS", "CAVERN", "HORIZON"] }
+      {
+        "name": "School",
+        "words": [
+          "TEACHER",
+          "PENCIL",
+          "NOTEBOOK",
+          "HOMEWORK",
+          "ERASER",
+          "PRINCIPAL",
+          "DETENTION",
+          "STUDENT",
+          "LIBRARY",
+          "CAMPUS",
+          "ACADEMIC",
+          "LECTURE",
+          "SUBJECT",
+          "HISTORY",
+          "SCIENCE",
+          "OFFICE",
+          "CLASSROOM"
+        ]
+      },
+      {
+        "name": "Theme",
+        "words": [
+          "HANGMAN",
+          "SKETCHBOOK",
+          "REVENGE",
+          "DOODLE",
+          "GALLOWS",
+          "PUNISHMENT",
+          "EXECUTION",
+          "SURVIVAL",
+          "BETRAYAL",
+          "JUDGMENT",
+          "SOLITUDE",
+          "DESPAIR",
+          "VICTORY",
+          "DEFEAT",
+          "TRAGEDY"
+        ]
+      },
+      {
+        "name": "Nature",
+        "words": [
+          "MOUNTAIN",
+          "THUNDER",
+          "VOLCANO",
+          "GLACIER",
+          "CANYON",
+          "DESERT",
+          "FOREST",
+          "ISLAND",
+          "VALLEY",
+          "STREAM",
+          "OCEAN",
+          "JUNGLE",
+          "PLAINS",
+          "CAVERN",
+          "HORIZON"
+        ]
+      },
+      {
+        "name": "Basic",
+        "words": [
+          "SUN",
+          "MOON",
+          "WATER",
+          "FIRE",
+          "HOUSE",
+          "TREE",
+          "CAR",
+          "BOOK",
+          "DOOR",
+          "WINDOW",
+          "FOOD"
+        ]
+      }
     ],
     "Hard": [
-      { "name": "Science", "words": ["ASTRONOMY", "PHYSICS", "BIOLOGY", "CHEMISTRY", "MICROSCOPE", "MOMENTUM", "RADIATION", "PARTICLE", "GENETICS", "EVOLUTION", "QUANTUM", "SYNERGY", "CATALYST", "GRAVITY", "ECLIPSE"] },
-      { "name": "History", "words": ["PHARAOH", "GLADIATOR", "REVOLUTION", "EMPIRE", "MONARCHY", "CIVILIZATION", "GUILLOTINE", "RENAISSANCE", "MEDIEVAL", "ANCIENT", "DYNASTY", "COLONY", "CRUSADE", "KINGDOM"] },
-      { "name": "Technology", "words": ["ALGORITHM", "DATABASE", "PROCESSOR", "NETWORK", "SOFTWARE", "HARDWARE", "INTERNET", "SECURITY", "ENCRYPTION", "PROTOCOL", "FIREWALL", "TERMINAL", "CONSOLE"] }
+      {
+        "name": "Science",
+        "words": [
+          "ASTRONOMY",
+          "PHYSICS",
+          "BIOLOGY",
+          "CHEMISTRY",
+          "MICROSCOPE",
+          "MOMENTUM",
+          "RADIATION",
+          "PARTICLE",
+          "GENETICS",
+          "EVOLUTION",
+          "QUANTUM",
+          "SYNERGY",
+          "CATALYST",
+          "GRAVITY",
+          "ECLIPSE"
+        ]
+      },
+      {
+        "name": "History",
+        "words": [
+          "PHARAOH",
+          "GLADIATOR",
+          "REVOLUTION",
+          "EMPIRE",
+          "MONARCHY",
+          "CIVILIZATION",
+          "GUILLOTINE",
+          "RENAISSANCE",
+          "MEDIEVAL",
+          "ANCIENT",
+          "DYNASTY",
+          "COLONY",
+          "CRUSADE",
+          "KINGDOM"
+        ]
+      },
+      {
+        "name": "Technology",
+        "words": [
+          "ALGORITHM",
+          "DATABASE",
+          "PROCESSOR",
+          "NETWORK",
+          "SOFTWARE",
+          "HARDWARE",
+          "INTERNET",
+          "SECURITY",
+          "ENCRYPTION",
+          "PROTOCOL",
+          "FIREWALL",
+          "TERMINAL",
+          "CONSOLE"
+        ]
+      }
     ],
     "Nightmare": [
-      { "name": "Vocabulary", "words": ["UBIQUITOUS", "SYCOPHANT", "OBFUSCATE", "CACOPHONY", "EPHEMERAL", "QUINTESSENTIAL", "MELANCHOLY", "EPIPHANY", "EQUILIBRIUM", "PARADIGM", "INSIDIOUS", "ABERRATION", "RESILIENCE"] },
-      { "name": "Medical", "words": ["ERYTHROCYTE", "PHLEBOTOMY", "NEUROPATHY", "ARRHYTHMIA", "OSTEOPOROSIS", "CARDIOMYOPATHY", "EPIDEMIOLOGY", "METABOLISM", "HEMOGLOBIN", "ANESTHESIA", "STETHOSCOPE"] }
+      {
+        "name": "Vocabulary",
+        "words": [
+          "UBIQUITOUS",
+          "SYCOPHANT",
+          "OBFUSCATE",
+          "CACOPHONY",
+          "EPHEMERAL",
+          "QUINTESSENTIAL",
+          "MELANCHOLY",
+          "EPIPHANY",
+          "EQUILIBRIUM",
+          "PARADIGM",
+          "INSIDIOUS",
+          "ABERRATION",
+          "RESILIENCE"
+        ]
+      },
+      {
+        "name": "Medical",
+        "words": [
+          "ERYTHROCYTE",
+          "PHLEBOTOMY",
+          "NEUROPATHY",
+          "ARRHYTHMIA",
+          "OSTEOPOROSIS",
+          "CARDIOMYOPATHY",
+          "EPIDEMIOLOGY",
+          "METABOLISM",
+          "HEMOGLOBIN",
+          "ANESTHESIA",
+          "STETHOSCOPE"
+        ]
+      }
     ]
   }
 }

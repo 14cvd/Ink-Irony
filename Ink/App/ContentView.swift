@@ -104,11 +104,8 @@ public struct MainMenu: View {
             Spacer()
             
             Text(LocalizationService.t("INK & IRONY", lang: scoreManager.uiLanguage))
-                .font(.custom("Caveat-Bold", size: 60))
+                .font(.custom("Caveat-Bold", size: 36))
                 .sketchbookInkText(isError: true)
-                .rotationEffect(.degrees(animateTitle ? -2 : 2))
-                .animation(.easeInOut(duration: 0.15).repeatForever(autoreverses: true), value: animateTitle)
-                .onAppear { animateTitle = true }
             
             Spacer()
             
@@ -155,9 +152,6 @@ public struct GameSetupCoordinator: View {
         .onAppear { internalIsSetupComplete = false }
         .onChange(of: internalIsSetupComplete) { complete in
             if complete {
-                // Pop the Setup View silently so the backstack remains cleanly maintained
-                path.removeLast()
-                
                 Task {
                     // Pull a rigorously localized word dynamically from the JSON repositories mapped to user difficulty
                     let targetWord = await WordRepository.shared.fetchRandomWord(language: chosenLanguage, difficulty: chosenDifficulty)

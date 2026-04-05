@@ -63,7 +63,7 @@ public struct GameSetupView: View {
                 VStack(spacing: ThemeManager.Layout.spacingSM) {
                     ForEach(Difficulty.allCases) { diff in
                         SelectionDoodleButton(
-                            title: "\(diff.rawValue.uppercased()) (\(diff.lives) Lives)",
+                            title: "\(LocalizationService.t(diff.rawValue.uppercased(), lang: selectedLanguage)) (\(diff.lives) \(LocalizationService.t("LIVES", lang: selectedLanguage)))",
                             isSelected: selectedDifficulty == diff,
                             isFullWidth: true,
                             action: {

@@ -57,12 +57,7 @@ public struct ResultScreen: View {
             HStack {
                 VStack(alignment: .leading, spacing: ThemeManager.Layout.spacingXS) {
 
-                    Group {
-                        Text(LocalizationService.t("SUBJECT: ", lang: scoreManager.uiLanguage))
-                            .font(ThemeManager.Typography.micro(for: colorScheme))
-                        + Text(LocalizationService.t("Execution", lang: scoreManager.uiLanguage))
-                            .font(ThemeManager.Typography.h2(for: colorScheme))
-                    }
+
                     Group {
                         Text(LocalizationService.t("DIFFICULTY: ", lang: scoreManager.uiLanguage))
                             .font(ThemeManager.Typography.micro(for: colorScheme))
@@ -105,9 +100,7 @@ public struct ResultScreen: View {
             
             // Truth / Word Reveal Area
             VStack(spacing: ThemeManager.Layout.spacingMD) {
-                Text(LocalizationService.t(isWin ? "VOCABULARY MASTERED:" : "FATAL ERROR. CORRECT WORD:", lang: scoreManager.uiLanguage))
-                    .font(ThemeManager.Typography.body(for: colorScheme))
-                    .sketchbookInkText(isError: !isWin)
+
                 
                 // The actual word, displayed large
                 Text(wordText)
