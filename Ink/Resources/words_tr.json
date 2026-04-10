@@ -1,264 +1,82 @@
 {
-  "difficulties": {
-    "Easy": [
-      {
-        "name": "Hayvanlar",
-        "words": [
-          "KEDI",
-          "KOPEK",
-          "KUS",
-          "BALIK",
-          "AYI",
-          "ASLAN",
-          "KAPLAN",
-          "KURT",
-          "KURBAGA",
-          "ORDEK",
-          "GEYIK",
-          "INEK",
-          "DOMUZ",
-          "KECI",
-          "KOYUN",
-          "AT",
-          "FARE",
-          "TAVSAN",
-          "YILAN",
-          "BALINA"
-        ]
-      },
-      {
-        "name": "Renkler",
-        "words": [
-          "KIRMIZI",
-          "MAVI",
-          "YESIL",
-          "SARI",
-          "TURUNCU",
-          "MOR",
-          "SIYAH",
-          "BEYAZ",
-          "KAHVERENGI",
-          "PEMBE",
-          "GRI",
-          "GUMUS",
-          "ALTIN",
-          "BEJ",
-          "LACIVERT",
-          "TURKUAZ"
-        ]
-      },
-      {
-        "name": "Meyveler",
-        "words": [
-          "ELMA",
-          "ARMUT",
-          "CILEK",
-          "UZUM",
-          "LIMON",
-          "MUZ",
-          "KAYISI",
-          "SEFTALI",
-          "ERIK",
-          "KIRAZ",
-          "VISNE",
-          "KAVUN",
-          "KARPUZ",
-          "INCIR",
-          "DUT",
-          "NAR"
-        ]
-      },
-      {
-        "name": "Temel",
-        "words": [
-          "GUNES",
-          "AY",
-          "SU",
-          "ATES",
-          "EV",
-          "AGAC",
-          "ARABA",
-          "KITAP",
-          "KAPI",
-          "PENCERE",
-          "YEMEK",
-          "MASA"
-        ]
-      }
-    ],
-    "Medium": [
-      {
-        "name": "Okul",
-        "words": [
-          "OGRETMEN",
-          "KALEM",
-          "DEFTER",
-          "ODEV",
-          "SILGI",
-          "MUDUR",
-          "KUTUPHANE",
-          "KAMPUS",
-          "AKADEMIK",
-          "DERS",
-          "KONU",
-          "TARIH",
-          "BILIM",
-          "OFIS",
-          "SINIF",
-          "KANTIN",
-          "SINAV"
-        ]
-      },
-      {
-        "name": "Tema",
-        "words": [
-          "CELLAT",
-          "DEFTER",
-          "INTIKAM",
-          "CIZIM",
-          "SEHPA",
-          "CEZA",
-          "IDAM",
-          "HAYATTA",
-          "IHANET",
-          "YARGI",
-          "YALNIZLIK",
-          "KEDER",
-          "ZAFER",
-          "YENILGI",
-          "TRAJEDI"
-        ]
-      },
-      {
-        "name": "Doga",
-        "words": [
-          "DAG",
-          "GOKGURULTUSU",
-          "VOLKAN",
-          "BUZUL",
-          "KANYON",
-          "COL",
-          "ORMAN",
-          "ADA",
-          "VADI",
-          "DERE",
-          "OKYANUS",
-          "ORMAN",
-          "OVA",
-          "MAGARA",
-          "UFUQ"
-        ]
-      },
-      {
-        "name": "Temel",
-        "words": [
-          "GUNES",
-          "AY",
-          "SU",
-          "ATES",
-          "EV",
-          "AGAC",
-          "ARABA",
-          "KITAP",
-          "KAPI",
-          "PENCERE",
-          "YEMEK",
-          "MASA"
-        ]
-      }
-    ],
-    "Hard": [
-      {
-        "name": "Bilim",
-        "words": [
-          "ASTRONOMI",
-          "FIZIK",
-          "BIYOLOJI",
-          "KIMYA",
-          "MIKROSKOP",
-          "MOMENTUM",
-          "RADYASYON",
-          "PARCACIK",
-          "GENETIK",
-          "EVRIM",
-          "KUANTUM",
-          "SINERJI",
-          "KATALIZOR",
-          "YERCEKIMI",
-          "TUTULMA"
-        ]
-      },
-      {
-        "name": "Tarih",
-        "words": [
-          "FIRAVUN",
-          "GLADYATOR",
-          "DEVRIM",
-          "IMPARATORLUK",
-          "MONARSI",
-          "UYGARLIK",
-          "GIYOTIN",
-          "RONSANS",
-          "ORTACAG",
-          "ANTIK",
-          "HANEDAN",
-          "SOMURGE",
-          "HACLI",
-          "KRALLIK"
-        ]
-      },
-      {
-        "name": "Teknoloji",
-        "words": [
-          "ALGORITMA",
-          "VERITABANI",
-          "ISLEMCI",
-          "AG",
-          "YAZILIM",
-          "DONANIM",
-          "INTERNET",
-          "GAVENLIK",
-          "SIFRELEME",
-          "PROTOKOL",
-          "GUVENLIK",
-          "TERMINAL",
-          "KONSOL"
-        ]
-      }
-    ],
-    "Nightmare": [
-      {
-        "name": "Kelime Hazinesi",
-        "words": [
-          "MUNZAVI",
-          "MUZEKKERE",
-          "MUTEFERRIKA",
-          "MUTEAL",
-          "MUKERREM",
-          "MUKESSEF",
-          "MUKemmel",
-          "MUTEBASSI",
-          "MUTEBESSIM",
-          "MUTEVAAZI",
-          "MUZEVVER"
-        ]
-      },
-      {
-        "name": "Tibbi",
-        "words": [
-          "ERITROSIT",
-          "FLEBOTOMI",
-          "NOROPATI",
-          "ARITMI",
-          "OSTEOPOROZ",
-          "KARDIMIYOPATI",
-          "EPIDEMIYOLOJI",
-          "METABOLIZMA",
-          "HEMOGLOBIN",
-          "ANESTEZI",
-          "STETOSKOP"
-        ]
-      }
-    ]
-  }
+  "words": [
+    {"word": "YABANCI", "category": "movies", "hint": "Bir uzaylı yaratık hakkında ünlü korku filmi.", "definition": "Ridley Scott yönetmenliğinde, uzayda korkunç bir uzaylı yaratığı konu alan 1979 yapımı bilimkurgu korku filmi."},
+    {"word": "TİTANİK", "category": "movies", "hint": "Batan bir gemi hakkında bir film.", "definition": "James Cameron'un 1997 yapımı RMS Titanik'in batışını anlatan epik romantik filmi."},
+    {"word": "DONMUŞ", "category": "movies", "hint": "Bir buz kraliçesi hakkında animasyon filmi.", "definition": "İki kraliyet kız kardeşini ve büyülü bir kış lanetini konu alan 2013 yapımı Disney animasyon filmi."},
+    {"word": "JOKER", "category": "movies", "hint": "Gotham'da bir kötü adamın kökeni.", "definition": "Batman'in düşmanı Joker'in kökenini anlatan 2019 yapımı psikolojik gerilim filmi."},
+    {"word": "GLADYATÖR", "category": "movies", "hint": "Roma döneminde bir savaşçı özgürlüğü için savaşır.", "definition": "Köle yapılan bir Roma generalinin gladyatör arenasında intikam arayışını anlatan 2000 yapımı film."},
+    {"word": "KASABA", "category": "movies", "hint": "Küçük bir kasabada geçen bir gerilim.", "definition": "Küçük bir kasabada geçen dramatik olayları anlatan film."},
+    {"word": "PARAZIT", "category": "movies", "hint": "Sosyal sınıf farkını anlatan Güney Kore filmi.", "definition": "Bong Joon-ho yönetmenliğinde iki aile arasındaki sınıf çatışmasını konu alan 2019 Güney Kore filmi."},
+    {"word": "HAYALET", "category": "movies", "hint": "Bir hayaletle aşkı konu alan roman.", "definition": "Ölü bir sevgilinin bir hayalet olarak geri döndüğü romantik bir drama."},
+    {"word": "ÖRÜMCEK", "category": "movies", "hint": "Bir süper kahraman ağlarla şehri korur.", "definition": "Bir gencin süper güçler kazanarak şehri suçlulardan korumasını anlatan popüler çizgi roman uyarlaması."},
+    {"word": "YÜZÜK", "category": "movies", "hint": "Orta Dünya'da bir yüzük için mücadele.", "definition": "Hobbit Frodo'nun kötü güçten dolu yüzüğü yok etme görevini üstlenen fantastik film serisi."},
+    {"word": "KAPTAN", "category": "movies", "hint": "Bir geminin veya ekibin lideri.", "definition": "Bir geminin, uçağın veya askeri birliğin sorumlu komutanı."},
+    {"word": "MATRIX", "category": "movies", "hint": "Gerçeklik bir simülasyon olan bilimkurgu filmi.", "definition": "Bir bilgisayar programcısının gerçekliğin simüle edilmiş bir dünya olduğunu keşfettiği 1999 yapımı film."},
+    {"word": "EVRIM", "category": "science", "hint": "Türlerin zaman içinde değişme süreci.", "definition": "Biyolojik popülasyonların art arda gelen nesiller boyunca değiştiği süreç."},
+    {"word": "YERÇEKIMI", "category": "science", "hint": "Nesneleri Dünya'ya çeken kuvvet.", "definition": "Kütleli nesneleri birbirine çeken temel doğa kuvveti."},
+    {"word": "ATOM", "category": "science", "hint": "Kimyasal bir elementin en küçük birimi.", "definition": "Elektronlarla çevrili bir çekirdekten oluşan maddenin temel yapı taşı."},
+    {"word": "PLAZMA", "category": "science", "hint": "Maddenin dördüncü hali.", "definition": "Yıldızlarda sıkça bulunan, pozitif iyonlar ve serbest elektronlardan oluşan iyonize gaz."},
+    {"word": "FOTON", "category": "science", "hint": "Işık parçacığı.", "definition": "Elektromanyetik radyasyonun, özellikle ışığın kuantumu olan kütlesiz temel parçacık."},
+    {"word": "GENOM", "category": "science", "hint": "Bir organizmanın tüm genetik materyali.", "definition": "Bir organizmanın tüm genleri dahil olmak üzere eksiksiz DNA seti."},
+    {"word": "ÇEKIRDEK", "category": "science", "hint": "Atomun veya hücrenin merkezi.", "definition": "Protonları ve nötronları içeren atomun yoğun merkezi."},
+    {"word": "KATALIZÖR", "category": "science", "hint": "Kimyasal tepkimeleri hızlandıran madde.", "definition": "Kendisi kalıcı olarak etkilenmeden kimyasal tepkime hızını artıran madde."},
+    {"word": "MOLEKÜL", "category": "science", "hint": "Birbirine bağlı iki veya daha fazla atom.", "definition": "Kimyasal bağlarla bir arada tutulan bir bileşiğin en küçük birimi."},
+    {"word": "ENTROPİ", "category": "science", "hint": "Bir sistemdeki düzensizliğin ölçüsü.", "definition": "Bir sistemin ısıl enerjisinin mekanik işe dönüştürülememesini temsil eden termodinamik bir büyüklük."},
+    {"word": "EKOSİSTEM", "category": "science", "hint": "Bir ortamdaki tüm canlılar ve etkileşimleri.", "definition": "Canlı organizmaların ve fiziksel çevrelerinin birbiriyle etkileşim içindeki biyolojik topluluğu."},
+    {"word": "JAPONYA", "category": "geography", "hint": "Doğu Asya'da bir ada ülkesi.", "definition": "Kendine özgü kültürü, teknolojisi ve kiraz çiçekleriyle tanınan Doğu Asya'daki bir ada ülkesi."},
+    {"word": "AMAZON", "category": "geography", "hint": "Dünyanın en büyük tropikal yağmur ormanı.", "definition": "Güney Amerika'daki Amazon havzasının büyük bölümünü kaplayan dünyanın en büyük tropikal yağmur ormanı."},
+    {"word": "SAHRA", "category": "geography", "hint": "Dünyanın en büyük sıcak çölü.", "definition": "Kuzey Afrika'nın büyük bölümünü kaplayan dünyanın en büyük sıcak çölü."},
+    {"word": "EVEREST", "category": "geography", "hint": "Dünyanın en yüksek dağı.", "definition": "Nepal ve Tibet sınırındaki Himalayalar'da yer alan Dünya'nın en yüksek dağı."},
+    {"word": "NİL", "category": "geography", "hint": "Afrika'nın en uzun nehri.", "definition": "Afrika'nın en uzun nehri olup Kuzeydoğu Afrika boyunca kuzeye doğru Akdeniz'e dökülür."},
+    {"word": "YANARDAĞ", "category": "geography", "hint": "Lavlarla patlayan bir dağ.", "definition": "Patlamalar sırasında lavın, külün ve gazların atıldığı Dünya'nın kabuğundaki açıklık."},
+    {"word": "KANYON", "category": "geography", "hint": "Bir nehir tarafından oyulmuş derin bir vadi.", "definition": "Su tarafından oyulmuş, genellikle içinden nehir akan derin vadi."},
+    {"word": "FIYORT", "category": "geography", "hint": "İskandinavya'daki uzun dar körfez.", "definition": "İskandinavya'da buzul erozyonuyla oluşan, yüksek kayalıklar arasında uzanan uzun, dar ve derin deniz koyları."},
+    {"word": "TUNDRA", "category": "geography", "hint": "Geniş ağaçsız Arktik arazi.", "definition": "Toprak altının sürekli donmuş olduğu, geniş, düz ve ağaçsız Arktik bölge."},
+    {"word": "PIZZA", "category": "food", "hint": "Domates sosu ve peynirli İtalyan yemeği.", "definition": "Domates sosu, peynir ve çeşitli malzemelerle kaplı yuvarlak bir hamurdan yapılan popüler İtalyan yemeği."},
+    {"word": "SUŞİ", "category": "food", "hint": "Pirinç ve deniz ürünleriyle yapılan Japon yemeği.", "definition": "Özel hazırlanmış sirkelenmiş pirinçle deniz ürünleri, sebzeler veya yumurtanın bir araya getirildiği Japon yemeği."},
+    {"word": "MAKARNA", "category": "food", "hint": "Hamurdan yapılan İtalyan temel besin.", "definition": "Çeşitli şekillerde hazırlanan, buğday unu ve yumurta veya suyla yoğrulan bir hamurdan yapılan İtalyan yemeği."},
+    {"word": "KÖRI", "category": "food", "hint": "Güney Asya'dan baharatlı bir yemek.", "definition": "Güney Asya mutfağından gelen, baharat sosuyla pişirilmiş et, sebze veya balık yemeği."},
+    {"word": "PEYNİR", "category": "food", "hint": "Süt pıhtısından yapılan süt ürünü.", "definition": "Yüzlerce çeşidi bulunan, sütün kesilmesiyle elde edilen peynir altı suyundan yapılan bir besin."},
+    {"word": "BAL", "category": "food", "hint": "Arıların yaptığı tatlı madde.", "definition": "Arıların çiçek özünden ürettiği tatlı ve yapışkan besin maddesi."},
+    {"word": "SARMSAK", "category": "food", "hint": "Yemeklerde kullanılan keskin aromalı bitki.", "definition": "Pişirmede yaygın olarak kullanılan, soğanla akraba, güçlü aromalı ampul bitki."},
+    {"word": "AVOKADO", "category": "food", "hint": "Salatalarda popüler kremamsı yeşil meyve.", "definition": "Sağlıklı yağlar açısından zengin, kremamsı soluk yeşil etli, pürüzlü koyu yeşil kabuklu tropikal meyve."},
+    {"word": "BAKLAVA", "category": "food", "hint": "Fındıklı Orta Doğu tatlısı.", "definition": "Kıyılmış ceviz veya fıstıkla doldurulmuş ve bal ya da şerbetle tatlandırılmış yufka katmanlarından yapılan tatlı."},
+    {"word": "KRASAN", "category": "food", "hint": "Hilal şeklinde Fransız pastanesi.", "definition": "Katmanlı mayalı hamurdan yapılan tereyağlı, pullu Fransız pastanesi."},
+    {"word": "HAMLET", "category": "literature", "hint": "Danimarkalı bir prensle ilgili Shakespeare trajedisi.", "definition": "William Shakespeare'in, Prens Hamlet'in babasının öcünü almasını konu alan trajik oyunu."},
+    {"word": "ODYSSEIA", "category": "literature", "hint": "Eve dönen uzun yolculuğu anlatan Yunan destanı.", "definition": "Odisseus'un Truva Savaşı'ndan sonra eve dönüş yolculuğunu anlatan Homeros'a atfedilen Antik Yunan destanı."},
+    {"word": "DRAKÜLA", "category": "literature", "hint": "Bram Stoker'in ünlü vampir kontu.", "definition": "Bram Stoker'in 1897 tarihli Gotik korku romanındaki vampir kontu."},
+    {"word": "SONET", "category": "literature", "hint": "14 dizeli, belirli uyak düzenine sahip şiir.", "definition": "Genellikle tek bir tema ifade eden, belirli uyak düzenine sahip 14 dizelik şiir."},
+    {"word": "ROMAN", "category": "literature", "hint": "Uzun kurgu anlatının en yaygın biçimi.", "definition": "Karakterleri ve olayları betimleyen, önemli uzunluk ve karmaşıklıkta orijinal düzyazı anlatısı."},
+    {"word": "FABL", "category": "literature", "hint": "Ahlaki ders veren kısa hikaye.", "definition": "Genellikle hayvanların karakter olarak kullanıldığı, ahlaki ders veren kısa hikaye."},
+    {"word": "HİKAYE", "category": "literature", "hint": "Kurgusal olayları anlatan kısa metin.", "definition": "Gerçek ya da hayal ürünü olayları anlatan kısa kurgu anlatı."},
+    {"word": "METAFOr", "category": "literature", "hint": "Örtülü karşılaştırma yapan söz sanatı.", "definition": "Bir kelimenin veya ifadenin, gerçek olmayan bir bağlamda başka bir şeye uygulandığı edebi sanat."},
+    {"word": "ÜTOPYA", "category": "literature", "hint": "Mükemmel hayali bir toplum.", "definition": "Her şeyin mükemmel olduğu hayali toplum; Edward Bellamy gibi yazarların eserlerinde sıkça işlenen tema."},
+    {"word": "DİSTOPYA", "category": "literature", "hint": "Her şeyin kötü olduğu hayali bir toplum.", "definition": "İnsanlık için istenmeyen veya korkunç koşulların olduğu hayali toplum; spekülatif kurgu eserlerinde işlenir."},
+    {"word": "ALEGORI", "category": "literature", "hint": "Gizli sembolik anlamı olan hikaye.", "definition": "Karakterlerin ve olayların gerçek hayatın veya ahlakın yönlerini temsil ettiği sembolik anlatı."},
+    {"word": "FÚTBOL", "category": "sports", "hint": "Yuvarlak topla oynanan, dünyanın en popüler sporu.", "definition": "İki takımın rakibin kalesine top sokmaya çalıştığı, yuvarlak topla oynanan takım sporu."},
+    {"word": "TENİS", "category": "sports", "hint": "Ağlı bir kort üzerinde raket sporudur.", "definition": "İki veya dört oyuncunun bir ağın üzerinden rakete vuruşlar sergilediği spor."},
+    {"word": "BOKS", "category": "sports", "hint": "Yumrukla yapılan dövüş sporu.", "definition": "İki rakibin bir ring içinde eldivenli yumruklarla dövüştüğü dövüş sporu."},
+    {"word": "BİSİKLET", "category": "sports", "hint": "Bisikletle yapılan spor etkinliği.", "definition": "Spor veya rekreasyon amaçlı bisiklet sürmek."},
+    {"word": "SÖRF", "category": "sports", "hint": "Okyanusta dalgalar üzerinde tahta ile kayma.", "definition": "Sahile doğru gelen dalgaların tepesinde sörf tahtasıyla sürme sporu."},
+    {"word": "OKÇULUK", "category": "sports", "hint": "Okla hedefe atış yapılan spor.", "definition": "Yay ile bir hedefe ok atma sporu veya pratiği."},
+    {"word": "ESKRM", "category": "sports", "hint": "Rekabetçi ortamda kılıç dövüşü.", "definition": "Belirli kurallara göre folyo, epee veya sabre gibi kılıçlarla dövüş yapılan spor."},
+    {"word": "TRATLОН", "category": "sports", "hint": "Yüzme, bisiklet ve koşuyu kapsayan yarış.", "definition": "Yüzme, bisiklet ve koşudan oluşan üç aşamalı atletik yarış."},
+    {"word": "MARATON", "category": "sports", "hint": "42 kilometre yollarda koşu yarışı.", "definition": "Yaklaşık 42.195 kilometre mesafede düzenlenen uzun mesafe koşusu."},
+    {"word": "KRİKET", "category": "sports", "hint": "İngiltere ve Hindistan'da popüler bat-top oyunu.", "definition": "On bir kişilik iki takım arasında oynanan bat ve topla yapılan oyun."},
+    {"word": "VOLEYBOL", "category": "sports", "hint": "Takımlar yüksek ağın üstünden top vurur.", "definition": "İki takımın şişirilmiş bir topu ağın üzerinden rakip sahaya düşürmeye çalıştığı spor."},
+    {"word": "KARATE", "category": "sports", "hint": "El ve ayak darbelerini kullanan Japon dövüş sanatı.", "definition": "El, dirsek, diz ve ayakların darbeler vermek ve engellemek için kullanıldığı Japon dövüş sanatı."},
+    {"word": "JUDO", "category": "sports", "hint": "Atış hareketlerine odaklanan Japon dövüş sanatı.", "definition": "Rakibi etkisiz kılmak için atış ve kavrama tekniklerinin kullanıldığı modern Japon dövüş sanatı."},
+    {"word": "SİMFONI", "category": "music", "hint": "Tam orkestra için uzun birden fazla bölümlü bestekar.", "definition": "Genellikle dört bölümden oluşan, tam orkestra için karmaşık müzik eser."},
+    {"word": "TEMPO", "category": "music", "hint": "Bir müzik parçasının hızı veya ritmi.", "definition": "Bir müzik parçasının çalınma hızı; allegro gibi terimlerle belirtilir."},
+    {"word": "AKOR", "category": "music", "hint": "Aynı anda çalınan birden fazla ses.", "definition": "Armoninin temelini oluşturan, birlikte çalınan birden fazla ses."},
+    {"word": "MELODİ", "category": "music", "hint": "Bir müzik parçasının ana tını.", "definition": "Bir kompozisyonun temel unsurunu oluşturan, müzikal açıdan tatmin edici nota dizisi."},
+    {"word": "RİTİM", "category": "music", "hint": "Müzikteki vuruş örüntüsü.", "definition": "Müzikte güçlü, düzenli, tekrarlayan ses veya hareket örüntüsü."},
+    {"word": "OPERA", "category": "music", "hint": "Tamamen müziğe dayanan dramatik performans.", "definition": "Müziğin baş rolü üstlendiği ve tüm bölümlerin şarkıcılar tarafından seslendirildiği tiyatro türü."},
+    {"word": "GİTAR", "category": "music", "hint": "Tıngırdatarak çalınan telli çalgı.", "definition": "Parmaklar veya bir pena ile tıngırdatarak ya da vurarak çalınan altı telli müzik aleti."},
+    {"word": "PİYANO", "category": "music", "hint": "Çekiçlerle vurulan büyük klavyeli çalgı.", "definition": "Çekiçlerin çarptığı metal teller içeren, tahta kasa üzerine oturulmuş büyük klavyeli müzik aleti."},
+    {"word": "KEMAİN", "category": "music", "hint": "Orkestralarda kullanılan yaylı çalgı.", "definition": "Dört teli beşinci aralıklarla akort edilmiş, tiz perdeli yaylı tel çalgı aleti."},
+    {"word": "ORKESTRA", "category": "music", "hint": "Birlikte çalan büyük müzisyen grubu.", "definition": "Yaylı, nefesli ve vurmalı çalgı bölümlerinden oluşan büyük müzisyen topluluğu."},
+    {"word": "AHENK", "category": "music", "hint": "Bir arada hoş ses veren notalar.", "definition": "Aynı anda duyulan birden fazla sesin hoş etki yarattığı kombinasyonu."},
+    {"word": "BALADE", "category": "music", "hint": "Bir hikaye anlatan yavaş hüzünlü şarkı.", "definition": "Genellikle aşkı konu alan, nazım biçiminde hikaye anlatan yavaş ve duygusal müzik parçası."}
+  ]
 }

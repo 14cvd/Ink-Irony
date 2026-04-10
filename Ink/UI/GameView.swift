@@ -11,29 +11,32 @@ public struct GameView: View {
     @StateObject private var viewModel = GameViewModel()
     @Environment(\.colorScheme) private var colorScheme
     @ObservedObject private var scoreManager = ScoreManager.shared
+    @AppStorage("showTimer") private var showTimer: Bool = true
+    @AppStorage("teacherQuotes") private var teacherQuotesEnabled: Bool = true
     
-    // External Word/Difficulty for MVP testing
     let startingWord: Word
     let startingDifficulty: Difficulty
     
-    // Game Over routing closure injected by Coordinator
-    let onGameEnd: ((Bool, Int) -> Void)?
+    // Game over closure now includes timeTaken, hintsUsed, wrongGuesses
+    let onGameEnd: ((Bool, Int, Int, Int, Int) -> Void)?
     
-    public init(word: Word = Word(text: "SKETCHBOOK", language: .english, category: "Theme"), difficulty: Difficulty = .medium, onGameEnd: ((Bool, Int) -> Void)? = nil) {
+    public init(
+        word: Word = Word(text: "SKETCHBOOK", language: .english, category: .random),
+        difficulty: Difficulty = .medium,
+        onGameEnd: ((Bool, Int, Int, Int, Int) -> Void)? = nil
+    ) {
         self.startingWord = word
         self.startingDifficulty = difficulty
         self.onGameEnd = onGameEnd
     }
     
-    // Dynamic ink color helper for borders
-    private var inkColor: Color {
-        ThemeManager.Colors.inkPrimary(for: colorScheme)
-    }
+    private var inkColor: Color { ThemeManager.Colors.inkPrimary(for: colorScheme) }
+    private var accentRed: Color { ThemeManager.Colors.accentRed(for: colorScheme) }
     
     public var body: some View {
         VStack(spacing: 0) {
             
-            // Header: Difficulty, Timer, Lives
+            // ── Top Bar: Difficulty | Timer | Lives ──
             HStack {
                 Text(LocalizationService.t(viewModel.difficulty.rawValue.uppercased(), lang: scoreManager.uiLanguage))
                     .font(ThemeManager.Typography.micro(for: colorScheme).bold())
@@ -41,58 +44,78 @@ public struct GameView: View {
                 
                 Spacer()
                 
-                Text(viewModel.formattedTime)
-                    .font(ThemeManager.Typography.micro(for: colorScheme).bold())
-                    .sketchbookInkText(isError: viewModel.timeRemaining <= 10)
-                
-                Spacer()
+                if showTimer {
+                    Text(viewModel.formattedTime)
+                        .font(ThemeManager.Typography.micro(for: colorScheme).bold())
+                        .sketchbookInkText(isError: viewModel.timeRemaining <= 10)
+                    
+                    Spacer()
+                }
                 
                 Text(LocalizationService.t("LIVES: ", lang: scoreManager.uiLanguage) + "\(viewModel.remainingLives)")
                     .font(ThemeManager.Typography.micro(for: colorScheme).bold())
                     .sketchbookInkText(isError: viewModel.remainingLives <= 2)
             }
-            .padding(.horizontal, ThemeManager.Layout.spacingMajor) // Placed inside the red notebook margin
+            .padding(.horizontal, ThemeManager.Layout.spacingMajor)
             .padding(.top, ThemeManager.Layout.spacingLG)
             
-            Spacer().frame(height: 20)
+            // ── Category Badge (NEW) ──
+            if let word = viewModel.currentWord {
+                HStack(spacing: 4) {
+                    Text(word.category.emoji)
+                        .font(.system(size: 12))
+                    Text(word.category.displayName(for: scoreManager.uiLanguage).uppercased())
+                        .font(ThemeManager.Typography.micro(for: colorScheme).bold())
+                        .foregroundColor(accentRed)
+                }
+                .padding(.horizontal, ThemeManager.Layout.spacingMD)
+                .padding(.vertical, 4)
+                .background(
+                    RoundedRectangle(cornerRadius: ThemeManager.Layout.cornerSM)
+                        .stroke(accentRed, style: StrokeStyle(lineWidth: 1.5, dash: [5, 3]))
+                )
+                .padding(.top, ThemeManager.Layout.spacingSM)
+            }
             
-            // Rive Animation Sketch Area
+            Spacer().frame(height: 16)
+            
+            // ── Sketch Gallows ──
             ZStack {
                 RoundedRectangle(cornerRadius: ThemeManager.Layout.cornerMD)
                     .handDrawnStroke(color: inkColor, lineWidth: ThemeManager.Layout.strokeKey, jitter: 1.5)
-                    .frame(height: 220)
+                    .frame(height: 200)
                     .padding(.horizontal, ThemeManager.Layout.spacingMajor)
                 
-                // Pure SwiftUI Sketching Animation automatically scaling mistakes to exactly 8 drawing parts
                 let mistakes = viewModel.difficulty.lives - viewModel.remainingLives
                 let scaledMistakes = Int((Double(mistakes) / Double(viewModel.difficulty.lives)) * 8.0)
-                
                 SketchGallowsView(wrongGuesses: scaledMistakes)
-                    .frame(height: 200)
+                    .frame(height: 180)
             }
-            
-            Spacer().frame(height: 30)
-            
-            // Claude's Savage Taunt Area
-            VStack {
-                if let taunt = viewModel.currentTaunt {
-                    TauntBubbleView(text: taunt)
-                        .transition(.scale.combined(with: .opacity))
-                } else {
-                    Text(statusMessage)
-                        .font(ThemeManager.Typography.h2(for: colorScheme))
-                        .sketchbookInkText(isError: viewModel.gameState == .lost)
-                        .padding(.horizontal, ThemeManager.Layout.spacingMajor)
-                }
-            }
-            .frame(height: 100)
-            .animation(.spring(response: 0.5, dampingFraction: 0.7), value: viewModel.currentTaunt)
             
             Spacer().frame(height: 20)
             
-            // Masked Word Display
+            // ── Teacher Taunt / Status ──
+            VStack {
+                if teacherQuotesEnabled {
+                    if let taunt = viewModel.currentTaunt {
+                        TauntBubbleView(text: taunt)
+                            .transition(.scale.combined(with: .opacity))
+                    } else {
+                        Text(statusMessage)
+                            .font(ThemeManager.Typography.h2(for: colorScheme))
+                            .sketchbookInkText(isError: viewModel.gameState == .lost)
+                            .padding(.horizontal, ThemeManager.Layout.spacingMajor)
+                    }
+                }
+            }
+            .frame(height: 80)
+            .animation(.spring(response: 0.5, dampingFraction: 0.7), value: viewModel.currentTaunt)
+            
+            Spacer().frame(height: 12)
+            
+            // ── Word Display ──
             Text(viewModel.maskedWord)
-                .font(.custom("Caveat-Bold", size: 52)) // Token "Letter Blanks"
+                .font(.custom("Caveat-Bold", size: 48))
                 .sketchbookInkText()
                 .tracking(6)
                 .lineLimit(1)
@@ -100,19 +123,60 @@ public struct GameView: View {
                 .padding(.horizontal, ThemeManager.Layout.spacingMajor)
                 .animation(.spring(response: 0.3, dampingFraction: 0.5), value: viewModel.maskedWord)
             
+            Spacer().frame(height: 12)
+            
+            // ── Hint Button + Hint Text (NEW) ──
+            VStack(spacing: ThemeManager.Layout.spacingSM) {
+                Button(action: {
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                        viewModel.useHint()
+                    }
+                }) {
+                    HStack(spacing: 6) {
+                        Text("💡")
+                        Text("\(LocalizationService.t("HINT", lang: scoreManager.uiLanguage)) \(LocalizationService.hintSuffix(viewModel.hintsRemaining, lang: scoreManager.uiLanguage))")
+                            .font(ThemeManager.Typography.micro(for: colorScheme).bold())
+                    }
+                    .foregroundColor(viewModel.hintsRemaining > 0 ? accentRed : ThemeManager.Colors.inkPrimary(for: colorScheme).opacity(0.4))
+                    .padding(.horizontal, ThemeManager.Layout.spacingMD)
+                    .padding(.vertical, ThemeManager.Layout.spacingXS)
+                    .background(
+                        RoundedRectangle(cornerRadius: ThemeManager.Layout.cornerSM)
+                            .stroke(
+                                viewModel.hintsRemaining > 0 ? accentRed.opacity(0.6) : ThemeManager.Colors.inkPrimary(for: colorScheme).opacity(0.2),
+                                style: StrokeStyle(lineWidth: 1.5, dash: [5, 3])
+                            )
+                    )
+                }
+                .disabled(viewModel.hintsRemaining == 0 || viewModel.gameState != .inProgress)
+                .frame(minHeight: 44)
+                
+                if let hint = viewModel.hintText {
+                    Text(hint)
+                        .font(ThemeManager.Typography.micro(for: colorScheme))
+                        .foregroundColor(ThemeManager.Colors.hintBoxText(for: colorScheme))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, ThemeManager.Layout.spacingMD)
+                        .padding(.vertical, ThemeManager.Layout.spacingXS)
+                        .background(
+                            RoundedRectangle(cornerRadius: ThemeManager.Layout.cornerSM)
+                                .stroke(ThemeManager.Colors.hintBoxBorder(for: colorScheme), style: StrokeStyle(lineWidth: 1, dash: [5, 3]))
+                        )
+                        .padding(.horizontal, ThemeManager.Layout.spacingMajor)
+                        .transition(.opacity.combined(with: .scale))
+                }
+            }
+            
             Spacer()
             
-            // Interactive Keyboard Grid natively adapting to localized language alphabets safely
+            // ── Keyboard ──
             DynamicKeyboardView(
                 language: viewModel.language,
                 guessedLetters: viewModel.guessedLetters,
-                onGuess: { char in
-                    viewModel.guess(letter: char)
-                }
+                onGuess: { char in viewModel.guess(letter: char) }
             )
-            .padding(.leading, ThemeManager.Layout.spacingXL) // Offset to sit to the right of the vertical notebook line
+            .padding(.leading, ThemeManager.Layout.spacingXL)
             .padding(.bottom, ThemeManager.Layout.spacingLG)
-            // Visually disable interaction if the game abruptly ends
             .disabled(viewModel.gameState == .won || viewModel.gameState == .lost)
             .opacity(viewModel.gameState == .won || viewModel.gameState == .lost ? 0.4 : 1.0)
             
@@ -138,45 +202,28 @@ public struct GameView: View {
         viewModel.onTimeWarning = { [weak viewModel] timeLeft, language in
             Task {
                 guard let viewModel = viewModel else { return }
-                
-                let taunt = await TauntService.shared.fetchTaunt(
-                    language: language,
-                    wrongCount: 0,
-                    difficulty: viewModel.difficulty
-                )
-                
+                let taunt = await TauntService.shared.fetchTaunt(language: language, wrongCount: 0, difficulty: viewModel.difficulty)
                 await MainActor.run {
                     let prefixStr = "⏱️ \(timeLeft)s: "
                     viewModel.setTaunt(prefixStr + taunt)
                 }
-                
                 HapticService.shared.playPenStrike()
             }
         }
         
-        // Wire up TauntService to trigger when a life is lost
         viewModel.onWrongGuess = { [weak viewModel] livesLeft, language in
             Task {
                 guard let viewModel = viewModel else { return }
                 let mistakes = viewModel.difficulty.lives - livesLeft
-                
-                let taunt = await TauntService.shared.fetchTaunt(
-                    language: language,
-                    wrongCount: mistakes,
-                    difficulty: viewModel.difficulty
-                )
-                
+                let taunt = await TauntService.shared.fetchTaunt(language: language, wrongCount: mistakes, difficulty: viewModel.difficulty)
                 await MainActor.run {
                     viewModel.setTaunt(taunt)
                 }
-                
-                // Trigger tactile drawing feedback alongside the SketchGallowsView.swift drawing animation natively
                 HapticService.shared.playSketchTexture(duration: 0.6)
                 AudioService.shared.play(.penScratch)
             }
         }
         
-        // Execute the Coordinator routing closure seamlessly
         viewModel.onGameOver = { [weak viewModel] won in
             if won {
                 HapticService.shared.playSuccessPulse()
@@ -190,7 +237,10 @@ public struct GameView: View {
             }
             
             if let onGameEnd = onGameEnd {
-                onGameEnd(won, viewModel?.remainingLives ?? 0)
+                let elapsed = viewModel?.elapsedSeconds ?? 0
+                let hintsUsed = 2 - (viewModel?.hintsRemaining ?? 0)
+                let wrongs = viewModel?.wrongGuessCount ?? 0
+                onGameEnd(won, viewModel?.remainingLives ?? 0, elapsed, hintsUsed, wrongs)
             }
         }
     }

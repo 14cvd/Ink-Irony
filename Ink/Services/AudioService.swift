@@ -61,7 +61,9 @@ public class AudioService: ObservableObject {
     
     /// Plays the requested sound effect, restarting it if it is already playing for crisp feedback
     public func play(_ effect: SoundEffect) {
-        guard isSoundEnabled else { return }
+        // Respect the Settings toggle stored in UserDefaults
+        let soundOn = UserDefaults.standard.object(forKey: "soundEnabled") as? Bool ?? true
+        guard isSoundEnabled && soundOn else { return }
         
         if let player = audioPlayers[effect.rawValue] {
             if player.isPlaying {
