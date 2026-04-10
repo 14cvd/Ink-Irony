@@ -90,21 +90,22 @@ fileprivate struct LeaderboardRow: View {
     let rank: Int
     let session: GameSession
     let inkColor: Color
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         HStack {
             Text("#\(rank)")
-                .font(ThemeManager.Typography.h2(for: .light).bold())
-                .foregroundColor(ThemeManager.Colors.errorInkLight)
+                .font(ThemeManager.Typography.h2(for: colorScheme).bold())
+                .foregroundColor(ThemeManager.Colors.accentRed(for: colorScheme))
                 .frame(width: 50, alignment: .leading)
             
             VStack(alignment: .leading) {
                 Text(session.word)
-                    .font(ThemeManager.Typography.body(for: .light).bold())
+                    .font(ThemeManager.Typography.body(for: colorScheme).bold())
                     .sketchbookInkText()
                 
-                Text("\(session.difficulty) - \(session.date.formatted(date: .numeric, time: .shortened))")
-                    .font(ThemeManager.Typography.micro(for: .light))
+                Text("\(session.difficulty) · \(session.date.formatted(date: .numeric, time: .shortened))")
+                    .font(ThemeManager.Typography.micro(for: colorScheme))
                     .sketchbookInkText()
                     .opacity(0.7)
             }
@@ -112,7 +113,7 @@ fileprivate struct LeaderboardRow: View {
             Spacer()
             
             Text("\(session.score) pts")
-                .font(ThemeManager.Typography.body(for: .light))
+                .font(ThemeManager.Typography.body(for: colorScheme))
                 .sketchbookInkText()
         }
         .padding(ThemeManager.Layout.spacingMD)

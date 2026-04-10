@@ -25,11 +25,22 @@ public class GameViewModel: ObservableObject {
     @Published public private(set) var timeRemaining: Int = 0
     @Published public private(set) var currentTaunt: String? = nil
     
+    // Hint system
+    @Published public private(set) var hintsRemaining: Int = 2
+    @Published public private(set) var hintText: String? = nil
+    
+    // Tracking for score/achievements
+    @Published public private(set) var wrongGuessCount: Int = 0
+    private var startTime: Date = Date()
+    
+    public var elapsedSeconds: Int {
+        Int(Date().timeIntervalSince(startTime))
+    }
+    
     // MARK: - Private State
     private var timer: AnyCancellable?
     
     // MARK: - Callbacks for Services Integration
-    // These closures act as hooks for Audio, Haptic, Rive and Taunt services.
     public var onWrongGuess: ((_ remainingLives: Int, _ language: Language) -> Void)?
     public var onGameOver: ((_ won: Bool) -> Void)?
     public var onTimeWarning: ((_ timeLeft: Int, _ language: Language) -> Void)?
@@ -38,7 +49,6 @@ public class GameViewModel: ObservableObject {
     
     // MARK: - Game Lifecycle
     
-    /// Starts a new session with the given word and difficulty
     public func startNewGame(word: Word, difficulty: Difficulty) {
         self.currentWord = word
         self.language = word.language
@@ -48,11 +58,17 @@ public class GameViewModel: ObservableObject {
         self.remainingLives = difficulty.lives
         self.gameState = .inProgress
         self.currentTaunt = nil
+        self.hintsRemaining = 2
+        self.hintText = nil
+        self.wrongGuessCount = 0
+        self.startTime = Date()
         
-        setupTimer()
+        // Reset quote cycling for new game
+        Task { await TauntService.shared.resetIndex(for: word.language) }
+        
+        setupTimer(for: difficulty)
     }
     
-    /// Resets the game to an idle state
     public func resetGame() {
         self.gameState = .idle
         self.currentWord = nil
@@ -60,59 +76,68 @@ public class GameViewModel: ObservableObject {
         self.timer?.cancel()
         self.timer = nil
         self.currentTaunt = nil
+        self.hintText = nil
+    }
+    
+    // MARK: - Hint System
+    
+    /// Use a hint — reveals the hint text and decrements counter
+    public func useHint() {
+        guard hintsRemaining > 0, gameState == .inProgress else { return }
+        
+        if hintsRemaining == 2 {
+            // First hint click: short hint
+            hintText = currentWord?.hint
+        } else if hintsRemaining == 1 {
+            // Second hint click: deeper definition hint (movzuya hakim)
+            if let def = currentWord?.definition, !def.isEmpty {
+                hintText = (currentWord?.hint ?? "") + "\n\n" + def
+            }
+        }
+        
+        hintsRemaining -= 1
+        HapticService.shared.playPenStrike()
     }
     
     // MARK: - Core Game Logic
     
-    /// Returns the word with unguessed letters masked as underscores, spaced out for the notebook look.
     public var maskedWord: String {
         guard let word = currentWord else { return "" }
-        
         return word.text.map { char in
-            if char.isWhitespace {
-                return "  " // Extra space for word breaks
-            } else if guessedLetters.contains(char) {
-                return String(char)
-            } else {
-                return "_"
-            }
+            if char.isWhitespace { return "  " }
+            else if guessedLetters.contains(char) { return String(char) }
+            else { return "_" }
         }.joined(separator: " ")
     }
     
-    /// Processes a letter guess from the custom language keyboard
     public func guess(letter: Character) {
-        // Only process guesses while the game is actively in progress
         guard gameState == .inProgress else { return }
         
         let upperChar = Character(letter.uppercased())
-        
-        // Prevent duplicate guesses
         guard !guessedLetters.contains(upperChar) else { return }
         
         guessedLetters.insert(upperChar)
         
-        // Reset timer on every valid guess
-        self.timeRemaining = 60
+        // Reset per-guess timer if difficulty has a timer
+        if difficulty.timerSeconds != nil {
+            self.timeRemaining = difficulty.timerSeconds!
+        }
         
-        // Initial light tap representing the physical friction of writing a letter
         HapticService.shared.playPenStrike()
         AudioService.shared.play(.penScratch)
         
         guard let wordText = currentWord?.text else { return }
         
         if wordText.contains(upperChar) {
-            // Correct Guess
-            AudioService.shared.play(.sfxCorrect) // Quick checkmark swoosh as requested
+            AudioService.shared.play(.sfxCorrect)
             checkWinCondition()
         } else {
-            // Wrong Guess
             remainingLives -= 1
+            wrongGuessCount += 1
             
-            // Heavy rigid pulse for error representing a snapped pencil tip as requested
             HapticService.shared.playErrorPulse()
             AudioService.shared.play(.sfxWrong)
             
-            // Trigger contextual callbacks (e.g. Claude taunt generation scaling to difficulty)
             onWrongGuess?(remainingLives, language)
             
             if remainingLives <= 0 {
@@ -121,20 +146,24 @@ public class GameViewModel: ObservableObject {
         }
     }
     
-    /// Set a taunt received from the Claude API (Savage AI feature)
     public func setTaunt(_ text: String) {
         self.currentTaunt = text
     }
     
-    // MARK: - Win/Loss Condition Checks
+    // MARK: - Score Calculation
+    
+    public func calculateScore() -> Int {
+        let secs = elapsedSeconds
+        let raw = 100.0 + (Double(remainingLives) * 20.0) - (Double(secs) * 0.5)
+        return max(0, Int(raw.rounded()))
+    }
+    
+    // MARK: - Win/Loss Checks
     
     private func checkWinCondition() {
         guard let word = currentWord else { return }
-        
-        let unmaskedCharacters = word.text.filter { !$0.isWhitespace }
-        let isWon = unmaskedCharacters.allSatisfy { guessedLetters.contains($0) }
-        
-        if isWon {
+        let unmasked = word.text.filter { !$0.isWhitespace }
+        if unmasked.allSatisfy({ guessedLetters.contains($0) }) {
             endGame(won: true)
         }
     }
@@ -148,10 +177,12 @@ public class GameViewModel: ObservableObject {
     
     // MARK: - Timer Logic
     
-    private func setupTimer() {
+    private func setupTimer(for difficulty: Difficulty) {
         timer?.cancel()
         
-        self.timeRemaining = 60
+        // Use per-difficulty timer; 60s is the per-guess timer (resets on each guess)
+        let initialTime = difficulty.timerSeconds ?? 60
+        self.timeRemaining = initialTime
         
         timer = Timer.publish(every: 1.0, on: .main, in: .common)
             .autoconnect()
@@ -171,20 +202,17 @@ public class GameViewModel: ObservableObject {
             }
             
             if timeRemaining == 0 {
-                // Time's up! Running out of time means losing the game.
                 endGame(won: false)
             }
         }
     }
     
-    // Helper to format time remaining as MM:SS (e.g., 01:30)
     public var formattedTime: String {
         let minutes = timeRemaining / 60
         let seconds = timeRemaining % 60
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
-    // Helper to know if a character key should be disabled/crossed out on the UI keyboard
     public func isKeyDisabled(_ char: Character) -> Bool {
         return guessedLetters.contains(Character(char.uppercased()))
     }

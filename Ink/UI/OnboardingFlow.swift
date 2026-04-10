@@ -9,7 +9,6 @@ import SwiftUI
 
 public struct OnboardingFlow: View {
     @Binding var onboardingComplete: Bool
-    @State private var currentPage = 0
     @State private var titleRotation: Double = Double.random(in: -3...3)
     @ObservedObject private var scoreManager = ScoreManager.shared
     
@@ -21,15 +20,15 @@ public struct OnboardingFlow: View {
         VStack {
             Spacer()
             
-            // Title Graphic treated like aggressive notebook graffiti
+            // Title Graphic
             Text(LocalizationService.t("INK & IRONY", lang: scoreManager.uiLanguage))
-                .font(.custom("Caveat-Bold", size: 32)) 
+                .font(.custom("Caveat-Bold", size: 32))
                 .sketchbookInkText(isError: true)
                 .padding(.bottom, ThemeManager.Layout.spacingLG)
                 .rotationEffect(.degrees(titleRotation))
             
-            // Subtitle / Intro
-            Text(LocalizationService.t(currentPage == 0 ? "Welcome to the\nSavage Sketchbook." : "The Teacher is waiting...\nDon't fail.", lang: scoreManager.uiLanguage))
+            // Single onboarding message — "The Teacher is waiting..."
+            Text(LocalizationService.t("The Teacher is waiting...\nDon't fail.", lang: scoreManager.uiLanguage))
                 .font(ThemeManager.Typography.h2(for: .light))
                 .sketchbookInkText()
                 .multilineTextAlignment(.center)
@@ -37,23 +36,21 @@ public struct OnboardingFlow: View {
             
             Spacer()
             
-            // Action Button
+            // Single ENTER button
             Button(action: {
                 HapticService.shared.playPenStrike()
                 AudioService.shared.play(.penScratch)
                 
+                UserDefaults.standard.set(true, forKey: "hasSeenOnboarding")
+                
                 withAnimation(.easeInOut(duration: 0.4)) {
-                    if currentPage == 0 {
-                        currentPage = 1
-                    } else {
-                        onboardingComplete = true
-                    }
+                    onboardingComplete = true
                 }
             }) {
-                Text(LocalizationService.t(currentPage == 0 ? "NEXT" : "ENTER", lang: scoreManager.uiLanguage))
+                Text(LocalizationService.t("ENTER", lang: scoreManager.uiLanguage))
                     .frame(width: 120)
             }
-            .doodleButtonStyle() // Inherits our custom drawing component styles
+            .doodleButtonStyle()
             .padding(.bottom, ThemeManager.Layout.spacingMajor)
         }
         .sketchbookBackground()

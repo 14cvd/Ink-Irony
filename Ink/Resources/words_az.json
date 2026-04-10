@@ -1,264 +1,76 @@
 {
-  "difficulties": {
-    "Easy": [
-      {
-        "name": "Heyvanlar",
-        "words": [
-          "PIŞIK",
-          "IT",
-          "QUŞ",
-          "BALIQ",
-          "AYI",
-          "ASLAN",
-          "PƏLƏNG",
-          "QURD",
-          "QURBAĞA",
-          "ÖRDƏK",
-          "MARAL",
-          "İNEK",
-          "DONUZ",
-          "KEÇİ",
-          "QOYUN",
-          "AT",
-          "SIÇAN",
-          "DOVŞAN",
-          "İLAN",
-          "BALİNA"
-        ]
-      },
-      {
-        "name": "Rənglər",
-        "words": [
-          "QIRMIZI",
-          "MAVİ",
-          "YAŞIL",
-          "SARI",
-          "NARINCI",
-          "BƏNÖVŞƏYİ",
-          "QARA",
-          "AĞ",
-          "QƏHVƏYİ",
-          "ÇƏHRAYI",
-          "BOZ",
-          "GÜMÜŞÜ",
-          "QIZILI",
-          "BEJ",
-          "LACİVƏRD",
-          "TURKUAZ"
-        ]
-      },
-      {
-        "name": "Meyvələr",
-        "words": [
-          "ALMA",
-          "ARMUD",
-          "ÇİYƏLƏK",
-          "ÜZÜM",
-          "LİMON",
-          "BANAN",
-          "ƏRİK",
-          "ŞAFTALI",
-          "ALÇA",
-          "ALBALI",
-          "GİLAS",
-          "YEMİŞ",
-          "QARPIZ",
-          "ƏNCİR",
-          "TUT",
-          "NAR"
-        ]
-      },
-      {
-        "name": "Əsas",
-        "words": [
-          "GÜNƏŞ",
-          "AY",
-          "SU",
-          "OD",
-          "EV",
-          "AĞAC",
-          "MAŞIN",
-          "KİTAB",
-          "QAPI",
-          "PƏNCƏRƏ",
-          "YEMƏK",
-          "MASA"
-        ]
-      }
-    ],
-    "Medium": [
-      {
-        "name": "Məktəb",
-        "words": [
-          "MÜƏLLİM",
-          "QƏLƏM",
-          "DƏFTƏR",
-          "TAPSIRIQ",
-          "POZAN",
-          "MÜDİR",
-          "KİTABXANA",
-          "KAMPUS",
-          "AKADEMİK",
-          "DƏRS",
-          "MÖVZU",
-          "TARİX",
-          "ELM",
-          "OFİS",
-          "SİNİF",
-          "KANTİN",
-          "İMTAHAN"
-        ]
-      },
-      {
-        "name": "Tema",
-        "words": [
-          "CƏLLAD",
-          "DƏFTƏR",
-          "İNTİQAM",
-          "ÇƏKİLİŞ",
-          "DARXAÇI",
-          "CƏZA",
-          "EDAM",
-          "SAĞ-SALAMAT",
-          "XƏYANƏT",
-          "YARĞI",
-          "TƏNHALIQ",
-          "KƏDƏR",
-          "ZƏFƏR",
-          "MƏĞLUBİYYƏT",
-          "FACİƏ"
-        ]
-      },
-      {
-        "name": "Təbiət",
-        "words": [
-          "DAĞ",
-          "GÖY_GURULTUSU",
-          "VULKAN",
-          "BUZLAQ",
-          "KANYON",
-          "SƏHRA",
-          "MEŞƏ",
-          "ADA",
-          "VADİ",
-          "ÇAY",
-          "OKEAN",
-          "CƏNGƏLLİK",
-          "ÇÖL",
-          "MAĞARA",
-          "ÜFÜQ"
-        ]
-      },
-      {
-        "name": "Əsas",
-        "words": [
-          "GÜNƏŞ",
-          "AY",
-          "SU",
-          "OD",
-          "EV",
-          "AĞAC",
-          "MAŞIN",
-          "KİTAB",
-          "QAPI",
-          "PƏNCƏRƏ",
-          "YEMƏK",
-          "MASA"
-        ]
-      }
-    ],
-    "Hard": [
-      {
-        "name": "Elm",
-        "words": [
-          "ASTRONOMİYA",
-          "FİZİKA",
-          "BİOLOGİYA",
-          "KİMYA",
-          "MİKROSKOP",
-          "IMPULS",
-          "RADİASİYA",
-          "ZƏRRƏCİK",
-          "GENETİKA",
-          "TƏKAMÜL",
-          "KVANT",
-          "SİNERGİYA",
-          "KATALİZATOR",
-          "CAZİBƏ",
-          "TUTULMA"
-        ]
-      },
-      {
-        "name": "Tarix",
-        "words": [
-          "FİROUN",
-          "QLADİATOR",
-          "İNQİLAB",
-          "İMPERİYA",
-          "MONARXİYA",
-          "SİVİLİZASİYA",
-          "GİLYOTİN",
-          "RENESSANS",
-          "ORTA_ƏSRLƏR",
-          "ANTİK",
-          "SÜLALƏ",
-          "MÜSTƏMLƏKƏ",
-          "SƏLİBÇİ",
-          "KRALLIQ"
-        ]
-      },
-      {
-        "name": "Texnologiya",
-        "words": [
-          "ALQORİTM",
-          "MƏLUMAT_BAZASI",
-          "PROSESSOR",
-          "ŞƏBƏKƏ",
-          "PROQRAM",
-          "AVADANLIQ",
-          "İNTERNET",
-          "TƏHLÜKƏSİZLİK",
-          "ŞİFRƏLƏMƏ",
-          "PROTOKOL",
-          "FAYERVALL",
-          "TERMİNAL",
-          "KONSOL"
-        ]
-      }
-    ],
-    "Nightmare": [
-      {
-        "name": "Söz Ehtiyatı",
-        "words": [
-          "MÜTƏRƏQQİ",
-          "MÜŞKÜLAT",
-          "MÜSİBƏT",
-          "MÜTƏAL",
-          "MÜKƏRRƏM",
-          "MÜKƏSSƏF",
-          "MÜKƏMMƏL",
-          "MÜTƏBASSİR",
-          "MÜTƏBƏSSİM",
-          "MÜTƏVAZİ",
-          "MÜZƏVVƏR"
-        ]
-      },
-      {
-        "name": "Tibbi",
-        "words": [
-          "ERİTROSİT",
-          "FLEBOTOMİYA",
-          "NEYROPATİYA",
-          "ARİTMİYA",
-          "OSTEOPOROZ",
-          "KARDİOMİOPATİYA",
-          "EPİDEMİOLOGİYA",
-          "METABOLİZM",
-          "HEMOQLOBİN",
-          "ANESTEZİYA",
-          "STETOSKOP"
-        ]
-      }
-    ]
-  }
+  "words": [
+    {"word": "YABANCI", "category": "movies", "hint": "Kosmosda qorxunc məxluq haqqında məşhur film.", "definition": "Ridley Scott tərəfindən çəkilmiş, kosmosda dəhşətli ekstraterrestr məxluq haqqında 1979-cu il elmi fantastika filmi."},
+    {"word": "TİTANİK", "category": "movies", "hint": "Batan gəmi haqqında film.", "definition": "James Cameron tərəfindən çəkilmiş, RMS Titanik-in batmasını əks etdirən 1997-ci il epik romantik filmi."},
+    {"word": "DONMUŞ", "category": "movies", "hint": "Buz kraliçəsi haqqında animasiya filmi.", "definition": "İki krəl bacı və sehrli qış lənəti haqqında 2013-cü il Disney animasiya filmi."},
+    {"word": "JOKER", "category": "movies", "hint": "Gotham şəhərindəki pis adamın mənşəyi.", "definition": "Batman-ın düşməni Joker-in mənşəyini təsvir edən 2019-cu il psixoloji triller filmi."},
+    {"word": "GLADİATOR", "category": "movies", "hint": "Roma dövrü döyüşçüsü azadlıq uğrunda mübarizə aparır.", "definition": "Kölə edilmiş bir Roma generalının gladiator arenasında qisas axtarmasını anladan 2000-ci il filmi."},
+    {"word": "PARAZİT", "category": "movies", "hint": "Sosial sinif uçurumunu anladan Cənubi Koreya filmi.", "definition": "Bong Joon-ho tərəfindən çəkilmiş, iki ailə arasındakı sinif münaqişəsini əks etdirən 2019-cu il filmi."},
+    {"word": "MATRIS", "category": "movies", "hint": "Reallığın simulyasiya olduğu elmi fantastika filmi.", "definition": "Bir kompüter proqramçısının gerçəkliyin simulyasiya edilmiş dünya olduğunu kəşf etdiyi 1999-cu il filmi."},
+    {"word": "VARİS", "category": "movies", "hint": "Varis olmaq üçün güç mübarizəsi.", "definition": "Ailə içindəki hakimiyyət mübarizəsini anladan dramatik film."},
+    {"word": "DALĞA", "category": "movies", "hint": "Dəniz fəlakəti haqqında dramatik film.", "definition": "Dənizdə hadis olan gözlənilməz fəlakətlər haqqında heyəcan verici drama."},
+    {"word": "KÖLGƏ", "category": "movies", "hint": "Qaranlıq sirləri olan personaj haqqında film.", "definition": "Qaranlıq keçmişi olan bir personajın məxfi həyatını açıqlayan gərgin drama."},
+    {"word": "TƏKAMÜl", "category": "science", "hint": "Növlərin zamanla dəyişmə prosesi.", "definition": "Bioloji populyasiyaların ardıcıl nəsillər boyunca dəyişdiyi proses."},
+    {"word": "YERÇƏKİM", "category": "science", "hint": "Cisimləri Yerə doğru çəkən qüvvə.", "definition": "Kütləli cisimləri bir-birinə cəzb edən əsas təbiət qüvvəsi."},
+    {"word": "ATOM", "category": "science", "hint": "Kimyəvi elementin ən kiçik vahidi.", "definition": "Elektronlarla əhatə olunmuş nüvədən ibarət maddənin əsas quruluş vahidi."},
+    {"word": "PLAZMA", "category": "science", "hint": "Maddənin dördüncü halı.", "definition": "Ulduzlarda tez-tez rast gəlinən, müsbət ionlar və sərbəst elektronlardan ibarət ionlaşmış qaz."},
+    {"word": "FOTON", "category": "science", "hint": "İşıq zərrəciyi.", "definition": "Kütləsiz əsas zərrəcik, elektromaqnit şüalanmasının, xüsusilə işığın kvantı."},
+    {"word": "GENOM", "category": "science", "hint": "Orqanizmin tam genetik materialı.", "definition": "Bütün genlər daxil olmaqla, bir orqanizmin tam DNT yığımı."},
+    {"word": "NÜVƏ", "category": "science", "hint": "Atomun və ya hüceyrənin mərkəzi.", "definition": "Protonları və neytronları ehtiva edən atomun sıx mərkəz bölgəsi."},
+    {"word": "KATALİZATOR", "category": "science", "hint": "Kimyəvi reaksiyaları sürətləndirən maddə.", "definition": "Özü daimi dəyişmədən kimyəvi reaksiya sürətini artıran maddə."},
+    {"word": "MOLEKUL", "category": "science", "hint": "İki və ya daha çox birləşmiş atom.", "definition": "Bir birləşmənin ən kiçik vahidini təşkil edən kimyəvi bağlarla bir-birinə bağlanmış atom qrupu."},
+    {"word": "ENTROPİ", "category": "science", "hint": "Sistemdəki nizamsızlığın ölçüsü.", "definition": "Sistemin istilik enerjisinin mexaniki işə çevrilə bilməzliyini əks etdirən termodinamik kəmiyyət."},
+    {"word": "EKOSİSTEM", "category": "science", "hint": "Mühitdəki bütün canlılar və onların qarşılıqlı əlaqəsi.", "definition": "Bir-biri ilə qarşılıqlı əlaqədə olan canlı orqanizmlərin və fiziki mühitin bioloji icması."},
+    {"word": "YAPONIYA", "category": "geography", "hint": "Şərqi Asiyada ada dövləti.", "definition": "Özünəməxsus mədəniyyəti, texnologiyası və albalı çiçəkləri ilə tanınan Şərqi Asiyadakı ada ölkəsi."},
+    {"word": "AMAZON", "category": "geography", "hint": "Dünyanın ən böyük tropik yağış meşəsi.", "definition": "Cənubi Amerikadakı Amazon hövzəsinin böyük hissəsini əhatə edən dünyanın ən böyük tropik yağış meşəsi."},
+    {"word": "SAXARA", "category": "geography", "hint": "Dünyanın ən böyük isti səhrası.", "definition": "Şimali Afrikanın böyük hissəsini əhatə edən dünyanın ən böyük isti səhrası."},
+    {"word": "EVEREST", "category": "geography", "hint": "Dünyanın ən hündür dağı.", "definition": "Nepal və Tibet sərhədindəki Himalayalarda yerləşən Yerin ən hündür dağı."},
+    {"word": "NİL", "category": "geography", "hint": "Afrikanın ən uzun çayı.", "definition": "Şimal-şərqi Afrikadan Aralıq dənizinə qədər şimala doğru axan Afrikanın ən uzun çayı."},
+    {"word": "VULKAN", "category": "geography", "hint": "Lava püskürən dağ.", "definition": "Püskürmələr zamanı lavanın, külün və qazların atıldığı Yerin qabığındakı açıqlıq."},
+    {"word": "KANYON", "category": "geography", "hint": "Çay tərəfindən oyulmuş dərin vadi.", "definition": "Milyonlarla il boyunca su tərəfindən oyulmuş, adətən içindən çay axan dərin yarıq."},
+    {"word": "FYORD", "category": "geography", "hint": "İskandinav ölkələrindəki uzun dar körfəz.", "definition": "İskandinaviyada buzlaq eroziyası nəticəsində meydana gələn, hündür qayalar arasındakı uzun, dar, dərin dəniz kölgəsi."},
+    {"word": "TUNDRA", "category": "geography", "hint": "Geniş ağacsız Arktik torpaq.", "definition": "Torpağın altının daim donmuş olduğu geniş, düz və ağacsız Arktik bölgə."},
+    {"word": "PİZZA", "category": "food", "hint": "Tomat sousu və pendirli İtalyan yemeyi.", "definition": "Tomat sousu, pendir və müxtəlif əlavələrlə örtülmüş dairəvi xəmir əsasında hazırlanan populyar İtalyan yemeyi."},
+    {"word": "SUŞİ", "category": "food", "hint": "Düyü və dəniz məhsullarından hazırlanan Yapon yemeyi.", "definition": "Xüsusi hazırlanan sirkəli düyünün dəniz məhsulları, tərəvəz və ya yumurta ilə birləşdirildiyi Yapon yemeyi."},
+    {"word": "MAKARON", "category": "food", "hint": "Xəmirdən hazırlanan İtalyan əsas məhsulu.", "definition": "Müxtəlif formalarda hazırlanan, buğda unu ilə yumurta və ya suyun qarışdırıldığı xəmirdən hazırlanan İtalyan yemeyi."},
+    {"word": "KƏRI", "category": "food", "hint": "Cənubi Asiyadan ədviyyatlı yemek.", "definition": "Cənubi Asiya mətbəxindən gələn, ədviyyat sousunda bişirilmiş ət, tərəvəz və ya balıq yemeyi."},
+    {"word": "PENDİR", "category": "food", "hint": "Süd laxtalanmasından hazırlanan süd məhsulu.", "definition": "Yüzlərlə müxtəlif çeşidi olan, sütün pıxtalaşdırılması yolu ilə hazırlanan qida."},
+    {"word": "BAL", "category": "food", "hint": "Arıların hazırladığı şirin maddə.", "definition": "Arıların çiçəklərin nektarından hazırladığı şirin, yapışqan qida maddəsi."},
+    {"word": "SARMSAQ", "category": "food", "hint": "Yemeklərdə istifadə edilən kəskin ətirli bitki.", "definition": "Soğanla qohum olan, yemek bişirməkdə geniş istifadə edilən güclü ətirli soğanaqlı bitki."},
+    {"word": "AVOKADO", "category": "food", "hint": "Salatlarda populyar qaymaqlı yaşıl meyvə.", "definition": "Sağlam yağlar cəhətindən zəngin, qaymaqlı açıq yaşıl ətli, kobud tünd yaşıl qabıqlı tropik meyvə."},
+    {"word": "BAKLAVA", "category": "food", "hint": "Qoz-fındıqlı Orta Şərq şirniyyatı.", "definition": "Doğranmış qoz-fındıqla doldurulmuş və bal və ya şərbətlə şirinləndirilmiş yufka qatlarından hazırlanan şirniyyat."},
+    {"word": "KRASAN", "category": "food", "hint": "Aypara şəklindəki Fransız pastası.", "definition": "Qatmanlı maya xəmirindən hazırlanan yağlı, lopa-lopa Fransız pastası."},
+    {"word": "HAMLET", "category": "literature", "hint": "Danimarkalı şahzadə haqqında Şekspir faciəsi.", "definition": "Şahzadə Hamletin atasının qatilindən qisas almasını əks etdirən Uilyam Şekspir faciəsi."},
+    {"word": "ODİSSEYA", "category": "literature", "hint": "Eve uzun yol gedən Yunan destanı.", "definition": "Odisseyusun Troya Müharibəsindən sonra evə qayıdış səyahətini anladan Homera aid edilən qədim Yunan eposu."},
+    {"word": "DRAKULA", "category": "literature", "hint": "Bram Stokerin məşhur vampir kontu.", "definition": "Bram Stokerin 1897-ci il Qotik dəhşət romanındakı vampir kontu."},
+    {"word": "SONET", "category": "literature", "hint": "Müəyyən qafiyə sxemi ilə 14 misralı şeir.", "definition": "Adətən tək bir mövzunu ifadə edən, müəyyən qafiyə sxemi ilə yazılmış 14 misralı şeir."},
+    {"word": "ROMAN", "category": "literature", "hint": "Uzun kurmaca anlatının ən çox yayılmış forması.", "definition": "Personajları və süjeyi təsvir edən, əhəmiyyətli uzunluq və mürəkkəbliyə malik orijinal nəsr anlatısı."},
+    {"word": "MASAL", "category": "literature", "hint": "Əxlaq dərsi verən qısa hekayə.", "definition": "Adətən heyvanları personaj kimi istifadə edən, əxlaq dərsi verən qısa hekayə."},
+    {"word": "METAFoR", "category": "literature", "hint": "Örtülü müqayisə aparan ifadə sanatı.", "definition": "Bir söz və ya ifadənin birbaşa tətbiq olunmadığı bir kontekstdə istifadə edildiyi ədəbi sənət."},
+    {"word": "DİSTOPİYA", "category": "literature", "hint": "Hər şeyin pis olduğu xəyali cəmiyyət.", "definition": "Spekülyativ bədii ədəbiyyatda tez-tez işlənilən, insanlıq üçün arzuolunmaz şərtlər yaranan xəyali cəmiyyət."},
+    {"word": "ALEQORİYA", "category": "literature", "hint": "Gizli simvolik mənası olan hekayə.", "definition": "Personajlar və hadisələrin real həyatın müəyyən aspektlərini simvollaşdırdığı narrativ."},
+    {"word": "FUTBOL", "category": "sports", "hint": "Dünyanın ən populyar idman növü yuvarlaq topla.", "definition": "İki komandanın rəqibin qapısına top vurmağa çalışdığı, yuvarlaq topla oynanan komanda idmanı."},
+    {"word": "TENİS", "category": "sports", "hint": "Torlu mərkəzdə raket idmanı.", "definition": "İki və ya dörd oyunçunun bir tor üzərindən raketlə vurduğu idman."},
+    {"word": "BOKS", "category": "sports", "hint": "Yumruqla aparılan döyüş idmanı.", "definition": "İki rəqibin əlcəkli yumruqlarla kvadrat rinqdə döyüşdüyü döyüş idmanı."},
+    {"word": "SERFİNQ", "category": "sports", "hint": "Okean dalğaları üzərindəki taxta ilə sürüşmə.", "definition": "Sahilə doğru gələn dalğaların üstündə sörf taxtası ilə sürüşmə idmanı."},
+    {"word": "OXATMA", "category": "sports", "hint": "Oxla hədəfə atış idmanı.", "definition": "Yay ilə bir hədəfə ox atmaq idmanı və ya təcrübəsi."},
+    {"word": "QAÇIŞ", "category": "sports", "hint": "Atletizmin əsas disiplini.", "definition": "Müəyyən bir məsafəni ötmək üçün sürətlə qaçış yarışı."},
+    {"word": "TRATLОН", "category": "sports", "hint": "Üzgüçülük, velosiped və qaçışı əhatə edən yarış.", "definition": "Adətən üzgüçülük, velosiped sürməsi və qaçışdan ibarət üç mərhələli atletik yarış."},
+    {"word": "MARATON", "category": "sports", "hint": "42 km yol qaçışı.", "definition": "Yunanıstanın Maraton şəhərinin adından götürülmüş, təxminən 42.195 km məsafədə keçirilən uzun məsafə qaçışı."},
+    {"word": "KRİKET", "category": "sports", "hint": "İngiltərə və Hindistanda populyar bat-top oyunu.", "definition": "On bir nəfərlik iki komanda arasında oynanan bat və topla aparılan oyun."},
+    {"word": "VOLEYBOL", "category": "sports", "hint": "Komandalar hündür tor üzərindən topa vurur.", "definition": "İki komandanın şişirilmiş topu tordan keçirib rəqib sahəyə düşürməyə çalışdığı idman."},
+    {"word": "KARATE", "category": "sports", "hint": "Zərbələrdən istifadə edən Yapon mübarizə sənəti.", "definition": "Əl, dirsək, diz və ayaqların zərbə vermək üçün istifadə edildiyi Yapon mübarizə sənəti."},
+    {"word": "SİMFONİYA", "category": "music", "hint": "Tam orkestr üçün uzun çox hissəli əsər.", "definition": "Adətən dörd hissədən ibarət, tam orkestr üçün mürəkkəb musiqi əsəri."},
+    {"word": "TEMPO", "category": "music", "hint": "Musiqi parçasının sürəti.", "definition": "Musiqi parçasının ifa olunduğu sürət; allegro kimi terminlərlə göstərilir."},
+    {"word": "AKKORD", "category": "music", "hint": "Eyni anda çalınan bir neçə not.", "definition": "Harmoniyanın əsasını təşkil edən, birlikdə çalınan bir neçə not."},
+    {"word": "MELODİYA", "category": "music", "hint": "Musiqi parçasının əsas avazı.", "definition": "Bir kompozisiyanın əsas elementini təşkil edən, musiqili cəhətdən ürəkaçan not ardıcıllığı."},
+    {"word": "RITMİK", "category": "music", "hint": "Musiqidəki vurma nümunəsi.", "definition": "Musiqidə güclü, müntəzəm, təkrarlanan səs və ya hərəkət nümunəsi."},
+    {"word": "OPERA", "category": "music", "hint": "Tamamilə musiqiyə əsaslanan dramatik tamaşa.", "definition": "Musiqinin aparıcı rol oynadığı və hissələrin müğənnilər tərəfindən ifa edildiği teatr növü."},
+    {"word": "GİTARA", "category": "music", "hint": "Mizrabla çalınan simli alət.", "definition": "Barmaqlar və ya mizrabla çalınan altı simli musiqi aləti."},
+    {"word": "PİANİNO", "category": "music", "hint": "Çəkiclərlə vurulan böyük klavişli alət.", "definition": "Çəkiclərin vurduğu metal simlər ehtiva edən taxta gövdəyə oturdulmuş böyük klavişli musiqi aləti."},
+    {"word": "KAMAN", "category": "music", "hint": "Orkestrdə istifadə edilən yaylı alət.", "definition": "Dörd simi mükəmməl beşinci intervallarla kökləndirilen tiz perdeli yaylı simli musiqi aləti."},
+    {"word": "ORKESTr", "category": "music", "hint": "Birlikdə çalan böyük musiçilər qrupu.", "definition": "Simli, nəfəsli və zərb aləti bölmələrindən ibarət böyük musiçilər qrupu."},
+    {"word": "HARMONI", "category": "music", "hint": "Birlikdə xoş səs verən notlar.", "definition": "Eyni anda səsləndirildikdə xoş effekt yaradan bir neçə notun kombinasiyası."},
+    {"word": "BALADA", "category": "music", "hint": "Hekayə anladan yavaş kədərli mahnı.", "definition": "Adətən sevgini mövzu sechən, şeir formasında hekayə anladan yavaş, emosional musiqi parçası."}
+  ]
 }

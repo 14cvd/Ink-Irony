@@ -8,84 +8,181 @@
 import SwiftUI
 import Combine
 
+// MARK: - App Theme
+public enum AppTheme: String {
+    case dark = "dark"
+    case light = "light"
+}
+
 // MARK: - Theme Manager
 public class ThemeManager: ObservableObject {
     public static let shared = ThemeManager()
+    
+    @AppStorage("appTheme") public var appThemeRaw: String = AppTheme.dark.rawValue
+    
+    public var appTheme: AppTheme {
+        AppTheme(rawValue: appThemeRaw) ?? .dark
+    }
+    
+    public var preferredColorScheme: ColorScheme {
+        appTheme == .dark ? .dark : .light
+    }
+    
+    public func toggleTheme() {
+        withAnimation(.easeInOut(duration: 0.25)) {
+            appThemeRaw = appTheme == .dark ? AppTheme.light.rawValue : AppTheme.dark.rawValue
+        }
+        objectWillChange.send()
+    }
     
     private init() {}
     
     // MARK: - Colors
     public struct Colors {
-        // Light — Pure White Paper Concept
-        public static let bgPrimaryLight = Color(hex: "FFFFFF")
-        public static let bgSecondaryLight = Color(hex: "F8F9FA")
-        public static let bgTertiaryLight = Color(hex: "E9ECEF")
-        public static let inkPrimaryLight = Color(hex: "1A3A6B")
-        public static let inkSecondaryLight = Color(hex: "2A5298")
-        public static let errorInkLight = Color(hex: "C0131A")
-        public static let accentGoldLight = Color(hex: "C8A830")
-        public static let graphiteLight = Color(hex: "4A4A4C")
         
-        // Dark — Charcoal Sketch
-        public static let bgPrimaryDark = Color(hex: "1C1C1E")
-        public static let bgSecondaryDark = Color(hex: "2C2C2E")
-        public static let bgTertiaryDark = Color(hex: "3A3A3C")
-        public static let inkPrimaryDark = Color(hex: "6B9FE8")
-        public static let inkSecondaryDark = Color(hex: "4A72B8")
-        public static let errorInkDark = Color(hex: "E8353B")
-        public static let accentGoldDark = Color(hex: "E8C840")
-        public static let textPrimaryDark = Color(hex: "E8DFC8")
+        // ─── DARK THEME (original charcoal sketch) ───
+        public static let bgPrimaryDark      = Color(hex: "1C1C1E")
+        public static let bgSecondaryDark    = Color(hex: "2C2C2E")
+        public static let bgTertiaryDark     = Color(hex: "3A3A3C")
+        public static let inkPrimaryDark     = Color(hex: "6B9FE8")
+        public static let inkSecondaryDark   = Color(hex: "4A72B8")
+        public static let errorInkDark       = Color(hex: "E8353B")
+        public static let accentGoldDark     = Color(hex: "E8C840")
+        public static let textPrimaryDark    = Color(hex: "E8DFC8")
+        public static let bodyTextDark       = Color(hex: "E8DFC8")
+        public static let victoryGreenDark   = Color(hex: "3db87a")
         
-        // Semantic accessors
+        // ─── LIGHT THEME (aged paper) ───
+        public static let bgPrimaryLight     = Color(hex: "F4EDE0")
+        public static let bgSecondaryLight   = Color(hex: "EDE2CF")
+        public static let borderPrimaryLight = Color(hex: "D4B896")
+        public static let accentRedLight     = Color(hex: "8B2020")
+        public static let bodyTextLight      = Color(hex: "6B4C2A")
+        public static let victoryGreenLight  = Color(hex: "2E7D4F")
+        
+        // ─── Semantic Accessors ───
+        
         public static func bgPrimary(for scheme: ColorScheme) -> Color {
             scheme == .dark ? bgPrimaryDark : bgPrimaryLight
         }
         
+        public static func bgSecondary(for scheme: ColorScheme) -> Color {
+            scheme == .dark ? bgSecondaryDark : bgSecondaryLight
+        }
+        
         public static func inkPrimary(for scheme: ColorScheme) -> Color {
-            scheme == .dark ? inkPrimaryDark : inkPrimaryLight
+            scheme == .dark ? inkPrimaryDark : bodyTextLight
+        }
+        
+        public static func inkSecondary(for scheme: ColorScheme) -> Color {
+            scheme == .dark ? inkSecondaryDark : accentRedLight.opacity(0.28)
         }
         
         public static func errorInk(for scheme: ColorScheme) -> Color {
-            scheme == .dark ? errorInkDark : errorInkLight
+            scheme == .dark ? errorInkDark : accentRedLight
         }
+        
+        public static func accentRed(for scheme: ColorScheme) -> Color {
+            scheme == .dark ? errorInkDark : accentRedLight
+        }
+        
+        public static func bodyText(for scheme: ColorScheme) -> Color {
+            scheme == .dark ? bodyTextDark : bodyTextLight
+        }
+        
+        public static func victoryGreen(for scheme: ColorScheme) -> Color {
+            scheme == .dark ? victoryGreenDark : victoryGreenLight
+        }
+        
+        public static func ruledLineColor(for scheme: ColorScheme) -> Color {
+            scheme == .dark
+                ? inkSecondaryDark.opacity(0.25)
+                : Color(red: 100/255, green: 65/255, blue: 20/255).opacity(0.12)
+        }
+        
+        public static func marginLineColor(for scheme: ColorScheme) -> Color {
+            scheme == .dark
+                ? errorInkDark.opacity(0.40)
+                : Color(red: 180/255, green: 60/255, blue: 60/255).opacity(0.28)
+        }
+        
+        public static func progressBarFill(for scheme: ColorScheme) -> Color {
+            scheme == .dark ? errorInkDark : accentRedLight
+        }
+        
+        public static func progressBarBg(for scheme: ColorScheme) -> Color {
+            scheme == .dark
+                ? Color.white.opacity(0.08)
+                : Color(hex: "6B4C2A").opacity(0.15)
+        }
+        
+        public static func statNumber(for scheme: ColorScheme) -> Color {
+            scheme == .dark ? errorInkDark : accentRedLight
+        }
+        
+        public static func hintBoxBorder(for scheme: ColorScheme) -> Color {
+            scheme == .dark
+                ? inkPrimaryDark.opacity(0.40)
+                : Color(hex: "6B4C2A").opacity(0.35)
+        }
+        
+        public static func hintBoxText(for scheme: ColorScheme) -> Color {
+            scheme == .dark ? textPrimaryDark : bodyTextLight
+        }
+        
+        public static func toggleOnColor(for scheme: ColorScheme) -> Color {
+            scheme == .dark ? errorInkDark : accentRedLight
+        }
+        
+        public static func divider(for scheme: ColorScheme) -> Color {
+            scheme == .dark
+                ? Color.white.opacity(0.12)
+                : Color(hex: "6B4C2A").opacity(0.18)
+        }
+        
+        public static func sectionLabel(for scheme: ColorScheme) -> Color {
+            scheme == .dark
+                ? inkPrimaryDark.opacity(0.55)
+                : Color(hex: "6B4C2A").opacity(0.45)
+        }
+        
+        public static func achievementEarnedBorder(for scheme: ColorScheme) -> Color {
+            accentRed(for: scheme)
+        }
+        
+        public static func achievementEarnedBg(for scheme: ColorScheme) -> Color {
+            scheme == .dark
+                ? errorInkDark.opacity(0.12)
+                : accentRedLight.opacity(0.08)
+        }
+        
+        public static func achievementLockedBorder(for scheme: ColorScheme) -> Color {
+            scheme == .dark
+                ? Color.white.opacity(0.15)
+                : Color(hex: "6B4C2A").opacity(0.25)
+        }
+        
+        // Legacy light/dark specific aliases kept for back-compat
+        public static let errorInkLight = Color(hex: "C0131A")
+        public static let inkSecondaryLight = Color(hex: "2A5298")
     }
     
     // MARK: - Typography
     public struct Typography {
-        // Caveat Bold 700
         public static func h1(for scheme: ColorScheme) -> Font {
-            customFont("Caveat-Bold", size: 40, weight: .bold, relativeTo: .largeTitle)
+            Font.custom("Caveat-Bold", size: 40, relativeTo: .largeTitle)
         }
         
-        // Caveat SemiBold 600
         public static func h2(for scheme: ColorScheme) -> Font {
-            customFont("Caveat-SemiBold", size: 28, weight: .semibold, relativeTo: .title)
+            Font.custom("Caveat-SemiBold", size: 28, relativeTo: .title)
         }
         
-        // Special Elite 400
         public static func body(for scheme: ColorScheme) -> Font {
-            customFont("SpecialElite-Regular", size: 16, weight: .regular, relativeTo: .body)
+            Font.custom("SpecialElite-Regular", size: 16, relativeTo: .body)
         }
         
-        // Courier Prime 400
         public static func micro(for scheme: ColorScheme) -> Font {
-            customFont("CourierPrime-Regular", size: 12, weight: .regular, relativeTo: .caption)
-        }
-        
-        // Generic helper for custom fonts with system fallbacks
-        private static func customFont(_ name: String, size: CGFloat, weight: Font.Weight, relativeTo style: Font.TextStyle) -> Font {
-            // Using system fallbacks if custom fonts aren't bundled yet
-            let fallbackName: String
-            if name.contains("Caveat") {
-                fallbackName = "Marker Felt"
-            } else if name.contains("Special") {
-                fallbackName = "Noteworthy"
-            } else {
-                fallbackName = "Courier"
-            }
-            
-            // Using Specific Font Names which already encode weight
-            return Font.custom(name, size: size, relativeTo: style)
+            Font.custom("CourierPrime-Regular", size: 12, relativeTo: .caption)
         }
     }
     
@@ -118,11 +215,11 @@ extension Color {
         Scanner(string: hex).scanHexInt64(&int)
         let a, r, g, b: UInt64
         switch hex.count {
-        case 3: // RGB (12-bit)
+        case 3:
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6: // RGB (24-bit)
+        case 6:
             (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8: // ARGB (32-bit)
+        case 8:
             (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
         default:
             (a, r, g, b) = (1, 1, 1, 0)
@@ -139,9 +236,7 @@ extension Color {
 
 // MARK: - Hand-Drawn Helpers
 public extension Shape {
-    /// Applies a "jittery" displacement to simulate hand-drawn strokes
     func handDrawnStroke(color: Color, lineWidth: CGFloat = 2.0, jitter: CGFloat = 1.0) -> some View {
-        // We simulate a doodle by combining layered dashed strokes with a slight offset
         self.stroke(color, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round, dash: [lineWidth * 8, lineWidth * 1.5]))
             .overlay(
                 self.stroke(color.opacity(0.6), lineWidth: lineWidth * 0.75)
@@ -156,7 +251,6 @@ public extension Shape {
 
 // MARK: - Global View Extensions
 public extension View {
-    /// Styles text with the appropriate ink color based on scheme and state.
     func sketchbookInkText(isError: Bool = false) -> some View {
         modifier(SketchbookInkTextModifier(isError: isError))
     }
@@ -167,7 +261,9 @@ public struct SketchbookInkTextModifier: ViewModifier {
     let isError: Bool
     
     public func body(content: Content) -> some View {
-        let color = isError ? ThemeManager.Colors.errorInk(for: colorScheme) : ThemeManager.Colors.inkPrimary(for: colorScheme)
+        let color = isError
+            ? ThemeManager.Colors.errorInk(for: colorScheme)
+            : ThemeManager.Colors.inkPrimary(for: colorScheme)
         return content.foregroundColor(color)
     }
 }
