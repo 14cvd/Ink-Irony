@@ -53,7 +53,7 @@ public final class GameSession {
 // MARK: - Achievement Manager
 public struct AchievementManager {
     
-    public struct Achievement {
+    public struct Achievement: Identifiable {
         public let id: String
         public let emoji: String
         public let nameEN: String
@@ -61,6 +61,11 @@ public struct AchievementManager {
         public let nameAZ: String
         public let nameES: String
         public let nameRU: String
+        public let descEN: String
+        public let descTR: String
+        public let descAZ: String
+        public let descES: String
+        public let descRU: String
         
         public func name(for lang: Language) -> String {
             switch lang {
@@ -71,21 +76,102 @@ public struct AchievementManager {
             case .russian: return nameRU
             }
         }
+        
+        public func description(for lang: Language) -> String {
+            switch lang {
+            case .english: return descEN
+            case .turkish: return descTR
+            case .azerbaijani: return descAZ
+            case .spanish: return descES
+            case .russian: return descRU
+            }
+        }
     }
     
     public static let all: [Achievement] = [
-        Achievement(id: "firstWin", emoji: "🏆", nameEN: "First Win", nameTR: "İlk Galibiyet", nameAZ: "İlk Qələbə", nameES: "Primera victoria", nameRU: "Первая победа"),
-        Achievement(id: "streak3", emoji: "🔥", nameEN: "3-Streak", nameTR: "3 Seri", nameAZ: "3 Seriya", nameES: "Racha de 3", nameRU: "Серия 3"),
-        Achievement(id: "speedRun", emoji: "⚡", nameEN: "Speed Run", nameTR: "Hız Koşusu", nameAZ: "Sürət qaçışı", nameES: "Carrera veloz", nameRU: "Спринт"),
-        Achievement(id: "nightmare", emoji: "💀", nameEN: "Nightmare", nameTR: "Kabus", nameAZ: "Kabus", nameES: "Pesadilla", nameRU: "Кошмар"),
-        Achievement(id: "polyglot", emoji: "🌍", nameEN: "Polyglot", nameTR: "Çok Dilli", nameAZ: "Çoxdilli", nameES: "Políglota", nameRU: "Полиглот"),
-        Achievement(id: "scholar", emoji: "📖", nameEN: "Scholar", nameTR: "Akademisyen", nameAZ: "Alim", nameES: "Erudito", nameRU: "Учёный"),
-        Achievement(id: "noHints", emoji: "🎯", nameEN: "No Hints", nameTR: "İpucusuz", nameAZ: "İpucusuz", nameES: "Sin pistas", nameRU: "Без подсказок"),
-        Achievement(id: "streak30", emoji: "🗓️", nameEN: "30-Day", nameTR: "30 Gün", nameAZ: "30 Gün", nameES: "30 días", nameRU: "30 дней"),
-        Achievement(id: "topScore", emoji: "👑", nameEN: "Top Score", nameTR: "En Yüksek", nameAZ: "Ən Yüksək", nameES: "Puntuación máx", nameRU: "Топ балл"),
-        Achievement(id: "silent", emoji: "🤐", nameEN: "Silent", nameTR: "Sessiz", nameAZ: "Səssiz", nameES: "Silencioso", nameRU: "Молчун"),
-        Achievement(id: "bookworm", emoji: "📚", nameEN: "Bookworm", nameTR: "Kitap Kurdu", nameAZ: "Kitabxanəçi", nameES: "Ratón de biblioteca", nameRU: "Книжный червь"),
-        Achievement(id: "nightOwl", emoji: "🌙", nameEN: "Night Owl", nameTR: "Gece Kuşu", nameAZ: "Gecə Quşu", nameES: "Noctámbulo", nameRU: "Ночная сова")
+        Achievement(id: "firstWin", emoji: "🏆", nameEN: "First Win", nameTR: "İlk Galibiyet", nameAZ: "İlk Qələbə", nameES: "Primera victoria", nameRU: "Первая победа",
+                    descEN: "Win your first game.",
+                    descTR: "İlk oyununuzu kazanın.",
+                    descAZ: "İlk oyununuzu qazanın.",
+                    descES: "Gana tu primer juego.",
+                    descRU: "Выиграйте первую игру."),
+        
+        Achievement(id: "streak3", emoji: "🔥", nameEN: "3-Streak", nameTR: "3 Seri", nameAZ: "3 Seriya", nameES: "Racha de 3", nameRU: "Серия 3",
+                    descEN: "Win 3 games in a row.",
+                    descTR: "Üst üste 3 oyun kazanın.",
+                    descAZ: "Ardıcıl 3 oyun qazanın.",
+                    descES: "Gana 3 juegos seguidos.",
+                    descRU: "Выиграйте 3 игры подряд."),
+        
+        Achievement(id: "speedRun", emoji: "⚡", nameEN: "Speed Run", nameTR: "Hız Koşusu", nameAZ: "Sürət qaçışı", nameES: "Carrera veloz", nameRU: "Спринт",
+                    descEN: "Win a game in under 30 seconds.",
+                    descTR: "Bir oyunu 30 saniyenin altında kazanın.",
+                    descAZ: "Bir oyunu 30 saniyədən az müddətdə qazanın.",
+                    descES: "Gana en menos de 30 segundos.",
+                    descRU: "Выиграйте игру менее чем за 30 секунд."),
+        
+        Achievement(id: "nightmare", emoji: "💀", nameEN: "Nightmare", nameTR: "Kabus", nameAZ: "Kabus", nameES: "Pesadilla", nameRU: "Кошмар",
+                    descEN: "Win a game on Nightmare difficulty.",
+                    descTR: "Kabus zorluğunda bir oyun kazanın.",
+                    descAZ: "Kabus çətinlik dərəcəsində qazanın.",
+                    descES: "Gana en la dificultad Pesadilla.",
+                    descRU: "Выиграйте на уровне сложности Кошмар."),
+        
+        Achievement(id: "polyglot", emoji: "🌍", nameEN: "Polyglot", nameTR: "Çok Dilli", nameAZ: "Çoxdilli", nameES: "Políglota", nameRU: "Полиглот",
+                    descEN: "Play a game in all 5 languages.",
+                    descTR: "5 dilin hepsinde oyun oynayın.",
+                    descAZ: "Bütün 5 dildə oyun oynayın.",
+                    descES: "Juega en los 5 idiomas.",
+                    descRU: "Сыграйте во всех 5 языках."),
+        
+        Achievement(id: "scholar", emoji: "📖", nameEN: "Scholar", nameTR: "Akademisyen", nameAZ: "Alim", nameES: "Erudito", nameRU: "Учёный",
+                    descEN: "Win a game in every category.",
+                    descTR: "Her kategoride bir oyun kazanın.",
+                    descAZ: "Bütün mövzularda qazanın.",
+                    descES: "Gana en todas las categorías.",
+                    descRU: "Выиграйте в каждой категории."),
+        
+        Achievement(id: "noHints", emoji: "🎯", nameEN: "No Hints", nameTR: "İpucusuz", nameAZ: "İpucusuz", nameES: "Sin pistas", nameRU: "Без подсказок",
+                    descEN: "Win a game without using any hints.",
+                    descTR: "Hiç ipucu kullanmadan kazanın.",
+                    descAZ: "Heç bir ipucu istifadə etmədən qazanın.",
+                    descES: "Gana sin usar pistas.",
+                    descRU: "Выиграйте без подсказок."),
+        
+        Achievement(id: "streak30", emoji: "🗓️", nameEN: "30-Day", nameTR: "30 Gün", nameAZ: "30 Gün", nameES: "30 días", nameRU: "30 дней",
+                    descEN: "Reach a 30-day streak.",
+                    descTR: "30 günlük seriye ulaşın.",
+                    descAZ: "30 günlük seriya əldə edin.",
+                    descES: "Alcanza una racha de 30 días.",
+                    descRU: "Достигните 30-дневной серии."),
+        
+        Achievement(id: "topScore", emoji: "👑", nameEN: "Top Score", nameTR: "En Yüksek", nameAZ: "Ən Yüksək", nameES: "Puntuación máx", nameRU: "Топ балл",
+                    descEN: "Score over 140 points in a single game.",
+                    descTR: "Tek bir oyunda 140'tan fazla puan alın.",
+                    descAZ: "Bir oyunda 140-dan çox xal yığın.",
+                    descES: "Consigue más de 140 puntos en un juego.",
+                    descRU: "Наберите больше 140 очков за одну игру."),
+        
+        Achievement(id: "silent", emoji: "🤐", nameEN: "Silent", nameTR: "Sessiz", nameAZ: "Səssiz", nameES: "Silencioso", nameRU: "Молчун",
+                    descEN: "Win a game with sound and haptics partially disabled or without wrong guesses.",
+                    descTR: "Hatasız veya sesi kapatarak kazanın.",
+                    descAZ: "Səssiz və ya səhvsiz olaraq oyunu qazanın.",
+                    descES: "Gana un juego en silencio o sin errores.",
+                    descRU: "Выиграйте тихо или без ошибок."),
+        
+        Achievement(id: "bookworm", emoji: "📚", nameEN: "Bookworm", nameTR: "Kitap Kurdu", nameAZ: "Kitabxanəçi", nameES: "Ratón de biblioteca", nameRU: "Книжный червь",
+                    descEN: "Win 5 games in Literature category.",
+                    descTR: "Edebiyat kategorisinde 5 oyun kazanın.",
+                    descAZ: "Ədəbiyyat mövzusunda 5 oyun qazanın.",
+                    descES: "Gana 5 juegos de literatura.",
+                    descRU: "Выиграйте 5 игр в категории Литература."),
+        
+        Achievement(id: "nightOwl", emoji: "🌙", nameEN: "Night Owl", nameTR: "Gece Kuşu", nameAZ: "Gecə Quşu", nameES: "Noctámbulo", nameRU: "Ночная сова",
+                    descEN: "Win a game between 12 AM and 4 AM.",
+                    descTR: "Gece yarısı ve 4 AM arasında bir oyun kazanın.",
+                    descAZ: "Gecə saat 12 və səhər 4 arasında oyun qazanın.",
+                    descES: "Gana entre las 12 AM y las 4 AM.",
+                    descRU: "Выиграйте с 12 ночи до 4 утра.")
     ]
     
     private static let key = "achievements"

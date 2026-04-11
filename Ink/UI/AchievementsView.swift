@@ -11,6 +11,7 @@ public struct AchievementsView: View {
     @Environment(\.colorScheme) private var colorScheme
     @ObservedObject private var scoreManager = ScoreManager.shared
     @State private var earnedIds: Set<String> = []
+    @State private var selectedAchievement: AchievementManager.Achievement? = nil
     
     private var lang: Language { scoreManager.uiLanguage }
     private let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
@@ -52,7 +53,13 @@ public struct AchievementsView: View {
                 LazyVGrid(columns: columns, spacing: ThemeManager.Layout.spacingMD) {
                     ForEach(AchievementManager.all, id: \.id) { achievement in
                         let earned = earnedIds.contains(achievement.id)
-                        BadgeCell(achievement: achievement, earned: earned, language: lang, colorScheme: colorScheme)
+                        Button(action: {
+                            HapticService.shared.playPenStrike()
+                            selectedAchievement = achievement
+                        }) {
+                            BadgeCell(achievement: achievement, earned: earned, language: lang, colorScheme: colorScheme)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
                 }
                 .padding(.horizontal, ThemeManager.Layout.spacingLG)
@@ -61,6 +68,13 @@ public struct AchievementsView: View {
         }
         .onAppear {
             earnedIds = AchievementManager.earnedIds()
+        }
+        .alert(item: $selectedAchievement) { achievement in
+            Alert(
+                title: Text("\(achievement.emoji) \(achievement.name(for: lang))"),
+                message: Text(achievement.description(for: lang)),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 }
