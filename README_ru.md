@@ -55,7 +55,5 @@
 
 Создано: **Cavid Abbasaliyev**
 
-- **Email:** [your-email@example.com](mailto:your-email@example.com)
-- **LinkedIn:** [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
-- **Twitter / X:** [@YourHandle](https://twitter.com/YourHandle)
-- **Портфолио:** [your-website.com](https://your-website.com)
+- **Email:** [abbas3liyev@gmail.com](mailto:abbas3liyev@gmail.com)
+- **LinkedIn:** [Cavid Abbasaliyev](https://www.linkedin.com/in/abbas3liyev/)
