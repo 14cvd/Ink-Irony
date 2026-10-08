@@ -16,6 +16,7 @@ public enum SoundEffect: String, CaseIterable {
     case penScratch = "pen_scratch"
     case sfxCorrect = "sfx_correct"
     case sfxWrong = "sfx_wrong"
+    case stamp = "stamp"
 }
 
 // MARK: - Audio Service
@@ -44,8 +45,10 @@ public class AudioService: ObservableObject {
     private func preloadSounds() {
         // Prepare AVAudioPlayers for exact timing during gameplay
         for effect in SoundEffect.allCases {
-            // Note: In an actual App Bundle, these files must be added via Xcode target membership
-            if let url = Bundle.main.url(forResource: effect.rawValue, withExtension: "mp3") {
+            // v1 looked for .mp3 files that were never in the bundle, so the game was silent.
+            // v2 ships synthesised .wav files (tools/make_sounds.py); other formats still work.
+            let url = ["wav", "caf", "m4a", "mp3"].lazy.compactMap { Bundle.main.url(forResource: effect.rawValue, withExtension: $0) }.first
+            if let url {
                 do {
                     let player = try AVAudioPlayer(contentsOf: url)
                     player.prepareToPlay()
@@ -54,7 +57,7 @@ public class AudioService: ObservableObject {
                     print("Failed to load sound \(effect.rawValue): \(error.localizedDescription)")
                 }
             } else {
-                // Sound file not found, silently ignore to avoid simulator warning loops
+                assertionFailure("Missing sound file: \(effect.rawValue)")
             }
         }
     }

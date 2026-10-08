@@ -84,6 +84,8 @@ struct RubberStamp: View {
             .opacity(landed || reduceMotion ? 1 : 0)
             .onAppear {
                 withAnimation(.easeIn(duration: 0.18)) { landed = true }
+                AudioService.shared.play(.stamp)
+                HapticService.shared.playSuccessPulse()
             }
             .accessibilityAddTraits(.isHeader)
     }
