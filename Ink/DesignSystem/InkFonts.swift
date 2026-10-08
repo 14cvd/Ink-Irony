@@ -4,9 +4,10 @@
 //
 //  Three faces: Caveat (display: words, titles, buttons), Special Elite (the
 //  teacher's voice only) and Courier Prime (UI and numbers). They are
-//  registered from the bundle at launch, so dropping the .ttf files into
-//  Ink/Resources/Fonts is enough. Until then every style falls back to a
-//  system face with the same role, and Dynamic Type works in both cases.
+//  registered from the bundle at launch (Ink/Resources/Fonts, licences next
+//  to them). A face is used only for languages it fully covers; otherwise the
+//  style falls back to a system face with the same role. Dynamic Type works
+//  in both cases.
 //
 
 import CoreText
@@ -31,20 +32,39 @@ enum InkFonts {
     static func isAvailable(_ name: String) -> Bool {
         UIFont(name: name, size: 12) != nil
     }
+
+    private static var coverage: [String: Bool] = [:]
+
+    /// True when the face is bundled and has every letter of the language, upper and lower case.
+    /// Special Elite and Courier Prime have no Ə or Cyrillic, so az and ru use the role fallback
+    /// instead of mixing faces inside a word.
+    static func isAvailable(_ name: String, for language: Language) -> Bool {
+        let key = name + "." + language.code
+        if let known = coverage[key] { return known }
+        var covered = false
+        if let font = UIFont(name: name, size: 12) {
+            let letters = String(language.alphabet)
+            var units = Array((letters + letters.lowercased(with: language.locale)).utf16)
+            var glyphs = [CGGlyph](repeating: 0, count: units.count)
+            covered = CTFontGetGlyphsForCharacters(font as CTFont, &units, &glyphs, units.count)
+        }
+        coverage[key] = covered
+        return covered
+    }
 }
 
 extension Font {
     /// Handwritten display face: the word, titles, buttons.
     /// The rounded fallback is wider than Caveat, so it is drawn a little smaller.
     static func inkDisplay(_ size: CGFloat, relativeTo style: Font.TextStyle = .title) -> Font {
-        InkFonts.isAvailable(InkFonts.display)
+        InkFonts.isAvailable(InkFonts.display, for: L10n.language)
             ? .custom(InkFonts.display, size: size, relativeTo: style)
             : .system(size: scaled(size * 0.8, style), weight: .bold, design: .rounded)
     }
 
     /// Typewriter face for the teacher's lines and stamps.
     static func inkVoice(_ size: CGFloat = 15, relativeTo style: Font.TextStyle = .body) -> Font {
-        InkFonts.isAvailable(InkFonts.voice)
+        InkFonts.isAvailable(InkFonts.voice, for: L10n.language)
             ? .custom(InkFonts.voice, size: size, relativeTo: style)
             : .system(size: scaled(size, style), design: .serif).italic()
     }
@@ -52,7 +72,7 @@ extension Font {
     /// Monospaced UI face for labels and numbers.
     static func inkUI(_ size: CGFloat = 14, weight: Font.Weight = .regular, relativeTo style: Font.TextStyle = .callout) -> Font {
         let name = weight == .bold || weight == .semibold ? InkFonts.uiBold : InkFonts.ui
-        return InkFonts.isAvailable(name)
+        return InkFonts.isAvailable(name, for: L10n.language)
             ? .custom(name, size: size, relativeTo: style)
             : .system(size: scaled(size, style), weight: weight, design: .monospaced)
     }
