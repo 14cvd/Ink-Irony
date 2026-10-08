@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import InkData
 
 public struct LeaderboardView: View {
     @Environment(\.colorScheme) private var colorScheme
