@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import InkData
 
 // MARK: - Result Screen (Victory + Defeat)
 public struct ResultScreen: View {
