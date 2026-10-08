@@ -30,7 +30,7 @@ final class InkSmokeUITests: XCTestCase {
     // MARK: Helpers
 
     private func launch(onboarded: Bool = true, language: String = "EN") {
-        app.launchArguments = ["-hasSeenOnboarding", onboarded ? "YES" : "NO", "-uiLanguage", language]
+        app.launchArguments = ["-onboardedV2", onboarded ? "YES" : "NO", "-uiLanguage", language]
         app.launch()
     }
 
@@ -78,7 +78,14 @@ final class InkSmokeUITests: XCTestCase {
 
     func testS01_EnrollmentFormStartsTheFirstWord() {
         launch(onboarded: false)
-        XCTAssertTrue(element("onboarding.sign").waitForExistence(timeout: 5))
+        // Three info pages first, then the form.
+        XCTAssertTrue(element("intro.page.1").waitForExistence(timeout: 5), "Intro did not open on first launch")
+        screenshot("S01 intro 1")
+        tap("intro.next", until: "intro.page.2")
+        screenshot("S01 intro 2")
+        tap("intro.next", until: "intro.page.3")
+        screenshot("S01 intro 3")
+        tap("intro.next", until: "onboarding.sign")
         for id in ["onboarding.name", "onboarding.lang.EN", "onboarding.lang.AZ", "onboarding.tone.strict", "onboarding.tone.gentle"] {
             XCTAssertTrue(element(id).exists, "\(id) missing on the enrollment form")
         }
@@ -90,6 +97,11 @@ final class InkSmokeUITests: XCTestCase {
         for id in ["desk.daily", "desk.free", "desk.gpa", "desk.settings", "tab.desk", "tab.semesters", "tab.stickers", "tab.report"] {
             XCTAssertTrue(element(id).exists, "\(id) missing on the Desk")
         }
+    }
+
+    func testS01b_IntroCanBeSkipped() {
+        launch(onboarded: false)
+        tap("intro.skip", until: "onboarding.sign")
     }
 
     func testS02_SemesterWordToGradedExam() {

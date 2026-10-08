@@ -9,6 +9,23 @@
 
 import SwiftUI
 
+/// First launch of v2: the info pages, then the enrollment form.
+struct FirstLaunchView: View {
+    @State private var showForm = false
+
+    var body: some View {
+        if showForm {
+            OnboardingView()
+                .transition(.move(edge: .trailing).combined(with: .opacity))
+        } else {
+            IntroView {
+                withAnimation(.easeInOut(duration: 0.35)) { showForm = true }
+            }
+            .transition(.opacity)
+        }
+    }
+}
+
 struct OnboardingView: View {
     @Environment(AppState.self) private var app
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -176,7 +193,7 @@ struct OnboardingView: View {
     private func sign() {
         nameFocused = false
         username = username.trimmingCharacters(in: .whitespaces)
-        HapticService.shared.playSuccessPulse()
+        AudioService.shared.play(.penScratch)
         withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) { signed = true }
         // Let the signature and the stamp land, then straight to Kindergarten word 1.
         DispatchQueue.main.asyncAfter(deadline: .now() + (reduceMotion ? 0.4 : 1.4)) {

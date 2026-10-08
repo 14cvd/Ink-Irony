@@ -159,6 +159,7 @@ final class GameModel {
         } else {
             HapticService.shared.playErrorPulse()
             AudioService.shared.play(.pencilSnap)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { AudioService.shared.play(.paperTear) }
             say(.lost, mood: .annoyed)
         }
     }
