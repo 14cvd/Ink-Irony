@@ -62,7 +62,8 @@ final class AppState {
     enum Keys {
         static let tone = "teacherTone"
         static let theme = "appTheme"
-        static let onboarded = "hasSeenOnboarding"
+        /// v2 key: v1 players ("hasSeenOnboarding") also see the intro and the form once.
+        static let onboarded = "onboardedV2"
     }
 
     init() {

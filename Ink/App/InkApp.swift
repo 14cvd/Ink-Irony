@@ -38,7 +38,7 @@ struct RootView: View {
             if app.hasOnboarded {
                 MainTabsView()
             } else {
-                OnboardingView()
+                FirstLaunchView()
                     .transition(.opacity)
             }
         }
