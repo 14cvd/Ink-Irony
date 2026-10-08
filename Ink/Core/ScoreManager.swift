@@ -7,48 +7,9 @@
 
 import Foundation
 import SwiftData
+import InkData
 import SwiftUI
 import Combine
-
-// MARK: - SwiftData Model
-@Model
-public final class GameSession {
-    public var id: UUID
-    public var date: Date
-    public var word: String
-    public var language: String
-    public var difficulty: String
-    public var category: String
-    public var score: Int
-    public var isWin: Bool
-    public var timeTaken: Int
-    public var hintsUsed: Int
-    public var wrongGuesses: Int
-    
-    public init(
-        word: String,
-        language: String,
-        difficulty: String,
-        category: String = "random",
-        score: Int,
-        isWin: Bool,
-        timeTaken: Int = 0,
-        hintsUsed: Int = 0,
-        wrongGuesses: Int = 0
-    ) {
-        self.id = UUID()
-        self.date = Date()
-        self.word = word
-        self.language = language
-        self.difficulty = difficulty
-        self.category = category
-        self.score = score
-        self.isWin = isWin
-        self.timeTaken = timeTaken
-        self.hintsUsed = hintsUsed
-        self.wrongGuesses = wrongGuesses
-    }
-}
 
 // MARK: - Achievement Manager
 public struct AchievementManager {
@@ -427,35 +388,16 @@ public class ScoreManager: ObservableObject {
         }
     }
     
-    /// Tries to create the ModelContainer. If the schema has changed (e.g. new fields added),
-    /// the old SQLite store is deleted and a fresh container is created.
+    /// Opens the store through InkStore, which never deletes player data.
+    /// v1.2 deleted the store when it could not open it; an unreadable store is now moved aside.
     private static func makeContainer() -> ModelContainer {
-        do {
-            return try ModelContainer(for: GameSession.self)
-        } catch {
-            // Schema mismatch — wipe the stale store and start fresh.
-            // Game history is lost but the app will not crash.
-            let supportDir = FileManager.default.urls(
-                for: .applicationSupportDirectory,
-                in: .userDomainMask
-            ).first
-            
-            if let dir = supportDir {
-                let storeFiles = ["default.store", "default.store-shm", "default.store-wal"]
-                for file in storeFiles {
-                    try? FileManager.default.removeItem(at: dir.appendingPathComponent(file))
-                }
-            }
-            
-            do {
-                return try ModelContainer(for: GameSession.self)
-            } catch {
-                fatalError("SwiftData init failed even after store reset: \(error.localizedDescription)")
-            }
+        let (container, outcome) = InkStore.makeContainer()
+        if outcome != .opened {
+            print("InkStore: \(outcome)")
         }
+        return container
     }
 
-    
     public func recalculateStats() {
         let descriptor = FetchDescriptor<GameSession>(sortBy: [SortDescriptor(\.date, order: .reverse)])
         
