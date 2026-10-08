@@ -232,19 +232,21 @@ struct FlowRow: Layout {
         var x: CGFloat = 0, y: CGFloat = 0, rowHeight: CGFloat = 0, maxX: CGFloat = 0
         for view in subviews {
             let size = view.sizeThatFits(.unspecified)
-            if x + size.width > width, x > 0 { x = 0; y += rowHeight + spacing; rowHeight = 0 }
+            if x + size.width > width + 0.5, x > 0 { x = 0; y += rowHeight + spacing; rowHeight = 0 }
             x += size.width + spacing
             maxX = max(maxX, x - spacing)
             rowHeight = max(rowHeight, size.height)
         }
-        return CGSize(width: min(maxX, width), height: y + rowHeight)
+        // Report the offered width, not the widest row: if the row width is handed back and the
+        // parent rounds it down to the pixel grid, placement would wrap one more row than measured.
+        return CGSize(width: proposal.width ?? maxX, height: y + rowHeight)
     }
 
     func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
         var x = bounds.minX, y = bounds.minY, rowHeight: CGFloat = 0
         for view in subviews {
             let size = view.sizeThatFits(.unspecified)
-            if x + size.width > bounds.maxX, x > bounds.minX { x = bounds.minX; y += rowHeight + spacing; rowHeight = 0 }
+            if x + size.width > bounds.maxX + 0.5, x > bounds.minX { x = bounds.minX; y += rowHeight + spacing; rowHeight = 0 }
             view.place(at: CGPoint(x: x, y: y), proposal: ProposedViewSize(size))
             x += size.width + spacing
             rowHeight = max(rowHeight, size.height)
