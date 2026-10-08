@@ -26,7 +26,8 @@ public struct GameEngine: Sendable {
     }
 
     public enum PowerUpError: Error, Equatable, Sendable {
-        case notAllowedInFinalExam
+        /// Final exams and the Daily Exam are played without power-ups.
+        case notAllowed
         case notEnoughInk(needed: Int, have: Int)
         case nothingToErase
         case hintAlreadyShown
@@ -38,7 +39,7 @@ public struct GameEngine: Sendable {
     /// The answer, uppercased for its language. May contain spaces or hyphens.
     public let word: String
     public let lives: Int
-    public let isFinalExam: Bool
+    public let powerUpsAllowed: Bool
     private let locale: Locale
 
     // MARK: State
@@ -58,13 +59,15 @@ public struct GameEngine: Sendable {
     public private(set) var isHintShown = false
     public private(set) var ink: Int
 
-    public init(word: String, lives: Int, ink: Int, isFinalExam: Bool = false, locale: Locale = Locale(identifier: "en")) {
+    public init(word: String, lives: Int, ink: Int, powerUpsAllowed: Bool = true, locale: Locale = Locale(identifier: "en")) {
         precondition(lives > 0, "A word needs at least one life")
         self.locale = locale
         self.word = word.uppercased(with: locale)
         self.lives = lives
         self.ink = ink
-        self.isFinalExam = isFinalExam
+        self.powerUpsAllowed = powerUpsAllowed
+        // A word with nothing to find is solved before the first guess (content should never ship one).
+        finishIfSolved()
     }
 
     // MARK: Derived
@@ -122,7 +125,7 @@ public struct GameEngine: Sendable {
     @discardableResult
     public mutating func use(_ powerUp: PowerUp) throws(PowerUpError) -> Character? {
         guard status == .playing else { throw .wordIsOver }
-        guard !isFinalExam else { throw .notAllowedInFinalExam }
+        guard powerUpsAllowed else { throw .notAllowed }
         guard ink >= powerUp.inkCost else { throw .notEnoughInk(needed: powerUp.inkCost, have: ink) }
 
         var opened: Character?
