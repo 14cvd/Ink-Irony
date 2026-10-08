@@ -1,0 +1,395 @@
+{
+  "language": "en",
+  "strict": {
+    "wordStart": [
+      "New word. Same odds. Begin.",
+      "Pens ready. Optimism optional.",
+      "A fresh word. Please don't bruise it.",
+      "Attendance noted. Now, the word.",
+      "Here's your word. Try to keep up with it.",
+      "Begin. I'll be grading silently. Mostly.",
+      "Another word, another chance to surprise me."
+    ],
+    "finalExamStart": [
+      "Final exam. No power-ups. No mercy. No talking.",
+      "The final. Put away your little tricks.",
+      "This one counts. Unlike your excuses.",
+      "Final exam. Fewer lives. Same expectations.",
+      "Phones down. Erasers confiscated. Begin.",
+      "The semester ends here. One way or another."
+    ],
+    "correct": [
+      "Correct. Don't let it go to your head.",
+      "Fine. That one stays.",
+      "Acceptable.",
+      "Even a stopped clock, et cetera.",
+      "Correct. I'm as surprised as you are.",
+      "Noted. Reluctantly.",
+      "Yes. Moving on before you change your mind."
+    ],
+    "combo": [
+      "Three in a row. Suspicious.",
+      "A streak. Are you reading my notes?",
+      "A streak. I'll allow it. For now.",
+      "Consecutive correct answers. Write that down.",
+      "Keep this up and I'll have to grade fairly.",
+      "Momentum. Try not to trip on it.",
+      "Impressive. Don't quote me."
+    ],
+    "firstMistake": [
+      "And there it is.",
+      "The first casualty of the afternoon.",
+      "Wrong. I'd started to worry you'd be boring.",
+      "One mistake. Marked in red. Generously.",
+      "That letter isn't here. It never was.",
+      "Ah. The streak of hope ends."
+    ],
+    "mistake": [
+      "No.",
+      "Still no.",
+      "The alphabet has 26 letters. Choose better ones.",
+      "Bold. Incorrect, but bold.",
+      "Noted. In red ink.",
+      "The odds are not improving.",
+      "I admire the commitment to the wrong answer."
+    ],
+    "lowLives": [
+      "One life left. Choose like it matters.",
+      "Last chance. I'm sharpening my red pen.",
+      "One more and I'm calling your parents.",
+      "This is the part where you concentrate.",
+      "One life. No pressure. Some pressure.",
+      "Final warning. Detention looms."
+    ],
+    "won": [
+      "Solved. I'll mark it down. In pencil.",
+      "Correct. Try not to gloat.",
+      "Fine. You've earned a nod. Just one.",
+      "The word survives. Barely.",
+      "Acceptable work. Don't frame it.",
+      "Solved. Statistically, it had to happen."
+    ],
+    "wonFlawless": [
+      "Not one mistake. Did someone pass you notes?",
+      "Flawless. I'm checking your sleeves.",
+      "Perfect. I have nothing to circle. Unsettling.",
+      "Zero errors. My red pen feels useless.",
+      "Clean paper. I'll allow myself a small nod.",
+      "Flawless. Don't make it a habit. Actually, do."
+    ],
+    "wonNarrow": [
+      "Solved by a thread. A thin one.",
+      "That was close enough to require paperwork.",
+      "You won. My blood pressure did not.",
+      "One life left. Drama is not a study method.",
+      "Narrow. Very narrow. Detention-adjacent.",
+      "A win is a win. This one barely counts."
+    ],
+    "lost": [
+      "{word}. Look it up. Literally.",
+      "The answer was {word}. Write it out fifty times.",
+      "{word}. It was right there the whole time.",
+      "It was {word}. I'll be informing the dictionary.",
+      "{word}. We'll pretend this never happened.",
+      "The word: {word}. The lesson: still pending."
+    ],
+    "eraser": [
+      "Erasing history. How convenient.",
+      "The eraser. Evidence tampering, technically.",
+      "Undone. I still saw it.",
+      "Rubbing out mistakes. I keep copies.",
+      "Gone from the page. Not from my memory.",
+      "Fine. A clean slate. Barely clean."
+    ],
+    "reveal": [
+      "A free letter. I'll note the charity.",
+      "Peeking. Bold of you, in front of me.",
+      "There's one letter. Gift-wrapped.",
+      "Revealed. I hope it was worth it.",
+      "Outsourcing the alphabet, are we?",
+      "Here. Try not to need another."
+    ],
+    "hint": [
+      "A hint. Here's your crutch.",
+      "Fine. A clue. Please don't waste it.",
+      "Asking for help. A rare act of wisdom.",
+      "The hint is free. My judgment is not.",
+      "Here's a clue. The rest is on you.",
+      "A hint. I'll pretend I didn't see that."
+    ],
+    "desk": [
+      "Ah. You again. Sit.",
+      "Office hours are open. Reluctantly.",
+      "Take a seat. The words won't solve themselves.",
+      "Welcome to class. Lower your expectations.",
+      "Good. You're here. Let's get this over with.",
+      "The red pen is ready. Are you?"
+    ],
+    "deskReturning": [
+      "Back already? It's only been days.",
+      "Look who remembered the syllabus.",
+      "Three days absent. I'll need a note.",
+      "Welcome back. Your seat was suspiciously clean.",
+      "Ah, the prodigal student returns.",
+      "You were missed. By the attendance sheet."
+    ],
+    "dailyDone": [
+      "Today's exam is done. Come back tomorrow.",
+      "One Daily per day. That's what daily means.",
+      "Already graded. No retakes today.",
+      "The Daily is closed. Go read something.",
+      "Done for today. Pace yourself.",
+      "Tomorrow brings a new exam. And new excuses."
+    ],
+    "gradeAPlus": [
+      "A+. I'm checking for hidden notes.",
+      "Exceptional. Don't let it go to your head.",
+      "A+. Frame it before I change my mind.",
+      "Remarkable. I have nothing to add. Rare.",
+      "Flawless work. Suspiciously flawless.",
+      "A+. Even my red pen is impressed."
+    ],
+    "gradeA": [
+      "A. Very good. Don't get comfortable.",
+      "Solid work. I'm almost pleased.",
+      "A. Nearly perfect. Nearly.",
+      "Strong. I'll allow a small smile.",
+      "Well done. Do it again to prove it.",
+      "A. Your parents may be informed. Nicely."
+    ],
+    "gradeAMinus": [
+      "A-. So close to excellent.",
+      "Good work. That minus is watching you.",
+      "A-. One slip short of glory.",
+      "Almost an A. Almost is my favorite word.",
+      "Very good. The minus is my little gift.",
+      "A-. Respectable. Barely humble."
+    ],
+    "gradeB": [
+      "B. Competent. Unremarkable. Fine.",
+      "Good, not great. Like cafeteria coffee.",
+      "B. Room for improvement. Lots of room.",
+      "Decent effort. Decent result.",
+      "B. Middle of the road. Paved, at least.",
+      "Satisfactory. I've written worse comments."
+    ],
+    "gradeC": [
+      "C. Present and accounted for.",
+      "Average. Gloriously average.",
+      "C. You survived. That's the review.",
+      "C. Adequate. I've circled the rest.",
+      "Middle of the class. It's crowded there.",
+      "C. Study more. Guess less."
+    ],
+    "gradeD": [
+      "D. See me after class.",
+      "D. The letters were right there.",
+      "Barely. And I mean barely.",
+      "D. These guesses need a study group.",
+      "D. I've used most of my red ink.",
+      "This needs work. Significant work."
+    ],
+    "gradeF": [
+      "F. Detention. Bring the dictionary.",
+      "F. I'm calling your parents. Politely.",
+      "See me after class. Bring a pencil.",
+      "F. The page is more red than white.",
+      "F. Even the margins are disappointed.",
+      "Retake recommended. Strongly."
+    ]
+  },
+  "gentle": {
+    "wordStart": [
+      "A new word! Let's find it together.",
+      "Fresh word, fresh start. You've got this.",
+      "Ready? Pick a letter you like.",
+      "Here comes a new word. Take your time.",
+      "New word! I have a good feeling.",
+      "Let's see what this one hides."
+    ],
+    "finalExamStart": [
+      "Final exam! Deep breath. You're ready.",
+      "The big one. No power-ups, just you.",
+      "Final exam time. I believe in you.",
+      "Fewer lives, more focus. You can do it.",
+      "This is it! Show me what you've learned.",
+      "Final exam. Slow and steady wins."
+    ],
+    "correct": [
+      "Yes! Nice one.",
+      "That's in there. Well spotted.",
+      "Good choice!",
+      "Lovely. Keep going.",
+      "There it is!",
+      "Nice! The word is opening up."
+    ],
+    "combo": [
+      "Three in a row! You're on a roll.",
+      "Look at you go!",
+      "A streak! This is lovely to watch.",
+      "You're in the zone now.",
+      "Another one! Keep that rhythm.",
+      "Wonderful streak. Keep it up!"
+    ],
+    "firstMistake": [
+      "Not that one. Plenty more to try.",
+      "Hmm, not in this word. That's okay!",
+      "That one's not here. Try another!",
+      "No worries. Every guess teaches us something.",
+      "Not this time. Your next letter is waiting.",
+      "Oops! Shake it off and try again."
+    ],
+    "mistake": [
+      "Not that one either. Keep going!",
+      "That's okay. We're getting closer.",
+      "Still searching. You'll find it.",
+      "Not here. Let's think about the word.",
+      "Hmm. Try a vowel, maybe?",
+      "Keep calm. The word will show itself."
+    ],
+    "lowLives": [
+      "One life left. Take a slow breath.",
+      "Last heart! Think it through.",
+      "One more try. I'm cheering for you.",
+      "Careful now. You can still do this.",
+      "Down to one. Pick your letter with care.",
+      "Final chance. Trust yourself."
+    ],
+    "won": [
+      "You did it! Lovely work.",
+      "Solved! I'm proud of you.",
+      "Well done. That was great thinking.",
+      "Yes! Word complete.",
+      "Brilliant! On to the next one?",
+      "You found it. Gold star!"
+    ],
+    "wonFlawless": [
+      "Perfect! Not a single slip.",
+      "Flawless! That was beautiful.",
+      "Every letter right. Amazing!",
+      "A perfect round. I'm impressed!",
+      "Spotless! Take a bow.",
+      "No misses at all. Wow!"
+    ],
+    "wonNarrow": [
+      "Phew! You made it!",
+      "Just in time. What a finish!",
+      "That was close, and you did it!",
+      "You never gave up. Lovely!",
+      "Down to the wire. Well done!",
+      "A nail-biter! And you won it."
+    ],
+    "lost": [
+      "The word was {word}. You'll get the next one!",
+      "It was {word}. Now you know a new word!",
+      "{word}! A tricky one. Let's try another.",
+      "The answer: {word}. Great effort today.",
+      "It was {word}. Every round makes you stronger.",
+      "{word}. Tough word! I'm proud you tried."
+    ],
+    "eraser": [
+      "A clean slate. Try again!",
+      "Poof! All gone. Fresh chance.",
+      "Erased. Let's give it another go.",
+      "That's what erasers are for!",
+      "There, good as new.",
+      "Smart move. Now try again."
+    ],
+    "reveal": [
+      "Here's a letter to help you out.",
+      "A little peek. Good thinking!",
+      "One letter, on the house.",
+      "There you go! Does that help?",
+      "Revealed! Now the rest might click.",
+      "A small boost. You've got this."
+    ],
+    "hint": [
+      "Here's a little clue for you.",
+      "A hint! Let's think about it together.",
+      "Good idea to ask. Here you go.",
+      "A clue! Does it ring a bell?",
+      "Asking for help is a great habit.",
+      "Here's a nudge in the right direction."
+    ],
+    "desk": [
+      "Hello! Ready to play with words?",
+      "Welcome! I saved you a seat.",
+      "Good to see you. Let's learn something.",
+      "Hi there! The words are waiting.",
+      "Welcome to class! Shall we?",
+      "Hello! Pick up your pencil."
+    ],
+    "deskReturning": [
+      "You're back! I missed you.",
+      "Welcome back! Lovely to see you.",
+      "There you are! Ready for some words?",
+      "It's been a while. Let's ease back in.",
+      "Hello again! The class feels complete.",
+      "Welcome back. Let's pick up where we left off."
+    ],
+    "dailyDone": [
+      "Daily done! See you tomorrow.",
+      "You finished today's exam. Great job!",
+      "That's today's exam done. Well played!",
+      "All done for today. Time for a break.",
+      "A new Daily arrives tomorrow!",
+      "Daily complete. Come back tomorrow!"
+    ],
+    "gradeAPlus": [
+      "A+! Outstanding work!",
+      "Perfect paper. I'm so proud!",
+      "A+! Gold stars all around.",
+      "Brilliant! Hang this on the fridge.",
+      "Top marks! You shine.",
+      "A+! What a superstar."
+    ],
+    "gradeA": [
+      "A! Excellent work.",
+      "Wonderful job. Keep it up!",
+      "A! You should be proud.",
+      "Great paper. Lovely thinking.",
+      "Excellent! Almost perfect.",
+      "A! That's a star effort."
+    ],
+    "gradeAMinus": [
+      "A-! So very close to perfect.",
+      "Great work! Nearly flawless.",
+      "A-! Brilliant effort.",
+      "Very good! Tiny slips only.",
+      "A-! You should feel great.",
+      "So close to an A. Well done!"
+    ],
+    "gradeB": [
+      "B! Good, solid work.",
+      "Nice job! You're getting there.",
+      "B! Well done. Keep practicing.",
+      "Good effort! A bit more and it's an A.",
+      "Solid work. I see real progress.",
+      "B! Lovely job today."
+    ],
+    "gradeC": [
+      "C. Good effort. Let's keep growing.",
+      "Nice try! Practice makes progress.",
+      "C. You're on your way.",
+      "Steady work. Next time, even better.",
+      "Good start! More practice will help.",
+      "C. Keep going, you're learning."
+    ],
+    "gradeD": [
+      "D. Tricky one! Let's practice more.",
+      "Keep going. Every try counts.",
+      "D. Tomorrow is a fresh page.",
+      "This was a hard one. You kept at it!",
+      "Let's review together. You'll improve.",
+      "D. Don't give up. I believe in you."
+    ],
+    "gradeF": [
+      "Tough paper! Let's try again.",
+      "Every expert started here.",
+      "Hard one today. Tomorrow is new.",
+      "Keep trying. I'm right here with you.",
+      "That was tricky! Let's practice.",
+      "Not your day. Brighter pages ahead!"
+    ]
+  }
+}

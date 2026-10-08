@@ -1,0 +1,310 @@
+{
+  "language": "tr",
+  "strict": {
+    "wordStart": [
+      "Yeni kelime. Aynı ihtimaller. Başlayın.",
+      "Kalemler hazır. İyimserlik isteğe bağlı.",
+      "Yeni bir kelime. Lütfen hırpalamayın.",
+      "Yoklama alındı. Şimdi kelimeye geçelim.",
+      "Başlayın. Ben sessizce not vereceğim."
+    ],
+    "finalExamStart": [
+      "Final sınavı. Joker yok. Merhamet yok.",
+      "Final. Küçük numaralarınızı kaldırın.",
+      "Bu sınav sayılır. Bahaneleriniz sayılmaz.",
+      "Telefonlar kapalı. Silgiler toplandı. Başlayın."
+    ],
+    "correct": [
+      "Doğru. Havalara girmeyin.",
+      "Peki. O harf kalabilir.",
+      "Kabul edilebilir.",
+      "Doğru. Ben de en az sizin kadar şaşırdım.",
+      "Not edildi. İsteksizce."
+    ],
+    "combo": [
+      "Üst üste üç. Şüpheli.",
+      "Bir seri. Notlarımı mı okuyorsunuz?",
+      "Böyle giderseniz adil not vermek zorunda kalacağım.",
+      "İvme kazandınız. Ayağınız takılmasın.",
+      "Etkileyici. Bunu ben söylemedim."
+    ],
+    "firstMistake": [
+      "İşte başladık.",
+      "Öğleden sonranın ilk kaybı.",
+      "Bir hata. Kırmızıyla işaretledim. Cömertçe.",
+      "O harf burada yok. Hiç olmadı.",
+      "Ve umut serisi sona erdi."
+    ],
+    "mistake": [
+      "Hayır.",
+      "Yine hayır.",
+      "Cesur. Yanlış ama cesur.",
+      "Kırmızı mürekkeple not edildi.",
+      "İhtimaller iyileşmiyor."
+    ],
+    "lowLives": [
+      "Tek can kaldı. Önemliymiş gibi seçin.",
+      "Son şans. Kırmızı kalemimi açıyorum.",
+      "Bir hata daha ve velinizi arıyorum.",
+      "Son uyarı. Teneffüs iptal olmak üzere."
+    ],
+    "won": [
+      "Çözüldü. Not ettim. Kurşun kalemle.",
+      "Doğru. Böbürlenmeyin.",
+      "Peki. Bir baş selamını hak ettiniz. Bir tane.",
+      "Kabul edilebilir iş. Çerçevelemeyin.",
+      "Çözüldü. İstatistiksel olarak bir gün olacaktı."
+    ],
+    "wonFlawless": [
+      "Tek hata yok. Biri size kopya mı verdi?",
+      "Kusursuz. Kollarınızı kontrol ediyorum.",
+      "Mükemmel. İşaretleyecek bir şey yok. Rahatsız edici.",
+      "Sıfır hata. Kırmızı kalemim işsiz kaldı."
+    ],
+    "wonNarrow": [
+      "İnce bir iple çözüldü. Çok ince.",
+      "Bu kadar yakını tutanak gerektirir.",
+      "Kazandınız. Tansiyonum kazanamadı.",
+      "Tek can kaldı. Dram bir çalışma yöntemi değil."
+    ],
+    "lost": [
+      "Cevap: {word}. Sözlüğe bakın. Gerçekten.",
+      "{word}. Elli kere yazın.",
+      "Kelime {word} idi. Baştan beri oradaydı.",
+      "{word}. Bu hiç yaşanmamış gibi davranacağız.",
+      "Doğru cevap: {word}. Ders: hâlâ beklemede."
+    ],
+    "eraser": [
+      "Tarihi siliyoruz. Ne kadar da kullanışlı.",
+      "Silindi. Ama ben gördüm.",
+      "Kâğıttan gitti. Hafızamdan değil.",
+      "Silgi. Teknik olarak delil karartma."
+    ],
+    "reveal": [
+      "Bedava harf. Bu cömertliği not ediyorum.",
+      "Gözümün önünde kopya mı? Cesursunuz.",
+      "Buyurun, bir harf. Hediye paketinde.",
+      "Açıldı. Umarım değmiştir."
+    ],
+    "hint": [
+      "İpucu. Buyurun, koltuk değneğiniz.",
+      "Peki, bir ipucu. Lütfen boşa harcamayın.",
+      "Yardım istemek. Nadir bir bilgelik anı.",
+      "İpucu bedava. Benim yargım değil.",
+      "Bir ipucu. Görmemiş gibi yapacağım."
+    ],
+    "desk": [
+      "Ah. Yine siz. Oturun.",
+      "Görüşme saatleri açık. İsteksizce.",
+      "Buyurun oturun. Kelimeler kendini çözmeyecek.",
+      "Kırmızı kalem hazır. Ya siz?"
+    ],
+    "deskReturning": [
+      "Döndünüz mü? Sadece birkaç gün oldu.",
+      "Bakın kim ders programını hatırlamış.",
+      "Üç gün devamsızlık. Bir mazeret yazısı isterim.",
+      "Hoş geldiniz. Sıranız şüpheli derecede temizdi."
+    ],
+    "dailyDone": [
+      "Bugünün sınavı bitti. Yarın gelin.",
+      "Günde bir Günlük Sınav. Adı üstünde.",
+      "Zaten notlandı. Bugün bütünleme yok.",
+      "Bugünlük bu kadar. Gidin bir şey okuyun."
+    ],
+    "gradeAPlus": [
+      "A+. Gizli kopya arıyorum.",
+      "Olağanüstü. Havalara girmeyin.",
+      "A+. Fikrimi değiştirmeden çerçeveletin.",
+      "Kusursuz iş. Şüpheli derecede kusursuz."
+    ],
+    "gradeA": [
+      "A. Çok iyi. Rahatlamayın.",
+      "Sağlam iş. Neredeyse memnunum.",
+      "A. Neredeyse mükemmel. Neredeyse.",
+      "Güzel. Tekrar yapıp kanıtlayın."
+    ],
+    "gradeAMinus": [
+      "A-. Mükemmele çok yakın.",
+      "İyi iş. O eksi sizi izliyor.",
+      "A-. Zafere bir adım kala.",
+      "Çok iyi. Eksi benden küçük bir hediye."
+    ],
+    "gradeB": [
+      "B. Yeterli. Sıradan. İdare eder.",
+      "İyi ama harika değil. Kantin çayı gibi.",
+      "B. Gelişime açık. Epey açık.",
+      "Makul çaba. Makul sonuç."
+    ],
+    "gradeC": [
+      "C. Kıl payı geçer.",
+      "Ortalama. Görkemli bir ortalama.",
+      "C. Hayatta kaldınız. Değerlendirme bu.",
+      "C. Daha çok çalışın. Daha az tahmin edin."
+    ],
+    "gradeD": [
+      "D. Dersten sonra yanıma gelin.",
+      "D. Harfler tam oradaydı.",
+      "Kıl payı. Gerçekten kıl payı.",
+      "D. Kırmızı mürekkebimin çoğu gitti."
+    ],
+    "gradeF": [
+      "F. Teneffüs yok. Sözlüğü getirin.",
+      "F. Velinizi arıyorum. Kibarca.",
+      "F. Kâğıt beyazdan çok kırmızı.",
+      "F. Kenar boşlukları bile hayal kırıklığında."
+    ]
+  },
+  "gentle": {
+    "wordStart": [
+      "Yeni bir kelime! Birlikte bulalım.",
+      "Yeni kelime, yeni başlangıç. Yaparsın!",
+      "Hazır mısın? Sevdiğin bir harf seç.",
+      "Yeni kelime geldi. Acele etme.",
+      "Bu kelime için içimde iyi bir his var."
+    ],
+    "finalExamStart": [
+      "Final sınavı! Derin bir nefes. Hazırsın.",
+      "Büyük sınav. Joker yok, sadece sen.",
+      "Final zamanı. Sana inanıyorum.",
+      "Daha az can, daha çok odak. Yaparsın!"
+    ],
+    "correct": [
+      "Evet! Çok güzel.",
+      "O harf var. İyi yakaladın.",
+      "Güzel seçim!",
+      "Harika. Devam et.",
+      "İşte bu!"
+    ],
+    "combo": [
+      "Üst üste üç! Harika gidiyorsun.",
+      "Şuna bak sen!",
+      "Seri yakaladın! İzlemesi çok keyifli.",
+      "Tam odaklandın.",
+      "Bir tane daha! Bu ritmi koru."
+    ],
+    "firstMistake": [
+      "O değil. Denenecek çok harf var.",
+      "Hmm, bu kelimede yok. Sorun değil!",
+      "Dert etme. Her tahmin bir şey öğretir.",
+      "Bu sefer olmadı. Sıradaki harf seni bekliyor.",
+      "Olsun! Artık bir şey daha biliyoruz."
+    ],
+    "mistake": [
+      "O da değil. Devam et!",
+      "Sorun yok. Yaklaşıyoruz.",
+      "Aramaya devam. Bulacaksın.",
+      "Burada yok. Kelimeyi bir düşünelim.",
+      "Hmm. Belki bir sesli harf?"
+    ],
+    "lowLives": [
+      "Tek can kaldı. Yavaşça nefes al.",
+      "Son kalp! İyice düşün.",
+      "Bir deneme daha. Seni destekliyorum.",
+      "Son şans. Kendine güven."
+    ],
+    "won": [
+      "Başardın! Harika iş.",
+      "Çözdün! Seninle gurur duyuyorum.",
+      "Aferin. Çok güzel düşündün.",
+      "Evet! Kelime tamam.",
+      "Altın yıldız senin!"
+    ],
+    "wonFlawless": [
+      "Mükemmel! Tek bir aksama yok.",
+      "Kusursuz! Çok güzeldi.",
+      "Hiç ıskalamadın. İnanılmaz!",
+      "Tertemiz bir tur! Bravo."
+    ],
+    "wonNarrow": [
+      "Oh be! Yetiştin!",
+      "Tam zamanında. Ne final ama!",
+      "Kıl payı ama başardın!",
+      "Hiç pes etmedin. Harika!"
+    ],
+    "lost": [
+      "Kelime {word} idi. Bir sonrakini alırsın!",
+      "Cevap: {word}. Artık yeni bir kelime biliyorsun!",
+      "{word}! Zor bir kelimeydi. Bir tane daha?",
+      "Cevap {word}. Bugün çok güzel çabaladın.",
+      "{word}. Her tur seni daha da güçlendirir."
+    ],
+    "eraser": [
+      "Temiz sayfa. Tekrar dene!",
+      "Puf! Gitti. Yeni şans.",
+      "Silindi. Bir daha deneyelim.",
+      "Silgiler bunun için var!"
+    ],
+    "reveal": [
+      "İşte sana yardımcı bir harf.",
+      "Küçük bir göz atma. İyi fikir!",
+      "Bir harf, bizden ikram.",
+      "Buyur! İşine yaradı mı?"
+    ],
+    "hint": [
+      "İşte sana küçük bir ipucu.",
+      "İpucu! Birlikte düşünelim.",
+      "Sormak iyi fikir. Buyur.",
+      "Bir ipucu! Aklına bir şey geldi mi?"
+    ],
+    "desk": [
+      "Merhaba! Kelimelerle oynamaya hazır mısın?",
+      "Hoş geldin! Sana yer ayırdım.",
+      "Seni görmek güzel. Hadi bir şey öğrenelim.",
+      "Selam! Kelimeler seni bekliyor."
+    ],
+    "deskReturning": [
+      "Geri döndün! Seni özledim.",
+      "Tekrar hoş geldin! Seni görmek ne güzel.",
+      "İşte buradasın! Biraz kelimeye ne dersin?",
+      "Epey oldu. Yavaştan başlayalım."
+    ],
+    "dailyDone": [
+      "Günlük tamam! Yarın görüşürüz.",
+      "Bugünün sınavını bitirdin. Aferin!",
+      "Bugünlük bu kadar. Biraz dinlen.",
+      "Yarın yeni bir Günlük Sınav var!"
+    ],
+    "gradeAPlus": [
+      "A+! Muhteşem iş!",
+      "Kusursuz kâğıt. Gurur duydum!",
+      "A+! Her yere altın yıldız.",
+      "Harika! Bunu buzdolabına as."
+    ],
+    "gradeA": [
+      "A! Mükemmel iş.",
+      "Harika iş. Böyle devam!",
+      "A! Kendinle gurur duymalısın.",
+      "Süper! Mükemmele çok az kaldı."
+    ],
+    "gradeAMinus": [
+      "A-! Mükemmele çok yakın.",
+      "Harika iş! Neredeyse kusursuz.",
+      "A-! Çok güzel çaba.",
+      "Çok iyi! Sadece minik aksamalar."
+    ],
+    "gradeB": [
+      "B! İyi, sağlam bir iş.",
+      "Güzel! Doğru yoldasın.",
+      "B! Aferin. Pratik yapmaya devam.",
+      "Sağlam iş. Gerçek bir ilerleme görüyorum."
+    ],
+    "gradeC": [
+      "C. Güzel çaba. Büyümeye devam!",
+      "İyi deneme! Pratik ilerletir.",
+      "C. Yolun yarısındasın.",
+      "İstikrarlı iş. Sonraki daha iyi olacak."
+    ],
+    "gradeD": [
+      "D. Zor bir kelimeydi! Biraz daha pratik.",
+      "Devam et. Her deneme sayılır.",
+      "D. Yarın yepyeni bir sayfa.",
+      "D. Pes etme. Sana inanıyorum."
+    ],
+    "gradeF": [
+      "Zor bir kâğıt! Tekrar deneyelim.",
+      "Her usta buradan başladı.",
+      "Bugün zordu. Yarın yeni bir gün.",
+      "Denemeye devam. Ben yanındayım."
+    ]
+  }
+}

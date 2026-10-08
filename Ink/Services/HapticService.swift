@@ -33,9 +33,18 @@ public class HapticService: ObservableObject {
         }
     }
     
+    /// UserDefaults key written by the Settings toggle.
+    public static let settingKey = "hapticEnabled"
+
     private init() {
         prepareHaptics()
         setupCoreHaptics()
+    }
+
+    /// Applies the Settings toggle. v1 wrote the setting but never read it (B-19).
+    public func syncWithSettings() {
+        let enabled = UserDefaults.standard.object(forKey: Self.settingKey) as? Bool ?? true
+        if isHapticsEnabled != enabled { isHapticsEnabled = enabled }
     }
     
     private func prepareHaptics() {
