@@ -11,7 +11,7 @@ import Testing
 struct GameEngineTests {
 
     private func engine(_ word: String = "TELESCOPE", lives: Int = 6, ink: Int = 120, finalExam: Bool = false) -> GameEngine {
-        GameEngine(word: word, lives: lives, ink: ink, isFinalExam: finalExam)
+        GameEngine(word: word, lives: lives, ink: ink, powerUpsAllowed: !finalExam)
     }
 
     @Test("Combo multiplies each hit and resets on a miss")
@@ -149,7 +149,7 @@ struct GameEngineTests {
     func finalExam() {
         var game = engine(finalExam: true)
         game.guess("Q")
-        #expect(throws: GameEngine.PowerUpError.notAllowedInFinalExam) { try game.use(.eraser) }
+        #expect(throws: GameEngine.PowerUpError.notAllowed) { try game.use(.eraser) }
     }
 
     @Test("Turkish and Azerbaijani dotted i", arguments: ["tr", "az"])

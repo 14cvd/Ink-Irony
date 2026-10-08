@@ -74,23 +74,24 @@ struct EdgeCaseTests {
         #expect(game.result == nil)
     }
 
-    @Test("Bug E-01: a word with no letters can never be finished")
+    @Test("E-01 fixed: a word with no letters is solved before the first guess")
     func wordWithoutLetters() {
-        var game = GameEngine(word: " - ", lives: 6, ink: 100)
-        game.guess("A")
-        withKnownIssue("E-01: engine stays in .playing; it should refuse the word or count it as solved") {
-            #expect(game.status != .playing)
-        }
+        let game = GameEngine(word: " - ", lives: 6, ink: 100)
+        #expect(game.status == .won)
     }
 
-    @Test("Bug E-02: decoding a semester skips the init checks")
+    @Test("E-02 fixed: decoding a semester validates like init")
     func invalidSemesterJSON() throws {
-        let json = Data(#"{"semester": 9, "grades": ["A"]}"#.utf8)
-        withKnownIssue("E-02: SemesterProgress decodes semester 9; SemesterPlan.lives would then crash") {
-            #expect(throws: (any Error).self) {
-                _ = try JSONDecoder().decode(SemesterProgress.self, from: json)
-            }
+        #expect(throws: DecodingError.self) {
+            _ = try JSONDecoder().decode(SemesterProgress.self, from: Data(#"{"semester": 9, "grades": ["A"]}"#.utf8))
         }
+        let elevenGrades = Array(repeating: "\"A\"", count: 11).joined(separator: ",")
+        let tooMany = Data("{\"semester\": 2, \"grades\": [\(elevenGrades)]}".utf8)
+        #expect(throws: DecodingError.self) {
+            _ = try JSONDecoder().decode(SemesterProgress.self, from: tooMany)
+        }
+        let ok = try JSONDecoder().decode(SemesterProgress.self, from: Data(#"{"semester": 2, "grades": ["A", "B"]}"#.utf8))
+        #expect(ok.nextWord == 3)
     }
 
     @Test("Daily streak ignores days after today")

@@ -50,18 +50,23 @@ public enum InkStore {
         try? fileManager.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
 
         if let container = try? open(at: url) {
-            return (container, .opened)
+            // SwiftData silently falls back to memory when it cannot write the file; say so.
+            return (container, isInMemory(container) ? .inMemory : .opened)
         }
 
         if let backupURL = try? moveAside(storeAt: url, now: now, fileManager: fileManager),
            let container = try? open(at: url) {
-            return (container, .movedAside(backupURL: backupURL))
+            return (container, isInMemory(container) ? .inMemory : .movedAside(backupURL: backupURL))
         }
 
         let memory = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
         // An in-memory container with a valid schema cannot fail to open.
         let container = try! ModelContainer(for: schema, migrationPlan: InkMigrationPlan.self, configurations: memory)
         return (container, .inMemory)
+    }
+
+    static func isInMemory(_ container: ModelContainer) -> Bool {
+        container.configurations.contains { $0.isStoredInMemoryOnly }
     }
 
     static func open(at url: URL) throws -> ModelContainer {
