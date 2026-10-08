@@ -1,0 +1,310 @@
+{
+  "language": "es",
+  "strict": {
+    "wordStart": [
+      "Palabra nueva. Mismas probabilidades. Empiece.",
+      "Lápices listos. El optimismo es opcional.",
+      "Una palabra nueva. Intente no maltratarla.",
+      "Asistencia anotada. Ahora, la palabra.",
+      "Empiece. Yo califico en silencio. Casi."
+    ],
+    "finalExamStart": [
+      "Examen final. Sin comodines. Sin piedad.",
+      "El final. Guarde sus trucos.",
+      "Este cuenta. Sus excusas, no.",
+      "Móviles fuera. Gomas confiscadas. Empiece."
+    ],
+    "correct": [
+      "Correcto. Que no se le suba a la cabeza.",
+      "Bien. Esa letra se queda.",
+      "Aceptable.",
+      "Correcto. Estoy tan sorprendida como usted.",
+      "Anotado. A regañadientes."
+    ],
+    "combo": [
+      "Tres seguidas. Sospechoso.",
+      "Una racha. ¿Está leyendo mis apuntes?",
+      "Si sigue así, tendré que calificar con justicia.",
+      "Va cogiendo impulso. No se tropiece.",
+      "Impresionante. No me cite."
+    ],
+    "firstMistake": [
+      "Y ahí está.",
+      "La primera baja de la tarde.",
+      "Un error. Marcado en rojo. Con generosidad.",
+      "Esa letra no está aquí. Nunca estuvo.",
+      "Se acabó la racha de esperanza."
+    ],
+    "mistake": [
+      "No.",
+      "Sigue siendo no.",
+      "Audaz. Incorrecto, pero audaz.",
+      "Anotado. En tinta roja.",
+      "Las probabilidades no mejoran."
+    ],
+    "lowLives": [
+      "Una vida. Elija como si importara.",
+      "Última oportunidad. Afilo mi lápiz rojo.",
+      "Una más y llamo a sus padres.",
+      "Último aviso. Se avecina el castigo."
+    ],
+    "won": [
+      "Resuelto. Lo anoto. A lápiz.",
+      "Correcto. No presuma.",
+      "Bien. Se ha ganado un gesto. Uno.",
+      "Trabajo aceptable. No lo enmarque.",
+      "Resuelto. Estadísticamente, tenía que pasar."
+    ],
+    "wonFlawless": [
+      "Ni un error. ¿Alguien le pasó notas?",
+      "Impecable. Le reviso las mangas.",
+      "Perfecto. Nada que marcar. Inquietante.",
+      "Cero errores. Mi bolígrafo rojo se aburre."
+    ],
+    "wonNarrow": [
+      "Resuelto por un hilo. Muy fino.",
+      "Tan justo que requiere papeleo.",
+      "Ganó. Mi tensión arterial, no.",
+      "Una vida. El drama no es un método de estudio."
+    ],
+    "lost": [
+      "{word}. Búsquelo en el diccionario. Literalmente.",
+      "La respuesta era {word}. Cópiela cincuenta veces.",
+      "Era {word}. Estuvo ahí todo el tiempo.",
+      "{word}. Fingiremos que esto no pasó.",
+      "La palabra: {word}. La lección: pendiente."
+    ],
+    "eraser": [
+      "Borrando la historia. Qué conveniente.",
+      "Borrado. Pero yo lo vi.",
+      "Fuera del papel. No de mi memoria.",
+      "La goma. Técnicamente, destrucción de pruebas."
+    ],
+    "reveal": [
+      "Una letra gratis. Tomo nota de la caridad.",
+      "¿Espiar delante de mí? Qué valor.",
+      "Aquí tiene una letra. Envuelta para regalo.",
+      "Revelada. Espero que haya valido la pena."
+    ],
+    "hint": [
+      "Una pista. Aquí tiene su muleta.",
+      "Bien, una pista. No la desperdicie.",
+      "Pedir ayuda. Un raro momento de sabiduría.",
+      "La pista es gratis. Mi juicio, no.",
+      "Una pista. Haré como que no vi nada."
+    ],
+    "desk": [
+      "Ah. Usted otra vez. Siéntese.",
+      "Horario de tutorías abierto. A mi pesar.",
+      "Tome asiento. Las palabras no se resuelven solas.",
+      "El bolígrafo rojo está listo. ¿Y usted?"
+    ],
+    "deskReturning": [
+      "¿Ya de vuelta? Solo han pasado unos días.",
+      "Miren quién se acordó del horario.",
+      "Tres días de ausencia. Quiero un justificante.",
+      "Su pupitre estaba sospechosamente limpio."
+    ],
+    "dailyDone": [
+      "El examen de hoy terminó. Vuelva mañana.",
+      "Un Examen Diario al día. Por eso se llama así.",
+      "Ya está calificado. Hoy no hay recuperación.",
+      "Por hoy, basta. Vaya a leer algo."
+    ],
+    "gradeAPlus": [
+      "A+. Busco chuletas escondidas.",
+      "Excepcional. No se lo crea demasiado.",
+      "A+. Enmárquelo antes de que cambie de opinión.",
+      "Impecable. Sospechosamente impecable."
+    ],
+    "gradeA": [
+      "A. Muy bien. No se acomode.",
+      "Trabajo sólido. Casi estoy satisfecha.",
+      "A. Casi perfecto. Casi.",
+      "Bien hecho. Repítalo para demostrarlo."
+    ],
+    "gradeAMinus": [
+      "A-. Tan cerca de la excelencia.",
+      "Buen trabajo. Ese menos le vigila.",
+      "A-. A un paso de la gloria.",
+      "Muy bien. El menos es mi pequeño regalo."
+    ],
+    "gradeB": [
+      "B. Suficiente. Corriente. Pasa.",
+      "Bien, no genial. Como el café de la cafetería.",
+      "B. Hay margen de mejora. Mucho margen.",
+      "Esfuerzo decente. Resultado decente."
+    ],
+    "gradeC": [
+      "C. Aprobado por los pelos.",
+      "Promedio. Gloriosamente promedio.",
+      "C. Sobrevivió. Esa es la reseña.",
+      "C. Estudie más. Adivine menos."
+    ],
+    "gradeD": [
+      "D. Venga a verme después de clase.",
+      "D. Las letras estaban ahí mismo.",
+      "Por poco. Y quiero decir por muy poco.",
+      "D. Gasté casi toda mi tinta roja."
+    ],
+    "gradeF": [
+      "F. Castigo. Traiga el diccionario.",
+      "F. Llamaré a sus padres. Con educación.",
+      "F. Hay más rojo que blanco en la hoja.",
+      "F. Hasta los márgenes están decepcionados."
+    ]
+  },
+  "gentle": {
+    "wordStart": [
+      "¡Una palabra nueva! Busquémosla juntos.",
+      "Palabra nueva, nuevo comienzo. ¡Tú puedes!",
+      "¿Empezamos? Elige una letra que te guste.",
+      "Aquí llega una palabra nueva. Sin prisa.",
+      "Tengo un buen presentimiento con esta."
+    ],
+    "finalExamStart": [
+      "¡Examen final! Respira hondo. Tú puedes.",
+      "El gran examen. Sin comodines, solo tú.",
+      "Hora del examen final. Creo en ti.",
+      "Menos vidas, más atención. ¡Adelante!"
+    ],
+    "correct": [
+      "¡Sí! Muy bien.",
+      "Esa letra está. Bien vista.",
+      "¡Buena elección!",
+      "Genial. Sigue así.",
+      "¡Ahí está!"
+    ],
+    "combo": [
+      "¡Tres seguidas! Vas genial.",
+      "¡Mira eso!",
+      "¡Una racha! Da gusto verte.",
+      "Estás en tu mejor momento.",
+      "¡Otra más! Mantén el ritmo."
+    ],
+    "firstMistake": [
+      "Esa no. Quedan muchas por probar.",
+      "Mmm, no está en esta palabra. ¡No pasa nada!",
+      "Tranquilidad. Cada intento enseña algo.",
+      "Esta vez no. La siguiente letra te espera.",
+      "¡Vale! Ahora sabemos una cosa más."
+    ],
+    "mistake": [
+      "Esa tampoco. ¡Sigue!",
+      "No pasa nada. Nos acercamos.",
+      "Seguimos buscando. La encontrarás.",
+      "No está aquí. Pensemos en la palabra.",
+      "Mmm. ¿Quizás una vocal?"
+    ],
+    "lowLives": [
+      "Queda una vida. Respira despacio.",
+      "¡Último corazón! Piénsalo con calma.",
+      "Un intento más. Te estoy animando.",
+      "Última oportunidad. Confía en ti."
+    ],
+    "won": [
+      "¡Lo lograste! Qué buen trabajo.",
+      "¡Resuelto! Estoy orgullosa de ti.",
+      "Muy bien. Qué buena idea tuviste.",
+      "¡Sí! Palabra completa.",
+      "¡La estrella dorada es tuya!"
+    ],
+    "wonFlawless": [
+      "¡Perfecto! Ni un solo tropiezo.",
+      "¡Impecable! Ha sido precioso.",
+      "Ni una letra de más. ¡Increíble!",
+      "¡Una ronda limpia! Bravo."
+    ],
+    "wonNarrow": [
+      "¡Uf! ¡Lo conseguiste!",
+      "Justo a tiempo. ¡Qué final!",
+      "Estuvo cerca, ¡pero la palabra es tuya!",
+      "Nunca te rendiste. ¡Precioso!"
+    ],
+    "lost": [
+      "La palabra era {word}. ¡La próxima es tuya!",
+      "Era {word}. ¡Ahora conoces una palabra nueva!",
+      "¡{word}! Una difícil. ¿Otra?",
+      "La respuesta: {word}. Hoy te esforzaste mucho.",
+      "{word}. Cada ronda te hace más fuerte."
+    ],
+    "eraser": [
+      "Página en blanco. ¡Inténtalo otra vez!",
+      "¡Puf! Desapareció. Nueva oportunidad.",
+      "Borrado. Vamos a intentarlo de nuevo.",
+      "¡Para eso están las gomas!"
+    ],
+    "reveal": [
+      "Aquí tienes una letra de ayuda.",
+      "Un pequeño vistazo. ¡Buena idea!",
+      "Una letra, invita la casa.",
+      "¡Ahí va! ¿Te ayuda?"
+    ],
+    "hint": [
+      "Aquí tienes una pequeña pista.",
+      "¡Una pista! Pensemos juntos.",
+      "Pedir ayuda es buena idea. Toma.",
+      "¡Una pista! ¿Te suena de algo?"
+    ],
+    "desk": [
+      "¡Hola! ¿Jugamos con palabras?",
+      "¡Qué bueno verte! Te guardé un sitio.",
+      "Me alegra verte. Aprendamos algo.",
+      "¡Hola! Las palabras te esperan."
+    ],
+    "deskReturning": [
+      "¡Has vuelto! Te eché de menos.",
+      "¡Qué alegría verte otra vez!",
+      "¡Ahí estás! ¿Unas palabras?",
+      "Ha pasado un tiempo. Empecemos con calma."
+    ],
+    "dailyDone": [
+      "¡Diario completado! Hasta mañana.",
+      "Terminaste el examen de hoy. ¡Bien hecho!",
+      "Por hoy es todo. Descansa un poco.",
+      "¡Mañana llega un nuevo Examen Diario!"
+    ],
+    "gradeAPlus": [
+      "¡A+! ¡Trabajo excepcional!",
+      "Hoja perfecta. ¡Qué orgullo!",
+      "¡A+! Estrellas doradas por todas partes.",
+      "¡Brillante! Ponlo en la nevera."
+    ],
+    "gradeA": [
+      "¡A! Excelente trabajo.",
+      "Trabajo maravilloso. ¡Sigue así!",
+      "¡A! Puedes sentir orgullo.",
+      "¡Excelente! Casi perfecto."
+    ],
+    "gradeAMinus": [
+      "¡A-! Muy cerca de la perfección.",
+      "¡Gran trabajo! Casi impecable.",
+      "¡A-! Precioso esfuerzo.",
+      "¡Muy bien! Solo pequeños tropiezos."
+    ],
+    "gradeB": [
+      "¡B! Buen trabajo, sólido.",
+      "¡Genial! Vas por buen camino.",
+      "¡B! Bien hecho. Sigue practicando.",
+      "Trabajo sólido. Veo progreso real."
+    ],
+    "gradeC": [
+      "C. Buen esfuerzo. ¡A seguir creciendo!",
+      "¡Buen intento! La práctica ayuda.",
+      "C. Vas a medio camino.",
+      "Trabajo constante. La próxima, mejor aún."
+    ],
+    "gradeD": [
+      "D. ¡Era difícil! Practiquemos más.",
+      "Sigue adelante. Cada intento cuenta.",
+      "D. Mañana hay una página nueva.",
+      "D. No te rindas. Creo en ti."
+    ],
+    "gradeF": [
+      "¡Hoja difícil! Probemos otra vez.",
+      "Todo experto empezó aquí.",
+      "Hoy fue difícil. Mañana es otro día.",
+      "Sigue intentando. Estoy contigo."
+    ]
+  }
+}

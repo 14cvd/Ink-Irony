@@ -1,0 +1,310 @@
+{
+  "language": "az",
+  "strict": {
+    "wordStart": [
+      "Yeni söz. Eyni şanslar. Başlayın.",
+      "Qələmlər hazırdır. Optimizm könüllüdür.",
+      "Təzə söz. Xahiş edirəm, onu incitməyin.",
+      "Davamiyyət qeydə alındı. İndi isə söz.",
+      "Başlayın. Mən səssizcə qiymət verəcəyəm."
+    ],
+    "finalExamStart": [
+      "Final imtahanı. Köməkçi yoxdur. Mərhəmət də.",
+      "Final. Kiçik fəndlərinizi kənara qoyun.",
+      "Bu imtahan sayılır. Bəhanələriniz sayılmır.",
+      "Telefonlar kənara. Pozanlar yığıldı. Başlayın."
+    ],
+    "correct": [
+      "Düzdür. Çox da sevinməyin.",
+      "Yaxşı. O hərf qala bilər.",
+      "Qəbul edilir.",
+      "Düzdür. Mən də sizin qədər təəccübləndim.",
+      "Qeyd edildi. Könülsüz."
+    ],
+    "combo": [
+      "Ardıcıl üç. Şübhəlidir.",
+      "Seriya. Qeydlərimi oxuyursunuz?",
+      "Belə getsə, ədalətli qiymət verməli olacağam.",
+      "Təsirlidir. Amma bunu mən demədim.",
+      "Sürət götürdünüz. Büdrəməyin."
+    ],
+    "firstMistake": [
+      "Və budur.",
+      "Günün ilk itkisi.",
+      "Bir səhv. Qırmızı ilə qeyd etdim. Səxavətlə.",
+      "O hərf burada yoxdur. Heç vaxt olmayıb.",
+      "Ümid seriyası bitdi."
+    ],
+    "mistake": [
+      "Yox.",
+      "Yenə yox.",
+      "Cəsarətli. Səhv, amma cəsarətli.",
+      "Qırmızı mürəkkəblə qeyd edildi.",
+      "Şanslar yaxşılaşmır."
+    ],
+    "lowLives": [
+      "Bir can qaldı. Vacibmiş kimi seçin.",
+      "Son şans. Qırmızı qələmimi itiləyirəm.",
+      "Bir səhv də, valideynlərinizi çağırıram.",
+      "Son xəbərdarlıq. Dərsdən sonra qalmaq yaxındır."
+    ],
+    "won": [
+      "Həll olundu. Qeyd edirəm. Karandaşla.",
+      "Düzdür. Lovğalanmayın.",
+      "Yaxşı. Bir baş əyməyə layiqsiniz. Cəmi bir.",
+      "Qəbul ediləsi iş. Çərçivəyə salmayın.",
+      "Həll olundu. Statistikaya görə, bu olmalı idi."
+    ],
+    "wonFlawless": [
+      "Heç bir səhv. Yoxsa kimsə pıçıldayırdı?",
+      "Qüsursuz. Qollarınızı yoxlayıram.",
+      "Mükəmməl. Dairəyə alınacaq heç nə yox. Narahatedici.",
+      "Sıfır səhv. Qırmızı qələmim işsiz qaldı."
+    ],
+    "wonNarrow": [
+      "Bir tükdən asılı qaldı. Lap nazik tükdən.",
+      "Bu qədər yaxını protokol tələb edir.",
+      "Qalib gəldiniz. Təzyiqim isə yox.",
+      "Bir can qaldı. Dram dərs metodu deyil."
+    ],
+    "lost": [
+      "Cavab: {word}. Lüğətə baxın. Həqiqətən.",
+      "{word}. Əlli dəfə yazın.",
+      "Söz {word} idi. Başdan bəri orada idi.",
+      "{word}. Bu heç olmayıbmış kimi edəcəyik.",
+      "Düzgün cavab: {word}. Dərs: hələ gözləmədə."
+    ],
+    "eraser": [
+      "Tarixi silirik. Nə rahat.",
+      "Silindi. Amma mən gördüm.",
+      "Kağızdan getdi. Yaddaşımdan yox.",
+      "Pozan. Texniki cəhətdən sübutu məhv etmək."
+    ],
+    "reveal": [
+      "Pulsuz hərf. Bu səxavəti qeyd edirəm.",
+      "Gözümün qabağında baxırsınız? Cəsarətlidir.",
+      "Buyurun, bir hərf. Hədiyyə qablaşdırmasında.",
+      "Açıldı. Ümid edirəm, dəydi."
+    ],
+    "hint": [
+      "İşarə. Buyurun, sizin əl ağacınız.",
+      "Yaxşı, bir işarə. Xahiş edirəm, boşa xərcləməyin.",
+      "Kömək istəmək. Nadir müdriklik anı.",
+      "İşarə pulsuzdur. Mənim hökmüm yox.",
+      "Bir işarə. Görməmiş kimi edəcəyəm."
+    ],
+    "desk": [
+      "Ah. Yenə siz. Oturun.",
+      "Qəbul saatları açıqdır. Könülsüz.",
+      "Buyurun, oturun. Sözlər özü-özünü tapmayacaq.",
+      "Qırmızı qələm hazırdır. Bəs siz?"
+    ],
+    "deskReturning": [
+      "Qayıtdınız? Cəmi bir neçə gün keçib.",
+      "Baxın, kim dərs cədvəlini xatırlayıb.",
+      "Üç gün qayıb. Arayış istəyəcəyəm.",
+      "Xoş gəldiniz. Partanız şübhəli dərəcədə təmiz idi."
+    ],
+    "dailyDone": [
+      "Bugünkü imtahan bitdi. Sabah gəlin.",
+      "Gündə bir Gündəlik İmtahan. Adı üstündə.",
+      "Artıq qiymətləndirilib. Bu gün təkrar yoxdur.",
+      "Bu günlük bəsdir. Gedin bir şey oxuyun."
+    ],
+    "gradeAPlus": [
+      "A+. Gizli şparqalka axtarıram.",
+      "Fövqəladə. Çox da sevinməyin.",
+      "A+. Fikrimi dəyişməmiş çərçivəyə salın.",
+      "Qüsursuz iş. Şübhəli dərəcədə qüsursuz."
+    ],
+    "gradeA": [
+      "A. Çox yaxşı. Rahatlamayın.",
+      "Möhkəm iş. Az qala razıyam.",
+      "A. Demək olar ki, mükəmməl. Demək olar.",
+      "Yaxşı. Təkrarlayıb sübut edin."
+    ],
+    "gradeAMinus": [
+      "A-. Mükəmmələ çox yaxın.",
+      "Yaxşı iş. O mənfi sizi izləyir.",
+      "A-. Zəfərə bir addım qalmış.",
+      "Çox yaxşı. Mənfi məndən kiçik hədiyyədir."
+    ],
+    "gradeB": [
+      "B. Kifayətdir. Adi. Olar.",
+      "Yaxşı, amma əla deyil. Bufet çayı kimi.",
+      "B. İnkişafa açıqdır. Xeyli açıq.",
+      "Normal səy. Normal nəticə."
+    ],
+    "gradeC": [
+      "C. Güclə keçər.",
+      "Orta. Möhtəşəm dərəcədə orta.",
+      "C. Sağ qaldınız. Rəy budur.",
+      "C. Çox oxuyun. Az təxmin edin."
+    ],
+    "gradeD": [
+      "D. Dərsdən sonra yanıma gəlin.",
+      "D. Hərflər elə orada idi.",
+      "Güclə. Həqiqətən güclə.",
+      "D. Qırmızı mürəkkəbimin çoxu getdi."
+    ],
+    "gradeF": [
+      "F. Dərsdən sonra qalırsınız. Lüğəti gətirin.",
+      "F. Valideynlərinizə zəng edirəm. Nəzakətlə.",
+      "F. Vərəq ağdan çox qırmızıdır.",
+      "F. Hətta haşiyələr də məyusdur."
+    ]
+  },
+  "gentle": {
+    "wordStart": [
+      "Yeni söz! Gəl birlikdə tapaq.",
+      "Yeni söz, yeni başlanğıc. Bacararsan!",
+      "Hazırsan? Xoşuna gələn bir hərf seç.",
+      "Yeni söz gəldi. Tələsmə.",
+      "Bu söz barədə içimdə yaxşı bir hiss var."
+    ],
+    "finalExamStart": [
+      "Final imtahanı! Dərin nəfəs al. Hazırsan.",
+      "Böyük imtahan. Köməkçi yoxdur, yalnız sən.",
+      "Final vaxtı. Sənə inanıram.",
+      "Az can, çox diqqət. Bacararsan."
+    ],
+    "correct": [
+      "Bəli! Çox gözəl.",
+      "O hərf var. Yaxşı tapdın.",
+      "Gözəl seçim!",
+      "Əla. Davam et.",
+      "Budur!"
+    ],
+    "combo": [
+      "Ardıcıl üç! Əla gedirsən.",
+      "Bir bax buna!",
+      "Seriya! Baxmaq çox xoşdur.",
+      "Tam diqqətdəsən.",
+      "Daha biri! Bu ritmi saxla."
+    ],
+    "firstMistake": [
+      "O deyil. Hələ çox hərf var.",
+      "Hmm, bu sözdə yoxdur. Eybi yox!",
+      "Narahat olma. Hər təxmin nəsə öyrədir.",
+      "Bu dəfə alınmadı. Növbəti hərf səni gözləyir.",
+      "Olsun! İndi bir şeyi də bilirik."
+    ],
+    "mistake": [
+      "O da deyil. Davam et!",
+      "Eybi yox. Yaxınlaşırıq.",
+      "Axtarmağa davam. Tapacaqsan.",
+      "Burada yoxdur. Gəl sözü bir düşünək.",
+      "Hmm. Bəlkə bir sait?"
+    ],
+    "lowLives": [
+      "Bir can qaldı. Yavaşca nəfəs al.",
+      "Son ürək! Yaxşıca düşün.",
+      "Bir cəhd də. Səni dəstəkləyirəm.",
+      "Son şans. Özünə güvən."
+    ],
+    "won": [
+      "Bacardın! Əla iş.",
+      "Tapdın! Səninlə fəxr edirəm.",
+      "Afərin. Çox gözəl düşündün.",
+      "Bəli! Söz tamamdır.",
+      "Qızıl ulduz sənindir!"
+    ],
+    "wonFlawless": [
+      "Mükəmməl! Bir dənə də büdrəmə yoxdur.",
+      "Qüsursuz! Çox gözəl idi.",
+      "Heç birini qaçırmadın. Möcüzə!",
+      "Tərtəmiz tur! Bravo."
+    ],
+    "wonNarrow": [
+      "Uf! Çatdırdın!",
+      "Lap vaxtında. Nə final!",
+      "Az qalmışdı, amma bacardın!",
+      "Heç təslim olmadın. Əla!"
+    ],
+    "lost": [
+      "Söz {word} idi. Növbətini tapacaqsan!",
+      "Cavab: {word}. İndi yeni bir söz bilirsən!",
+      "{word}! Çətin söz idi. Bir dənə də?",
+      "Cavab {word}. Bu gün çox gözəl çalışdın.",
+      "{word}. Hər tur səni daha güclü edir."
+    ],
+    "eraser": [
+      "Təmiz səhifə. Yenidən yoxla!",
+      "Puf! Getdi. Yeni şans.",
+      "Silindi. Bir də yoxlayaq.",
+      "Pozanlar elə bunun üçündür!"
+    ],
+    "reveal": [
+      "Budur, sənə kömək edən bir hərf.",
+      "Kiçik bir baxış. Yaxşı fikirdir!",
+      "Bir hərf, bizdən hədiyyə.",
+      "Buyur! Kömək etdi?"
+    ],
+    "hint": [
+      "Budur, sənə kiçik bir işarə.",
+      "İşarə! Gəl birlikdə düşünək.",
+      "Soruşmaq yaxşı fikirdir. Buyur.",
+      "Bir işarə! Ağlına nəsə gəldi?"
+    ],
+    "desk": [
+      "Salam! Sözlərlə oynamağa hazırsan?",
+      "Xoş gəldin! Sənə yer saxlamışam.",
+      "Səni görmək xoşdur. Gəl nəsə öyrənək.",
+      "Salam! Sözlər səni gözləyir."
+    ],
+    "deskReturning": [
+      "Qayıtdın! Darıxmışdım.",
+      "Yenidən xoş gəldin! Səni görmək nə gözəldir.",
+      "Budur, gəldin! Bir az söz oynayaq?",
+      "Xeyli vaxt keçib. Yavaş-yavaş başlayaq."
+    ],
+    "dailyDone": [
+      "Gündəlik tamamdır! Sabah görüşərik.",
+      "Bugünkü imtahanı bitirdin. Afərin!",
+      "Bu günlük bu qədər. Bir az dincəl.",
+      "Sabah yeni Gündəlik İmtahan var!"
+    ],
+    "gradeAPlus": [
+      "A+! Möhtəşəm iş!",
+      "Qüsursuz vərəq. Fəxr edirəm!",
+      "A+! Hər yerə qızıl ulduz.",
+      "Əla! Bunu soyuducuya as."
+    ],
+    "gradeA": [
+      "A! Əla iş.",
+      "Gözəl iş. Belə davam!",
+      "A! Özünlə fəxr etməlisən.",
+      "Super! Mükəmməlliyə az qalıb."
+    ],
+    "gradeAMinus": [
+      "A-! Mükəmmələ çox yaxın.",
+      "Gözəl iş! Az qala qüsursuz.",
+      "A-! Çox gözəl səy.",
+      "Çox yaxşı! Cəmi kiçik büdrəmələr."
+    ],
+    "gradeB": [
+      "B! Yaxşı, möhkəm iş.",
+      "Gözəl! Doğru yoldasan.",
+      "B! Afərin. Məşqə davam.",
+      "Möhkəm iş. Real irəliləyiş görürəm."
+    ],
+    "gradeC": [
+      "C. Gözəl səy. İnkişafa davam!",
+      "Yaxşı cəhd! Məşq irəli aparır.",
+      "C. Yolun yarısındasan.",
+      "Sabit iş. Növbəti daha yaxşı olacaq."
+    ],
+    "gradeD": [
+      "D. Çətin idi! Bir az da məşq edək.",
+      "Davam et. Hər cəhd sayılır.",
+      "D. Sabah tər-təzə bir səhifədir.",
+      "D. Təslim olma. Sənə inanıram."
+    ],
+    "gradeF": [
+      "Çətin vərəq! Yenidən yoxlayaq.",
+      "Hər usta buradan başlayıb.",
+      "Bu gün çətin idi. Sabah yeni gündür.",
+      "Cəhd etməyə davam. Mən yanındayam."
+    ]
+  }
+}

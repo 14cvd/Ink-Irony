@@ -53,6 +53,29 @@ public enum Language: String, CaseIterable, Identifiable {
     
     public var id: String { self.rawValue }
     
+    /// Lower-case code used for content files (`words_en.json`, `teacher_en.json`).
+    public var code: String { rawValue.lowercased() }
+
+    /// Locale for case mapping, so Turkish and Azerbaijani i/İ and ı/I stay distinct.
+    public var locale: Locale { Locale(identifier: code) }
+
+    /// The language's own name, shown in pickers.
+    public var nativeName: String {
+        switch self {
+        case .english: return "English"
+        case .turkish: return "Türkçe"
+        case .azerbaijani: return "Azərbaycanca"
+        case .spanish: return "Español"
+        case .russian: return "Русский"
+        }
+    }
+
+    /// The device language if the game supports it, English otherwise.
+    public static var deviceDefault: Language {
+        let code = Locale.preferredLanguages.first.map { String($0.prefix(2)).uppercased() } ?? "EN"
+        return Language(rawValue: code) ?? .english
+    }
+
     public var alphabet: [Character] {
         switch self {
         case .english:
@@ -60,7 +83,7 @@ public enum Language: String, CaseIterable, Identifiable {
         case .turkish:
             return Array("ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ")
         case .azerbaijani:
-            return Array("ABCÇDEƏFGĞHXİIJKQLMNOÖPRSŞTUÜVYZ")
+            return Array("ABCÇDEƏFGĞHXIİJKQLMNOÖPRSŞTUÜVYZ")
         case .spanish:
             return Array("ABCDEFGHIJKLMNÑOPQRSTUVWXYZ")
         case .russian:
@@ -82,6 +105,20 @@ public enum GameCategory: String, CaseIterable, Identifiable {
     
     public var id: String { self.rawValue }
     
+    /// Ink icon for the topic (v2 does not use the emoji).
+    public var symbol: String {
+        switch self {
+        case .movies: return "film"
+        case .science: return "atom"
+        case .geography: return "globe.europe.africa"
+        case .food: return "fork.knife"
+        case .literature: return "book"
+        case .sports: return "figure.run"
+        case .music: return "music.note"
+        case .random: return "dice"
+        }
+    }
+
     public var emoji: String {
         switch self {
         case .movies: return "🎬"
@@ -184,7 +221,7 @@ public struct Word: Identifiable, Equatable {
         definition: String = ""
     ) {
         self.id = id
-        self.text = text.uppercased()
+        self.text = text.uppercased(with: language.locale)
         self.language = language
         self.category = category
         self.hint = hint

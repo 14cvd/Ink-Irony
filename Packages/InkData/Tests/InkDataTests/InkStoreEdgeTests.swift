@@ -19,10 +19,8 @@ struct InkStoreEdgeTests {
         let (container, outcome) = InkStore.makeContainer(at: url)
         // SwiftData itself silently switches to an in-memory store here, so the app keeps working...
         #expect(container.configurations.first?.isStoredInMemoryOnly == true)
-        // ...but InkStore reports it as a normal open, so nobody learns that games are not being saved.
-        withKnownIssue("D-01: InkStore reports .opened for a store SwiftData silently made in-memory") {
-            #expect(outcome == .inMemory)
-        }
+        // ...and InkStore says so (D-01), so the app can warn instead of silently losing games.
+        #expect(outcome == .inMemory)
 
         let context = ModelContext(container)
         context.insert(GameSession(word: "COMET", language: "EN", difficulty: "Easy", score: 100, isWin: true))
