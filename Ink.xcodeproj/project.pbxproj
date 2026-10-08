@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		62C1D0012F70000100A1B2C3 /* InkData in Frameworks */ = {isa = PBXBuildFile; productRef = 62C1D0022F70000100A1B2C3 /* InkData */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		62B528782F6EAFF5002289DE /* Ink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62C1D0012F70000100A1B2C3 /* InkData in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = Ink;
 			packageProductDependencies = (
+				62C1D0022F70000100A1B2C3 /* InkData */,
 			);
 			productName = Ink;
 			productReference = 62B528782F6EAFF5002289DE /* Ink.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 62B5286F2F6EAFF4002289DE;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				62C1D0032F70000100A1B2C3 /* XCLocalSwiftPackageReference "Packages/InkData" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 62B528792F6EAFF5002289DE /* Products */;
 			projectDirPath = "";
@@ -342,6 +351,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		62C1D0032F70000100A1B2C3 /* XCLocalSwiftPackageReference "Packages/InkData" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/InkData;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		62C1D0022F70000100A1B2C3 /* InkData */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = InkData;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 62B528702F6EAFF4002289DE /* Project object */;
 }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import InkData
 
 /// 3-tab sheet: MY STATS | LEADERBOARD | ACHIEVEMENTS
 public struct RecordsView: View {
