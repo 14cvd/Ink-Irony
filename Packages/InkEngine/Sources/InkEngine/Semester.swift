@@ -32,6 +32,23 @@ public struct SemesterProgress: Equatable, Codable, Sendable {
         self.grades = grades
     }
 
+    private enum CodingKeys: String, CodingKey { case semester, grades }
+
+    /// Decoding validates like `init`, so a damaged save cannot crash the app later.
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let semester = try container.decode(Int.self, forKey: .semester)
+        let grades = try container.decode([Grade].self, forKey: .grades)
+        guard (1...SemesterPlan.count).contains(semester) else {
+            throw DecodingError.dataCorruptedError(forKey: .semester, in: container, debugDescription: "Semester \(semester) does not exist")
+        }
+        guard grades.count <= Rules.wordsPerSemester else {
+            throw DecodingError.dataCorruptedError(forKey: .grades, in: container, debugDescription: "More than \(Rules.wordsPerSemester) grades")
+        }
+        self.semester = semester
+        self.grades = grades
+    }
+
     /// 1-based number of the next word, or nil when all ten are graded.
     public var nextWord: Int? {
         grades.count < Rules.wordsPerSemester ? grades.count + 1 : nil

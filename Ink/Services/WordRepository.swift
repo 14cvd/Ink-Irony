@@ -33,7 +33,7 @@ public actor WordRepository {
     /// Fetch a random word. If category == .random, picks any category.
     /// Difficulty is derived from word length:
     ///   ≤5 chars = Easy, 6-7 = Medium, 8-9 = Hard, ≥10 = Nightmare
-    public func fetchRandomWord(language: Language, difficulty: Difficulty, category: GameCategory = .random) -> Word {
+    public func fetchRandomWord(language: Language, difficulty: Difficulty, category: GameCategory = .random, excluding: Set<String> = []) -> Word {
         let entries = loadEntries(for: language)
         
         // Filter by category
@@ -49,25 +49,17 @@ public actor WordRepository {
         let filtered = pool.filter { matchesDifficulty($0.word, difficulty: difficulty) }
         let finalPool = filtered.isEmpty ? pool : filtered
         
-        let entry = finalPool.randomElement() ?? WordEntry(word: "HANGMAN", category: "random", hint: "A classic word game.", definition: "A guessing game played with letters.")
+        let entry = finalPool.filter { !excluding.contains($0.word.uppercased()) }.randomElement() ?? finalPool.randomElement() ?? WordEntry(word: "HANGMAN", category: "random", hint: "A classic word game.", definition: "A guessing game played with letters.")
         let resolvedCategory = GameCategory(rawValue: entry.category.lowercased()) ?? .random
         
         return Word(text: entry.word, language: language, category: resolvedCategory, hint: entry.hint, definition: entry.definition)
     }
     
-    // MARK: - Fetch for Daily Challenge (deterministic)
-    
-    public func fetchDailyWord(language: Language, dateString: String) -> Word {
-        let entries = loadEntries(for: language)
-        guard !entries.isEmpty else {
-            return Word(text: "HANGMAN", language: language, category: .random, hint: "A classic.", definition: "A word guessing game.")
-        }
-        let hash = abs((dateString + language.rawValue).hashValue)
-        let entry = entries[hash % entries.count]
-        let resolvedCategory = GameCategory(rawValue: entry.category.lowercased()) ?? .random
-        return Word(text: entry.word, language: language, category: resolvedCategory, hint: entry.hint, definition: entry.definition)
+    /// Every entry for a language (cached after the first read).
+    func allEntries(_ language: Language) -> [WordEntry] {
+        loadEntries(for: language)
     }
-    
+
     // MARK: - Private Helpers
     
     private func matchesDifficulty(_ word: String, difficulty: Difficulty) -> Bool {
