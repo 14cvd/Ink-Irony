@@ -10,14 +10,30 @@
 		62C1D0012F70000100A1B2C3 /* InkData in Frameworks */ = {isa = PBXBuildFile; productRef = 62C1D0022F70000100A1B2C3 /* InkData */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		63A100072F70000100A1B2C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62B528702F6EAFF4002289DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62B528772F6EAFF5002289DE;
+			remoteInfo = Ink;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		62B528782F6EAFF5002289DE /* Ink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ink.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63A100012F70000100A1B2C3 /* InkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		62B5287A2F6EAFF5002289DE /* Ink */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Ink;
+			sourceTree = "<group>";
+		};
+		63A100022F70000100A1B2C3 /* InkUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = InkUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -31,6 +47,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		63A100052F70000100A1B2C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -38,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				62B5287A2F6EAFF5002289DE /* Ink */,
+				63A100022F70000100A1B2C3 /* InkUITests */,
 				62B528792F6EAFF5002289DE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				62B528782F6EAFF5002289DE /* Ink.app */,
+				63A100012F70000100A1B2C3 /* InkUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +101,29 @@
 			productReference = 62B528782F6EAFF5002289DE /* Ink.app */;
 			productType = "com.apple.product-type.application";
 		};
+		63A100032F70000100A1B2C3 /* InkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63A100092F70000100A1B2C3 /* Build configuration list for PBXNativeTarget "InkUITests" */;
+			buildPhases = (
+				63A100042F70000100A1B2C3 /* Sources */,
+				63A100052F70000100A1B2C3 /* Frameworks */,
+				63A100062F70000100A1B2C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63A100082F70000100A1B2C3 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				63A100022F70000100A1B2C3 /* InkUITests */,
+			);
+			name = InkUITests;
+			packageProductDependencies = (
+			);
+			productName = InkUITests;
+			productReference = 63A100012F70000100A1B2C3 /* InkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -88,6 +136,10 @@
 				TargetAttributes = {
 					62B528772F6EAFF5002289DE = {
 						CreatedOnToolsVersion = 26.0.1;
+					};
+					63A100032F70000100A1B2C3 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = 62B528772F6EAFF5002289DE;
 					};
 				};
 			};
@@ -109,12 +161,20 @@
 			projectRoot = "";
 			targets = (
 				62B528772F6EAFF5002289DE /* Ink */,
+				63A100032F70000100A1B2C3 /* InkUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		62B528762F6EAFF5002289DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63A100062F70000100A1B2C3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -131,7 +191,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		63A100042F70000100A1B2C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		63A100082F70000100A1B2C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62B528772F6EAFF5002289DE /* Ink */;
+			targetProxy = 63A100072F70000100A1B2C3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		62B528832F6EAFF7002289DE /* Debug */ = {
@@ -329,6 +404,46 @@
 			};
 			name = Release;
 		};
+		63A1000A2F70000100A1B2C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CA2TN78X4W;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.id.ink.irony.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = Ink;
+			};
+			name = Debug;
+		};
+		63A1000B2F70000100A1B2C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CA2TN78X4W;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.id.ink.irony.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = Ink;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -346,6 +461,15 @@
 			buildConfigurations = (
 				62B528862F6EAFF7002289DE /* Debug */,
 				62B528872F6EAFF7002289DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63A100092F70000100A1B2C3 /* Build configuration list for PBXNativeTarget "InkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63A1000A2F70000100A1B2C3 /* Debug */,
+				63A1000B2F70000100A1B2C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
