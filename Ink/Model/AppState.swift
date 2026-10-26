@@ -78,6 +78,11 @@ final class AppState {
         theme = InkThemeChoice(rawValue: defaults.string(forKey: Keys.theme) ?? "") ?? .system
         hasOnboarded = defaults.bool(forKey: Keys.onboarded)
         L10n.language = language
+        #if DEBUG
+        if StoreDemo.isOn {
+            StoreDemo.seed(&progress, language: language, today: schedule.number(for: now))
+        }
+        #endif
         ProgressStore.save(progress)
     }
 

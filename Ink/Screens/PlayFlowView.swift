@@ -65,6 +65,9 @@ struct PlayFlowView: View {
     }
 
     private func pickWord(for request: PlayRequest) async -> Word {
+        #if DEBUG
+        if StoreDemo.isOn { return StoreDemo.word(for: request.language) }
+        #endif
         let repo = WordRepository.shared
         switch request.mode {
         case .semester(let number, let word):

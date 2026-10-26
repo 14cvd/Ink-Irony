@@ -15,8 +15,8 @@ public struct DailySchedule: Sendable {
     public let epoch: DateComponents
     public let calendar: Calendar
 
-    /// Default epoch is the planned v2.0 release day, so the first Daily is #1.
-    public init(epoch: DateComponents = DateComponents(year: 2027, month: 1, day: 12), calendar: Calendar = .current) {
+    /// Default epoch: the Monday of the v2.0 release week, so the first Daily is #1.
+    public init(epoch: DateComponents = DateComponents(year: 2026, month: 10, day: 26), calendar: Calendar = .current) {
         self.epoch = epoch
         var calendar = calendar
         calendar.firstWeekday = 2 // Monday, for the weekly hall pass

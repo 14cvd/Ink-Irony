@@ -68,17 +68,17 @@ struct DailyScheduleTests {
     @Test("Exam #1 on the epoch day, counting local days")
     func numbering() {
         let schedule = DailySchedule(calendar: calendar("Asia/Baku"))
-        #expect(schedule.number(for: date(2027, 1, 12, 0, 0, in: "Asia/Baku")) == 1)
-        #expect(schedule.number(for: date(2027, 1, 12, 23, 59, in: "Asia/Baku")) == 1)
-        #expect(schedule.number(for: date(2027, 1, 13, 0, 0, in: "Asia/Baku")) == 2)
-        #expect(schedule.number(for: date(2028, 1, 12, 12, in: "Asia/Baku")) == 366)
-        #expect(schedule.number(for: date(2027, 1, 11, 12, in: "Asia/Baku")) == 0)
+        #expect(schedule.number(for: date(2026, 10, 26, 0, 0, in: "Asia/Baku")) == 1)
+        #expect(schedule.number(for: date(2026, 10, 26, 23, 59, in: "Asia/Baku")) == 1)
+        #expect(schedule.number(for: date(2026, 10, 27, 0, 0, in: "Asia/Baku")) == 2)
+        #expect(schedule.number(for: date(2027, 10, 26, 12, in: "Asia/Baku")) == 366)
+        #expect(schedule.number(for: date(2026, 10, 25, 12, in: "Asia/Baku")) == 0)
     }
 
     @Test("Same local date, same exam, in any time zone", arguments: ["Asia/Baku", "Europe/Istanbul", "Europe/Madrid", "America/Los_Angeles", "Pacific/Kiritimati"])
     func sameLocalDate(zone: String) {
         let schedule = DailySchedule(calendar: calendar(zone))
-        #expect(schedule.number(for: date(2027, 3, 1, 9, in: zone)) == 49)
+        #expect(schedule.number(for: date(2027, 3, 1, 9, in: zone)) == 127)
     }
 
     @Test("Daylight saving changes do not skip or repeat a day")
@@ -94,9 +94,9 @@ struct DailyScheduleTests {
     @Test("Word index cycles through the list, also before the epoch")
     func wordIndex() {
         let schedule = DailySchedule(calendar: calendar("UTC"))
-        #expect(schedule.wordIndex(for: date(2027, 1, 12, 8, in: "UTC"), count: 365) == 0)
-        #expect(schedule.wordIndex(for: date(2028, 1, 12, 8, in: "UTC"), count: 365) == 0)
-        #expect(schedule.wordIndex(for: date(2027, 1, 11, 8, in: "UTC"), count: 365) == 364)
+        #expect(schedule.wordIndex(for: date(2026, 10, 26, 8, in: "UTC"), count: 365) == 0)
+        #expect(schedule.wordIndex(for: date(2027, 10, 26, 8, in: "UTC"), count: 365) == 0)
+        #expect(schedule.wordIndex(for: date(2026, 10, 25, 8, in: "UTC"), count: 365) == 364)
     }
 }
 
