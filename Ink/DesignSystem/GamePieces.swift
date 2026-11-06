@@ -47,8 +47,11 @@ struct PowerUpButton: View {
                     Text(L10n.t("power.cost", powerUp.inkCost))
                         .font(.inkUI(11, relativeTo: .caption2))
                         .foregroundStyle(InkColor.secondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.6)
                 }
             }
+            .padding(.horizontal, 6)
             .foregroundStyle(InkColor.ink)
             .frame(maxWidth: .infinity, minHeight: 44)
             .background(
@@ -97,8 +100,9 @@ struct GradeStamp: View {
     var size: CGFloat = 92
 
     var body: some View {
-        Text(grade.rawValue)
+        Text(handwrittenCentered: grade.rawValue)
             .font(.inkDisplay(size * 0.62, relativeTo: .largeTitle))
+            .lineLimit(1)
             .foregroundStyle(InkColor.teacher)
             .minimumScaleFactor(0.5)
             .frame(width: size, height: size)

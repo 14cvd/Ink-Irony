@@ -62,7 +62,7 @@ private struct PassedRow: View {
                     .foregroundStyle(InkColor.secondary)
             }
             Spacer()
-            Text(averageGrade.rawValue)
+            Text(handwritten: averageGrade.rawValue)
                 .font(.inkDisplay(28, relativeTo: .title2))
                 .foregroundStyle(InkColor.correct)
         }
@@ -143,8 +143,10 @@ private struct CurrentSemesterCard: View {
             Button {
                 app.play(.semester(number: progress.semester, word: word))
             } label: {
-                Text(SemesterPlan.isFinalExam(word: word) ? L10n.t("semester.final") : "\(word)")
+                Text(handwrittenCentered: SemesterPlan.isFinalExam(word: word) ? L10n.t("semester.final") : "\(word)")
                     .font(.inkDisplay(SemesterPlan.isFinalExam(word: word) ? 16 : 26, relativeTo: .title3))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
                     .foregroundStyle(InkColor.onReward)
                     .frame(width: 52, height: 52)
                     .background(Circle().fill(InkColor.reward))

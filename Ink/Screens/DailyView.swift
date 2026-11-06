@@ -40,6 +40,7 @@ struct DailyView: View {
     private var calendarPage: some View {
         HStack(spacing: 16) {
             DateBlock(date: Date())
+                .fixedSize() // the date keeps its size; the title wraps instead
             VStack(alignment: .leading, spacing: 4) {
                 Text(Date().formatted(.dateTime.weekday(.wide).locale(L10n.locale)).uppercased(with: L10n.locale))
                     .font(.inkUI(13, weight: .bold, relativeTo: .caption))
@@ -48,11 +49,14 @@ struct DailyView: View {
                 Text(handwritten: L10n.dailyTitle(app.todayNumber))
                     .font(.inkDisplay(28, relativeTo: .title2))
                     .foregroundStyle(InkColor.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 Text(L10n.t("daily.rules"))
                     .font(.inkUI(12, relativeTo: .caption))
                     .foregroundStyle(InkColor.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
-            Spacer(minLength: 0)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(.horizontal, 18)
         .padding(.top, 24)

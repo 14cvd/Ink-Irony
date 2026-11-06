@@ -187,12 +187,16 @@ struct WordSlots: View {
         if item.isGap {
             Color.clear.frame(width: width * 0.6, height: 10)
         } else {
+            let letter = item.shown.map(String.init) ?? item.missed.map(String.init) ?? " "
+            // Full size unless the letter is wider than its slot plus the gap (Ж, Ш, M).
+            let size = min(min(42, width * 1.35) / (lineCount > 1 ? 1.15 : 1), (width + 4) / max(InkFonts.displayInkWidth(letter), 0.3))
             VStack(spacing: 2) {
-                Text(item.shown.map(String.init) ?? item.missed.map(String.init) ?? " ")
-                    .font(.inkDisplay(min(42, width * 1.35) / (lineCount > 1 ? 1.15 : 1), relativeTo: .largeTitle))
+                Text(handwrittenCentered: letter)
+                    .font(.inkDisplay(size, relativeTo: .largeTitle))
                     .foregroundStyle(item.shown == nil ? InkColor.teacher : InkColor.ink)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.5)
+                    .fixedSize()
+                    .dynamicTypeSize(.large) // the slot width is fixed; the word is already 42 pt
                     .frame(width: width)
                 if item.shown?.isLetter ?? true {
                     Capsule().fill(InkColor.ink).frame(width: width - 2, height: 3)

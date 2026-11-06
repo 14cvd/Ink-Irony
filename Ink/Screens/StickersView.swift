@@ -56,6 +56,7 @@ private struct StickerCard: View {
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
                 .minimumScaleFactor(0.7)
+                .frame(maxWidth: .infinity)
             Text(sticker.description(for: L10n.language))
                 .font(.inkUI(11, relativeTo: .caption2))
                 .foregroundStyle(InkColor.secondary)

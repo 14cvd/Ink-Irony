@@ -89,6 +89,7 @@ private struct ContinueCard: View {
                 .font(.inkDisplay(32, relativeTo: .title))
                 .foregroundStyle(InkColor.ink)
                 .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .leading)
             HStack(spacing: 6) {
                 ForEach(0..<Rules.wordsPerSemester, id: \.self) { index in
                     if index < current.grades.count {
@@ -141,6 +142,8 @@ private struct DailyCard: View {
                 Text(handwritten: L10n.dailyTitle(app.todayNumber))
                     .font(.inkDisplay(25, relativeTo: .title2))
                     .foregroundStyle(InkColor.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 Text(app.todaysDaily == nil ? L10n.t("daily.sub") : L10n.t("daily.doneShort"))
                     .font(.inkUI(12, relativeTo: .caption))
                     .foregroundStyle(InkColor.secondary)
@@ -171,9 +174,11 @@ struct DateBlock: View {
         VStack(spacing: 0) {
             Text(date.formatted(.dateTime.month(.abbreviated).locale(L10n.locale)).uppercased(with: L10n.locale))
                 .font(.inkUI(compact ? 11 : 13, weight: .bold, relativeTo: .caption))
-            Text(date.formatted(.dateTime.day(.twoDigits)))
+            // Small: centred in its box. Large: next to the title, so only the tail needs room.
+            (compact ? Text(handwrittenCentered: date.formatted(.dateTime.day(.twoDigits))) : Text(handwritten: date.formatted(.dateTime.day(.twoDigits))))
                 .font(.inkDisplay(compact ? 30 : 96, relativeTo: .title))
                 .lineLimit(1)
+                .minimumScaleFactor(0.6)
         }
         .foregroundStyle(InkColor.teacher)
         .frame(width: compact ? 54 : nil, height: compact ? 58 : nil)
