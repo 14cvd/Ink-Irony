@@ -17,7 +17,8 @@ enum DoodleMood: Equatable {
         if lost { return .caught }
         let spent = lives - livesLeft
         if livesLeft <= 1 || spent * 3 >= lives * 2 { return .panic }
-        if spent * 3 >= lives { return .nervous }
+        // Any mistake shows on the Doodle, so the first one is never silent.
+        if spent >= 1 { return .nervous }
         return .calm
     }
 }
@@ -174,6 +175,9 @@ struct GallowsStage: View {
     let mood: DoodleMood
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    /// True for a moment after each mistake: the new part is drawn in fresh, thick ink and
+    /// the Doodle flinches, so even a small part (the base, with 8 lives) is noticed.
+    @State private var freshInk = false
 
     var body: some View {
         GeometryReader { proxy in
@@ -183,22 +187,32 @@ struct GallowsStage: View {
                 ground(lineScale)
                 ForEach(groups.indices, id: \.self) { index in
                     let shape = GallowsPartShape(strokes: groups[index])
+                    let isNewest = freshInk && index == mistakes - 1
                     shape
                         .stroke(InkColor.ghost, style: StrokeStyle(lineWidth: 3 * lineScale, lineCap: .round, dash: [3 * lineScale, 6 * lineScale]))
                         .opacity(index < mistakes ? 0 : 0.8)
                     shape
                         .trim(from: 0, to: index < mistakes ? 1 : 0)
-                        .stroke(InkColor.teacher, style: StrokeStyle(lineWidth: 3 * lineScale, lineCap: .round, lineJoin: .round))
+                        .stroke(InkColor.teacher, style: StrokeStyle(lineWidth: (isNewest ? 6 : 3.4) * lineScale, lineCap: .round, lineJoin: .round))
+                        .shadow(color: InkColor.teacher.opacity(isNewest ? 0.6 : 0), radius: 6 * lineScale)
                 }
                 books(lineScale)
                     .rotationEffect(.degrees(mood == .caught ? 9 : 0), anchor: .bottom)
                     .offset(x: mood == .caught ? 18 * lineScale : 0)
-                doodle(lineScale)
+                doodle(lineScale, mood: freshInk && mood == .calm ? .nervous : mood)
                     .offset(x: mood == .escaped && !reduceMotion ? 70 * lineScale : 0, y: mood == .escaped && !reduceMotion ? -6 * lineScale : 0)
                     .rotationEffect(.degrees(mood == .escaped && !reduceMotion ? 10 : 0))
             }
+            .modifier(Shake(phase: reduceMotion ? 0 : CGFloat(mistakes), amount: 5 * lineScale))
             .animation(reduceMotion ? .easeOut(duration: 0.15) : .timingCurve(0.2, 0.8, 0.2, 1, duration: 0.45), value: mistakes)
             .animation(reduceMotion ? nil : .spring(response: 0.6, dampingFraction: 0.55), value: mood)
+            .animation(.easeOut(duration: 0.25), value: freshInk)
+        }
+        .task(id: mistakes) {
+            guard mistakes > 0 else { return }
+            freshInk = true
+            try? await Task.sleep(for: .milliseconds(900))
+            freshInk = false
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(Text(L10n.livesLeft(lives - mistakes, of: lives)))
@@ -219,7 +233,7 @@ struct GallowsStage: View {
         }
     }
 
-    private func doodle(_ s: CGFloat) -> some View {
+    private func doodle(_ s: CGFloat, mood: DoodleMood) -> some View {
         let line = StrokeStyle(lineWidth: 2.6 * s, lineCap: .round, lineJoin: .round)
         return ZStack {
             DoodleShape(part: .head, mood: mood).fill(InkColor.sheet)
@@ -233,5 +247,20 @@ struct GallowsStage: View {
             DoodleShape(part: .arms, mood: mood).stroke(InkColor.ink, style: line)
             DoodleShape(part: .legs, mood: mood).stroke(InkColor.ink, style: line)
         }
+    }
+}
+
+/// A short side-to-side shake each time `phase` steps up by one (a mistake).
+private struct Shake: GeometryEffect {
+    var phase: CGFloat
+    var amount: CGFloat
+
+    var animatableData: CGFloat {
+        get { phase }
+        set { phase = newValue }
+    }
+
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        ProjectionTransform(CGAffineTransform(translationX: amount * sin(phase * .pi * 4), y: 0))
     }
 }

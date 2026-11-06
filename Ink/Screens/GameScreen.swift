@@ -79,7 +79,9 @@ struct GameScreen: View {
             .overlay(alignment: .topLeading) {
                 Text(L10n.livesLeft(model.engine.livesLeft, of: model.engine.lives))
                     .font(.inkUI(12, weight: .bold, relativeTo: .caption))
-                    .foregroundStyle(model.engine.livesLeft <= 1 ? InkColor.teacher : InkColor.secondary)
+                    .foregroundStyle(model.engine.mistakes > 0 ? InkColor.teacher : InkColor.secondary)
+                    .contentTransition(.numericText(value: Double(model.engine.livesLeft)))
+                    .animation(.snappy, value: model.engine.livesLeft)
                     .padding(10)
                     .accessibilityIdentifier("game.lives")
             }

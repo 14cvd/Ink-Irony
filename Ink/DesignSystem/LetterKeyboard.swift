@@ -192,11 +192,11 @@ struct WordSlots: View {
             let size = min(min(42, width * 1.35) / (lineCount > 1 ? 1.15 : 1), (width + 4) / max(InkFonts.displayInkWidth(letter), 0.3))
             VStack(spacing: 2) {
                 Text(handwrittenCentered: letter)
-                    .font(.inkDisplay(size, relativeTo: .largeTitle))
+                    .font(.inkDisplayFixed(size)) // the slot width is fixed; the word is already 42 pt
                     .foregroundStyle(item.shown == nil ? InkColor.teacher : InkColor.ink)
                     .lineLimit(1)
                     .fixedSize()
-                    .dynamicTypeSize(.large) // the slot width is fixed; the word is already 42 pt
+                    .offset(x: -InkFonts.displayInkCenterShift(letter) * size) // centre the strokes, not the advance
                     .frame(width: width)
                 if item.shown?.isLetter ?? true {
                     Capsule().fill(InkColor.ink).frame(width: width - 2, height: 3)

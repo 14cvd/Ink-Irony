@@ -142,6 +142,14 @@ final class UIAuditTests: XCTestCase {
         shot(language, "14-daily-done")
         app.terminate()
 
+        // A new player: Semester 1 with 8 lives, the first two wrong letters.
+        launch(language, onboarded: true, demo: false)
+        tap("desk.play", until: "game.stage")
+        shot(language, "07b-new-word")
+        keys(String(alphabet.suffix(2)))
+        shot(language, "07c-first-misses")
+        app.terminate()
+
         // Real words from the word lists: free play, long words, hint text.
         launch(language, onboarded: true, demo: false)
         tap("desk.free", until: "free.start")
