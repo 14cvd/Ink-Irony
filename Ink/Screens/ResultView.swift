@@ -58,6 +58,7 @@ struct ResultView: View {
                     .foregroundStyle(result.won ? InkColor.correct : InkColor.teacher)
                     .lineLimit(2)
                     .minimumScaleFactor(0.5)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .accessibilityIdentifier("result.word")
                 if !summary.word.definition.isEmpty {
                     Text(summary.word.definition)
@@ -72,8 +73,9 @@ struct ResultView: View {
             Text(handwritten: summary.comment)
                 .font(.inkDisplay(25, relativeTo: .title3))
                 .foregroundStyle(InkColor.teacher)
-                .rotationEffect(.degrees(-1.5))
                 .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .rotationEffect(.degrees(-1.5))
                 .accessibilityIdentifier("result.comment")
 
             rewards

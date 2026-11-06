@@ -104,9 +104,34 @@ private extension Font.TextStyle {
 // Caveat's strokes run up to a fifth of an em past a letter's advance, and iOS clips
 // a Text at its typographic width, so the last letter of a line loses its tail.
 // A trailing space (a quarter em in Caveat) gives the tail room. Fallback faces need none.
+// It is a no-break space, so it stays with the last word when the text wraps.
+private let tailRoom = "\u{00A0}"
+
 extension Text {
     init(handwritten text: String) {
-        self.init(verbatim: InkFonts.isAvailable(InkFonts.display, for: L10n.language) ? text + " " : text)
+        self.init(verbatim: InkFonts.isAvailable(InkFonts.display, for: L10n.language) ? text + tailRoom : text)
+    }
+
+    /// For short text centred in a fixed frame (word slots, grades, numbers): a space on
+    /// each side keeps the letter centred and gives its tail room. Pair it with
+    /// `.fixedSize()` so the spaces never shrink the letter.
+    init(handwrittenCentered text: String) {
+        self.init(verbatim: InkFonts.isAvailable(InkFonts.display, for: L10n.language) ? tailRoom + text + tailRoom : text)
+    }
+}
+
+extension InkFonts {
+    private static var inkWidths: [String: CGFloat] = [:]
+
+    /// Width of the drawn strokes of `text` in the display face, as a fraction of the
+    /// point size. Ж is about 0.92, I about 0.3.
+    static func displayInkWidth(_ text: String) -> CGFloat {
+        if let known = inkWidths[text] { return known }
+        let font = UIFont(name: display, size: 100) ?? .systemFont(ofSize: 100, weight: .bold)
+        let line = CTLineCreateWithAttributedString(NSAttributedString(string: text, attributes: [.font: font]))
+        let width = max(CTLineGetImageBounds(line, nil).width, CGFloat(CTLineGetTypographicBounds(line, nil, nil, nil))) / 100
+        inkWidths[text] = width
+        return width
     }
 }
 
