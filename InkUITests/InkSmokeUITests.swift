@@ -202,6 +202,31 @@ final class InkSmokeUITests: XCTestCase {
         XCTAssertFalse(element("daily.start").exists)
     }
 
+    /// One tap is enough: the first tap on a new screen and the first wrong letter both count
+    /// (no retry here, unlike the helper), and a wrong letter shows on the stage at once.
+    func testS09_FirstTapAndFirstMistakeShow() {
+        launch()
+        let play = element("desk.play")
+        XCTAssertTrue(play.waitForExistence(timeout: 5))
+        sleep(1)
+        play.tap()
+        XCTAssertTrue(element("game.stage").waitForExistence(timeout: 4), "First tap on Play did not open the word")
+        sleep(1)
+        let lives = element("game.lives")
+        let before = lives.label
+        // A letter that is in no English word list entry's first word is not guaranteed, so try
+        // rare letters until one is a miss; each must count on its first tap.
+        for letter in ["Q", "X", "Z", "J"] {
+            let key = element("key.\(letter)")
+            guard key.isEnabled else { continue }
+            key.tap()
+            XCTAssertFalse(key.isEnabled, "Key \(letter) did not register on its first tap")
+            if lives.label != before { break }
+        }
+        XCTAssertNotEqual(lives.label, before, "A wrong letter did not change the lives counter")
+        screenshot("S09 after first mistake")
+    }
+
     /// B-06: v1 failed Easy games after 60 s of thinking. v2 has no timer outside Blitz.
     func testS08_NoHiddenTimer() {
         launch()

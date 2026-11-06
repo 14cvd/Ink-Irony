@@ -54,12 +54,19 @@ enum InkFonts {
 }
 
 extension Font {
-    /// Handwritten display face: the word, titles, buttons.
+    /// Handwritten display face: the word, titles, buttons. Follows Dynamic Type.
     /// The rounded fallback is wider than Caveat, so it is drawn a little smaller.
     static func inkDisplay(_ size: CGFloat, relativeTo style: Font.TextStyle = .title) -> Font {
         InkFonts.isAvailable(InkFonts.display, for: L10n.language)
-            ? .custom(InkFonts.display, size: size, relativeTo: style)
+            ? Font(UIFontMetrics(forTextStyle: style.uiKit).scaledFont(for: InkFonts.caveat(size)))
             : .system(size: scaled(size * 0.8, style), weight: .bold, design: .rounded)
+    }
+
+    /// The display face at exactly `size`, for text inside a fixed frame (the word slots).
+    static func inkDisplayFixed(_ size: CGFloat) -> Font {
+        InkFonts.isAvailable(InkFonts.display, for: L10n.language)
+            ? Font(InkFonts.caveat(size))
+            : .system(size: size * 0.8, weight: .bold, design: .rounded)
     }
 
     /// Typewriter face for the teacher's lines and stamps.
@@ -101,38 +108,68 @@ private extension Font.TextStyle {
     }
 }
 
-// Caveat's strokes run up to a fifth of an em past a letter's advance, and iOS clips
-// a Text at its typographic width, so the last letter of a line loses its tail.
-// A trailing space (a quarter em in Caveat) gives the tail room. Fallback faces need none.
-// It is a no-break space, so it stays with the last word when the text wraps.
-private let tailRoom = "\u{00A0}"
+// Caveat, as the app uses it:
+// - Contextual alternates are off. With them on, SwiftUI measures a line narrower than it
+//   draws, so wrapped titles lost their last word ("Gündəlik imtahan #…").
+// - Strokes run up to a fifth of an em past a letter's advance (T, P, Ж, a final l or full
+//   stop) and SwiftUI draws a Text only inside its own bounds, so `Text(handwritten:)` ends
+//   the text with a no-break space that gives the last stroke room and stays with the last
+//   word when it wraps. Fallback faces need none of this.
+
+extension InkFonts {
+    private static var caveats: [CGFloat: UIFont] = [:]
+
+    static func caveat(_ size: CGFloat) -> UIFont {
+        if let known = caveats[size] { return known }
+        let descriptor = UIFontDescriptor(name: display, size: size).addingAttributes([
+            .featureSettings: [[UIFontDescriptor.FeatureKey.type: kContextualAlternatesType,
+                                UIFontDescriptor.FeatureKey.selector: kContextualAlternatesOffSelector]],
+        ])
+        let font = UIFont(descriptor: descriptor, size: size)
+        caveats[size] = font
+        return font
+    }
+}
+
+private var needsTailRoom: Bool {
+    InkFonts.isAvailable(InkFonts.display, for: L10n.language)
+}
 
 extension Text {
+    /// Handwritten text: a title, a button label, a comment.
     init(handwritten text: String) {
-        self.init(verbatim: InkFonts.isAvailable(InkFonts.display, for: L10n.language) ? text + tailRoom : text)
+        self.init(verbatim: needsTailRoom ? text + "\u{00A0}" : text)
     }
 
-    /// For short text centred in a fixed frame (word slots, grades, numbers): a space on
-    /// each side keeps the letter centred and gives its tail room. Pair it with
-    /// `.fixedSize()` so the spaces never shrink the letter.
+    /// Short handwritten text centred in a fixed frame (word slots, grades, numbers): room on
+    /// both sides keeps it centred. Pair it with `.fixedSize()` so the room never shrinks it.
     init(handwrittenCentered text: String) {
-        self.init(verbatim: InkFonts.isAvailable(InkFonts.display, for: L10n.language) ? tailRoom + text + tailRoom : text)
+        self.init(verbatim: needsTailRoom ? "\u{00A0}" + text + "\u{00A0}" : text)
     }
 }
 
 extension InkFonts {
-    private static var inkWidths: [String: CGFloat] = [:]
+    private struct Ink { let width: CGFloat; let centerShift: CGFloat }
+    private static var inks: [String: Ink] = [:]
+
+    private static func ink(_ text: String) -> Ink {
+        if let known = inks[text] { return known }
+        let font: UIFont = UIFont(name: display, size: 100) != nil ? caveat(100) : .systemFont(ofSize: 100, weight: .bold)
+        let line = CTLineCreateWithAttributedString(NSAttributedString(string: text, attributes: [.font: font]))
+        let image = CTLineGetImageBounds(line, nil)
+        let advance = CGFloat(CTLineGetTypographicBounds(line, nil, nil, nil))
+        let value = Ink(width: max(image.width, advance) / 100, centerShift: (image.midX - advance / 2) / 100)
+        inks[text] = value
+        return value
+    }
 
     /// Width of the drawn strokes of `text` in the display face, as a fraction of the
     /// point size. Ж is about 0.92, I about 0.3.
-    static func displayInkWidth(_ text: String) -> CGFloat {
-        if let known = inkWidths[text] { return known }
-        let font = UIFont(name: display, size: 100) ?? .systemFont(ofSize: 100, weight: .bold)
-        let line = CTLineCreateWithAttributedString(NSAttributedString(string: text, attributes: [.font: font]))
-        let width = max(CTLineGetImageBounds(line, nil).width, CGFloat(CTLineGetTypographicBounds(line, nil, nil, nil))) / 100
-        inkWidths[text] = width
-        return width
-    }
+    static func displayInkWidth(_ text: String) -> CGFloat { ink(text).width }
+
+    /// How far right of its advance centre the strokes sit, as a fraction of the point size.
+    /// Caveat leans right, so a letter centred by advance looks off-centre; offset by minus this.
+    static func displayInkCenterShift(_ text: String) -> CGFloat { ink(text).centerShift }
 }
 
 extension Label where Title == Text, Icon == Image {
