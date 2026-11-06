@@ -114,7 +114,7 @@ struct InkLogo: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("Ink & Irony")
+            Text(handwritten: "Ink & Irony")
                 .font(.inkDisplay(size, relativeTo: .largeTitle))
                 .foregroundStyle(InkColor.teacher)
                 .lineLimit(1)

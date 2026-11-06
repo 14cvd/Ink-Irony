@@ -106,7 +106,7 @@ private struct IntroPage<Art: View>: View {
                 Text("\(index + 1).")
                     .font(.inkDisplay(26, relativeTo: .title2))
                     .foregroundStyle(InkColor.teacher)
-                    + Text(" " + title)
+                    + Text(handwritten: " " + title)
                     .font(.inkDisplay(32, relativeTo: .title))
                     .foregroundStyle(InkColor.ink)
                 Text(text)

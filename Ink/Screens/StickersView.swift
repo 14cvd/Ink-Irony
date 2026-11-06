@@ -15,7 +15,7 @@ struct StickersView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
                 HStack(alignment: .firstTextBaseline) {
-                    Text(L10n.t("tab.stickers"))
+                    Text(handwritten: L10n.t("tab.stickers"))
                         .font(.inkDisplay(36, relativeTo: .largeTitle))
                         .foregroundStyle(InkColor.ink)
                         .accessibilityAddTraits(.isHeader)
@@ -50,7 +50,7 @@ private struct StickerCard: View {
                 .font(.system(size: 30, weight: .semibold))
                 .foregroundStyle(earned ? InkColor.ink : InkColor.ghost)
                 .frame(height: 38)
-            Text(sticker.name(for: L10n.language))
+            Text(handwritten: sticker.name(for: L10n.language))
                 .font(.inkDisplay(20, relativeTo: .headline))
                 .foregroundStyle(InkColor.ink)
                 .multilineTextAlignment(.center)

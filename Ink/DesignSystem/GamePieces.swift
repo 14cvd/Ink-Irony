@@ -113,7 +113,7 @@ struct ComboBadge: View {
     let multiplier: Int
 
     var body: some View {
-        Text(L10n.t("game.combo", multiplier))
+        Text(handwritten: L10n.t("game.combo", multiplier))
             .font(.inkDisplay(24, relativeTo: .title3))
             .foregroundStyle(InkColor.onReward)
             .padding(.horizontal, 10)

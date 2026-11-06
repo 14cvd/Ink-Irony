@@ -85,7 +85,7 @@ private struct ContinueCard: View {
         let current = lang.current
         VStack(alignment: .leading, spacing: 10) {
             Overline(text: L10n.t("desk.continue"))
-            Text(L10n.semesterTitle(current.semester))
+            Text(handwritten: L10n.semesterTitle(current.semester))
                 .font(.inkDisplay(32, relativeTo: .title))
                 .foregroundStyle(InkColor.ink)
                 .fixedSize(horizontal: false, vertical: true)
@@ -108,7 +108,7 @@ private struct ContinueCard: View {
                 Button {
                     app.playNextSemesterWord()
                 } label: {
-                    Label(
+                    Label(handwritten:
                         SemesterPlan.isFinalExam(word: next.word) ? L10n.t("desk.playFinal") : L10n.t("desk.playWord", next.word),
                         systemImage: "pencil"
                     )
@@ -138,7 +138,7 @@ private struct DailyCard: View {
         HStack(spacing: 14) {
             DateBlock(date: Date(), compact: true)
             VStack(alignment: .leading, spacing: 2) {
-                Text(L10n.dailyTitle(app.todayNumber))
+                Text(handwritten: L10n.dailyTitle(app.todayNumber))
                     .font(.inkDisplay(25, relativeTo: .title2))
                     .foregroundStyle(InkColor.ink)
                 Text(app.todaysDaily == nil ? L10n.t("daily.sub") : L10n.t("daily.doneShort"))
@@ -206,7 +206,7 @@ private struct ModeTile: View {
                             .foregroundStyle(InkColor.secondary)
                     }
                 }
-                Text(title)
+                Text(handwritten: title)
                     .font(.inkDisplay(24, relativeTo: .title3))
                     .foregroundStyle(InkColor.ink)
                     .lineLimit(1)
