@@ -42,7 +42,7 @@ struct ResultView: View {
                     Text(L10n.modeSubtitle(summary.request.mode))
                         .font(.inkUI(12, relativeTo: .caption))
                         .foregroundStyle(InkColor.secondary)
-                    Text(L10n.t("result.name", playerName))
+                    Text(handwritten: L10n.t("result.name", playerName))
                         .font(.inkDisplay(21, relativeTo: .body))
                         .foregroundStyle(InkColor.inkDrop)
                         .padding(.top, 4)
@@ -52,7 +52,7 @@ struct ResultView: View {
             }
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(summary.word.text)
+                Text(handwritten: summary.word.text)
                     .font(.inkDisplay(44, relativeTo: .largeTitle))
                     .tracking(3)
                     .foregroundStyle(result.won ? InkColor.correct : InkColor.teacher)
@@ -69,7 +69,7 @@ struct ResultView: View {
 
             scoreMath
 
-            Text(summary.comment)
+            Text(handwritten: summary.comment)
                 .font(.inkDisplay(25, relativeTo: .title3))
                 .foregroundStyle(InkColor.teacher)
                 .rotationEffect(.degrees(-1.5))
@@ -173,11 +173,11 @@ struct ResultView: View {
         VStack(spacing: 6) {
             HStack(spacing: 10) {
                 if let next {
-                    Button(L10n.t("result.next"), action: next)
+                    Button(handwritten: L10n.t("result.next"), action: next)
                         .buttonStyle(.inkPrimary)
                         .accessibilityIdentifier("result.next")
                 } else {
-                    Button(L10n.t("result.backToDesk"), action: close)
+                    Button(handwritten: L10n.t("result.backToDesk"), action: close)
                         .buttonStyle(.inkPrimary)
                         .accessibilityIdentifier("result.close")
                 }

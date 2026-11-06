@@ -100,3 +100,24 @@ private extension Font.TextStyle {
         }
     }
 }
+
+// Caveat's strokes run up to a fifth of an em past a letter's advance, and iOS clips
+// a Text at its typographic width, so the last letter of a line loses its tail.
+// A trailing space (a quarter em in Caveat) gives the tail room. Fallback faces need none.
+extension Text {
+    init(handwritten text: String) {
+        self.init(verbatim: InkFonts.isAvailable(InkFonts.display, for: L10n.language) ? text + " " : text)
+    }
+}
+
+extension Label where Title == Text, Icon == Image {
+    init(handwritten title: String, systemImage: String) {
+        self.init { Text(handwritten: title) } icon: { Image(systemName: systemImage) }
+    }
+}
+
+extension Button where Label == Text {
+    init(handwritten title: String, action: @escaping () -> Void) {
+        self.init(action: action) { Text(handwritten: title) }
+    }
+}

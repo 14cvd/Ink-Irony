@@ -21,7 +21,7 @@ struct SettingsView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 HStack {
-                    Text(L10n.t("settings.title"))
+                    Text(handwritten: L10n.t("settings.title"))
                         .font(.inkDisplay(34, relativeTo: .largeTitle))
                         .foregroundStyle(InkColor.ink)
                         .accessibilityAddTraits(.isHeader)

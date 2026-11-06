@@ -18,7 +18,7 @@ struct ReportCardView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Text(L10n.t("tab.report"))
+                Text(handwritten: L10n.t("tab.report"))
                     .font(.inkDisplay(36, relativeTo: .largeTitle))
                     .foregroundStyle(InkColor.ink)
                     .accessibilityAddTraits(.isHeader)
@@ -55,7 +55,7 @@ struct ReportCardView: View {
                     let progress = app.progress.language(language)
                     let played = sessions.filter { $0.language == language.rawValue }
                     HStack {
-                        Text(language.nativeName)
+                        Text(handwritten: language.nativeName)
                             .font(.inkDisplay(22, relativeTo: .body))
                         Spacer()
                         Text(L10n.t("report.langLine", played.filter(\.isWin).count, L10n.semesterName(progress.current.semester)))
@@ -92,7 +92,7 @@ struct ReportCardView: View {
                             Image(systemName: session.isWin ? "checkmark.circle.fill" : "xmark.circle")
                                 .foregroundStyle(session.isWin ? InkColor.correct : InkColor.teacher)
                             VStack(alignment: .leading, spacing: 0) {
-                                Text(session.word)
+                                Text(handwritten: session.word)
                                     .font(.inkDisplay(20, relativeTo: .body))
                                 Text("\(session.language) · \(session.difficulty) · \(session.date.formatted(date: .abbreviated, time: .omitted))")
                                     .font(.inkUI(11, relativeTo: .caption2))
@@ -121,7 +121,7 @@ private struct StatTile: View {
 
     var body: some View {
         VStack(spacing: 2) {
-            Text(value)
+            Text(handwritten: value)
                 .font(.inkDisplay(28, relativeTo: .title2))
                 .foregroundStyle(InkColor.teacher)
                 .lineLimit(1)

@@ -111,14 +111,14 @@ enum L10n {
         "daily.start": row("Start today's exam", "Bugünkü sınava başla", "Bugünkü imtahana başla", "Начать экзамен дня", "Empezar el examen de hoy"),
         "daily.passed": row("PASSED", "GEÇTİ", "KEÇDİ", "СДАНО", "APROBADO"),
         "daily.failed": row("FAILED", "KALDI", "QALDI", "ПРОВАЛ", "SUSPENSO"),
-        "daily.stats": row("{0} mistakes · {1} s", "{0} hata · {1} sn", "{0} səhv · {1} san", "ошибок: {0} · {1} с", "{0} errores · {1} s"),
+        "daily.stats": row("Mistakes: {0} · {1} s", "{0} hata · {1} sn", "{0} səhv · {1} san", "ошибок: {0} · {1} с", "Errores: {0} · {1} s"),
         "daily.share": row("Share without spoilers", "Spoiler vermeden paylaş", "Sözü açmadan paylaş", "Поделиться без спойлеров", "Compartir sin spoilers"),
         "daily.thisWeek": row("This week", "Bu hafta", "Bu həftə", "Эта неделя", "Esta semana"),
         "daily.streak": row("{0}-day streak", "{0} günlük seri", "{0} günlük seriya", "Серия: {0} дн.", "Racha de {0} días"),
         "daily.streakShort": row("{0} days", "{0} gün", "{0} gün", "{0} дн.", "{0} días"),
         "daily.hallPass": row("Missed a day? One free hall pass per week keeps the streak alive.", "Bir gün mü kaçırdın? Haftada bir izin seriyi korur.", "Bir gün buraxdın? Həftədə bir icazə seriyanı qoruyur.", "Пропустил день? Одна справка в неделю сохраняет серию.", "¿Faltaste un día? Un justificante por semana salva la racha."),
         "daily.next": row("Next exam: {0}", "Sonraki sınav: {0}", "Növbəti imtahan: {0}", "Следующий экзамен: {0}", "Próximo examen: {0}"),
-        "share.daily": row("Ink & Irony · {0} · {1} · {2} mistakes", "Ink & Irony · {0} · {1} · {2} hata", "Ink & Irony · {0} · {1} · {2} səhv", "Ink & Irony · {0} · {1} · ошибок: {2}", "Ink & Irony · {0} · {1} · {2} errores"),
+        "share.daily": row("Ink & Irony · {0} · {1} · Mistakes: {2}", "Ink & Irony · {0} · {1} · {2} hata", "Ink & Irony · {0} · {1} · {2} səhv", "Ink & Irony · {0} · {1} · ошибок: {2}", "Ink & Irony · {0} · {1} · Errores: {2}"),
 
         // Game
         "game.lives": row("{0} of {1} lives left", "{1} candan {0} kaldı", "{1} candan {0} qalıb", "Осталось {0} из {1}", "Quedan {0} de {1} vidas"),
@@ -135,7 +135,7 @@ enum L10n {
         "power.notAllowed": row("No power-ups here.", "Burada güçlendirme yok.", "Burada köməkçi yoxdur.", "Здесь без подсказок.", "Aquí no hay ayudas."),
         "over.escaped": row("ESCAPED!", "KAÇTI!", "QAÇDI!", "СБЕЖАЛ!", "¡ESCAPÓ!"),
         "over.detention": row("DETENTION.", "CEZA.", "CƏZA.", "НАКАЗАН.", "CASTIGADO."),
-        "over.wonNote": row("Score {0} · {1} mistakes", "Puan {0} · {1} hata", "Xal {0} · {1} səhv", "Очки {0} · ошибок: {1}", "Puntos {0} · {1} errores"),
+        "over.wonNote": row("Score {0} · Mistakes: {1}", "Puan {0} · {1} hata", "Xal {0} · {1} səhv", "Очки {0} · ошибок: {1}", "Puntos {0} · Errores: {1}"),
         "over.lostNote": row("The word was {0}.", "Kelime: {0}.", "Söz: {0}.", "Слово: {0}.", "La palabra era {0}."),
         "over.seeExam": row("See graded exam", "Notlu kâğıdı gör", "Qiymətli vərəqə bax", "Посмотреть оценку", "Ver el examen corregido"),
 

@@ -20,7 +20,7 @@ struct FreePlaySheet: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
-                Text(L10n.t("mode.free"))
+                Text(handwritten: L10n.t("mode.free"))
                     .font(.inkDisplay(34, relativeTo: .largeTitle))
                     .foregroundStyle(InkColor.ink)
                 Spacer()
@@ -56,7 +56,7 @@ struct FreePlaySheet: View {
                 dismiss()
                 app.play(.free(level: level, category: category))
             } label: {
-                Label(L10n.t("free.start"), systemImage: "pencil")
+                Label(handwritten: L10n.t("free.start"), systemImage: "pencil")
             }
             .buttonStyle(.inkPrimary)
             .accessibilityIdentifier("free.start")

@@ -17,7 +17,7 @@ struct SemestersView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
-                    Text(L10n.t("tab.semesters"))
+                    Text(handwritten: L10n.t("tab.semesters"))
                         .font(.inkDisplay(36, relativeTo: .largeTitle))
                         .foregroundStyle(InkColor.ink)
                         .accessibilityAddTraits(.isHeader)
@@ -54,7 +54,7 @@ private struct PassedRow: View {
                 .frame(width: 34, height: 34)
                 .background(Circle().fill(InkColor.correct))
             VStack(alignment: .leading, spacing: 0) {
-                Text(L10n.semesterName(number))
+                Text(handwritten: L10n.semesterName(number))
                     .font(.inkDisplay(22, relativeTo: .title3))
                     .foregroundStyle(InkColor.ink)
                 Text(L10n.t("semester.passedSub", String(format: "%.1f", Grade.gpa(of: grades) ?? 0)))
@@ -92,7 +92,7 @@ private struct CurrentSemesterCard: View {
                     .frame(width: 34, height: 34)
                     .background(Circle().fill(InkColor.teacher))
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(L10n.semesterName(progress.semester))
+                    Text(handwritten: L10n.semesterName(progress.semester))
                         .font(.inkDisplay(26, relativeTo: .title2))
                         .foregroundStyle(InkColor.ink)
                     Text(L10n.t("semester.currentSub", SemesterPlan.lives(semester: progress.semester, word: 1)))
@@ -187,7 +187,7 @@ private struct LockedRow: View {
                 .font(.system(size: 18, weight: .semibold))
                 .frame(width: 34, height: 34)
             VStack(alignment: .leading, spacing: 0) {
-                Text("\(number) · \(L10n.semesterName(number))")
+                Text(handwritten: "\(number) · \(L10n.semesterName(number))")
                     .font(.inkDisplay(22, relativeTo: .title3))
                 Text(L10n.t("semester.lockedSub", L10n.semesterName(previous)))
                     .font(.inkUI(11, relativeTo: .caption2))

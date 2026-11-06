@@ -131,10 +131,10 @@ private struct GameOverOverlay: View {
                     .foregroundStyle(InkColor.secondary)
                     .multilineTextAlignment(.center)
                     .accessibilityIdentifier("over.note")
-                Button(L10n.t("over.seeExam"), action: showResult)
+                Button(handwritten: L10n.t("over.seeExam"), action: showResult)
                     .buttonStyle(.inkPrimary)
                     .accessibilityIdentifier("over.seeExam")
-                Button(L10n.t("result.backToDesk"), action: close)
+                Button(handwritten: L10n.t("result.backToDesk"), action: close)
                     .buttonStyle(.inkSecondary)
                     .accessibilityIdentifier("over.close")
             }

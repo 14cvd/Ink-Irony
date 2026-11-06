@@ -17,7 +17,7 @@ struct DailyView: View {
             VStack(alignment: .leading, spacing: 16) {
                 HStack(spacing: 12) {
                     InkIconButton(systemName: "chevron.left", label: L10n.t("common.back"), identifier: "daily.back") { dismiss() }
-                    Text(L10n.t("daily.title"))
+                    Text(handwritten: L10n.t("daily.title"))
                         .font(.inkDisplay(32, relativeTo: .largeTitle))
                         .foregroundStyle(InkColor.ink)
                         .accessibilityAddTraits(.isHeader)
@@ -41,11 +41,11 @@ struct DailyView: View {
         HStack(spacing: 16) {
             DateBlock(date: Date())
             VStack(alignment: .leading, spacing: 4) {
-                Text(Date().formatted(.dateTime.month(.wide).weekday(.abbreviated).locale(L10n.locale)).uppercased(with: L10n.locale))
+                Text(Date().formatted(.dateTime.weekday(.wide).locale(L10n.locale)).uppercased(with: L10n.locale))
                     .font(.inkUI(13, weight: .bold, relativeTo: .caption))
                     .tracking(2)
                     .foregroundStyle(InkColor.ink)
-                Text(L10n.dailyTitle(app.todayNumber))
+                Text(handwritten: L10n.dailyTitle(app.todayNumber))
                     .font(.inkDisplay(28, relativeTo: .title2))
                     .foregroundStyle(InkColor.ink)
                 Text(L10n.t("daily.rules"))
@@ -92,7 +92,7 @@ struct DailyView: View {
                     .font(.inkVoice(14))
                     .foregroundStyle(InkColor.teacher)
                 ShareLink(item: L10n.dailyShare(number: app.todayNumber, won: record.won, mistakes: record.mistakes, pattern: record.pattern)) {
-                    Label(L10n.t("daily.share"), systemImage: "square.and.arrow.up")
+                    Label(handwritten: L10n.t("daily.share"), systemImage: "square.and.arrow.up")
                 }
                 .buttonStyle(.inkPrimary)
                 .accessibilityIdentifier("daily.share")
@@ -104,7 +104,7 @@ struct DailyView: View {
             Button {
                 app.play(.daily(number: app.todayNumber))
             } label: {
-                Label(L10n.t("daily.start"), systemImage: "pencil")
+                Label(handwritten: L10n.t("daily.start"), systemImage: "pencil")
             }
             .buttonStyle(.inkPrimary)
             .accessibilityIdentifier("daily.start")

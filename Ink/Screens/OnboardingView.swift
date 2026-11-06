@@ -52,7 +52,7 @@ struct OnboardingView: View {
         .scrollDismissesKeyboard(.interactively)
         .safeAreaInset(edge: .bottom) {
             Button(action: sign) {
-                Label(L10n.t("onboarding.sign"), systemImage: "signature")
+                Label(handwritten: L10n.t("onboarding.sign"), systemImage: "signature")
             }
             .buttonStyle(.inkPrimary)
             .disabled(signed)
@@ -75,7 +75,7 @@ struct OnboardingView: View {
     private var form: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack(alignment: .firstTextBaseline) {
-                Text(L10n.t("onboarding.form"))
+                Text(handwritten: L10n.t("onboarding.form"))
                     .font(.inkDisplay(32, relativeTo: .title))
                     .foregroundStyle(InkColor.ink)
                     .accessibilityAddTraits(.isHeader)
@@ -138,7 +138,7 @@ struct OnboardingView: View {
                         .foregroundStyle(InkColor.secondary)
                 }
                 VStack(alignment: .trailing, spacing: 2) {
-                    Text(Date().formatted(.dateTime.day(.twoDigits).month(.twoDigits).year(.twoDigits)))
+                    Text(handwritten: Date().formatted(.dateTime.day(.twoDigits).month(.twoDigits).year(.twoDigits)))
                         .font(.inkDisplay(22, relativeTo: .body))
                         .foregroundStyle(InkColor.inkDrop)
                     Text(L10n.t("onboarding.date"))
@@ -249,7 +249,7 @@ private struct ToneCard: View {
     var body: some View {
         Button(action: action) {
             VStack(alignment: .leading, spacing: 3) {
-                Text(title)
+                Text(handwritten: title)
                     .font(.inkDisplay(22, relativeTo: .headline))
                 Text(subtitle)
                     .font(.inkUI(11, relativeTo: .caption2))
