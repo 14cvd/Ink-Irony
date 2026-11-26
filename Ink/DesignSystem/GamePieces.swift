@@ -167,9 +167,10 @@ enum MainTab: String, CaseIterable, Identifiable {
     }
 }
 
-/// Paper tab bar with an ink top rule; the selected tab is in red pen.
+/// Paper tab bar with an ink top rule; the selected tab is circled in red pen.
 struct NotebookTabBar: View {
     @Binding var selection: MainTab
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         HStack(spacing: 0) {
@@ -180,6 +181,15 @@ struct NotebookTabBar: View {
                     VStack(spacing: 2) {
                         Image(systemName: selection == tab ? tab.symbol + ".fill" : tab.symbol)
                             .font(.system(size: 20, weight: selection == tab ? .bold : .regular))
+                            .frame(width: 44, height: 28)
+                            .overlay {
+                                PenCircle()
+                                    .trim(from: 0, to: selection == tab ? 1 : 0)
+                                    .stroke(InkColor.teacher, style: StrokeStyle(lineWidth: 1.8, lineCap: .round))
+                                    .frame(width: 46, height: 32)
+                                    // Drawn in on select; the old circle lifts off faster.
+                                    .animation(reduceMotion ? nil : (selection == tab ? .easeOut(duration: 0.3) : .easeIn(duration: 0.12)), value: selection)
+                            }
                         Text(L10n.t("tab.\(tab.rawValue)"))
                             .font(.inkUI(11, weight: selection == tab ? .bold : .regular, relativeTo: .caption2))
                             .lineLimit(1)
@@ -200,5 +210,24 @@ struct NotebookTabBar: View {
                 .overlay(alignment: .top) { Rectangle().fill(InkColor.ink).frame(height: 2) }
                 .ignoresSafeArea(edges: .bottom)
         )
+    }
+}
+
+/// The teacher's loop around a right answer: not quite closed, it overshoots its start.
+struct PenCircle: Shape {
+    func path(in rect: CGRect) -> Path {
+        let c = CGPoint(x: rect.midX, y: rect.midY)
+        let rx = rect.width / 2, ry = rect.height / 2
+        var path = Path()
+        let steps = 48
+        // From about 10 o'clock round once and a bit, drifting outward like a quick hand.
+        for i in 0...steps {
+            let t = CGFloat(i) / CGFloat(steps)
+            let angle = -2.6 + t * (2 * .pi + 0.55)
+            let grow = 0.94 + 0.1 * t
+            let point = CGPoint(x: c.x + cos(angle) * rx * grow, y: c.y + sin(angle) * ry * grow - 1.5 * t)
+            if i == 0 { path.move(to: point) } else { path.addLine(to: point) }
+        }
+        return path
     }
 }

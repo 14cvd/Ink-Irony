@@ -34,32 +34,40 @@ struct OnboardingView: View {
     @FocusState private var nameFocused: Bool
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 14) {
-                HStack {
-                    InkLogo(size: 30)
-                    Spacer()
-                    Overline(text: L10n.t("onboarding.firstDay"))
+        ScrollViewReader { scroller in
+            ScrollView {
+                VStack(alignment: .leading, spacing: 14) {
+                    HStack {
+                        InkLogo(size: 30)
+                        Spacer()
+                        Overline(text: L10n.t("onboarding.firstDay"))
+                    }
+                    TeacherRow(text: bubble, mood: signed || app.tone == .gentle ? .pleased : .calm, avatarSize: 52)
+                    form
+                        .padding(.top, 10)
                 }
-                TeacherRow(text: bubble, mood: signed || app.tone == .gentle ? .pleased : .calm, avatarSize: 52)
-                form
-                    .padding(.top, 10)
+                .padding(.horizontal, InkSpace.screenMargin)
+                .padding(.top, 8)
+                .padding(.bottom, 16)
             }
-            .padding(.horizontal, InkSpace.screenMargin)
-            .padding(.top, 8)
-            .padding(.bottom, 16)
-        }
-        .scrollDismissesKeyboard(.interactively)
-        .safeAreaInset(edge: .bottom) {
-            Button(action: sign) {
-                Label(handwritten: L10n.t("onboarding.sign"), systemImage: "signature")
+            .scrollDismissesKeyboard(.interactively)
+            .safeAreaInset(edge: .bottom) {
+                Button {
+                    // On small screens the signature line sits below the fold: bring it up to be signed.
+                    withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.35)) {
+                        scroller.scrollTo(Self.signatureID, anchor: .bottom)
+                    }
+                    sign()
+                } label: {
+                    Label(handwritten: L10n.t("onboarding.sign"), systemImage: "signature")
+                }
+                .buttonStyle(.inkPrimary)
+                .disabled(signed)
+                .padding(.horizontal, InkSpace.screenMargin)
+                .padding(.vertical, 10)
+                .background(InkColor.paper.opacity(0.95))
+                .accessibilityIdentifier("onboarding.sign")
             }
-            .buttonStyle(.inkPrimary)
-            .disabled(signed)
-            .padding(.horizontal, InkSpace.screenMargin)
-            .padding(.vertical, 10)
-            .background(InkColor.paper.opacity(0.95))
-            .accessibilityIdentifier("onboarding.sign")
         }
         .notebookPaper()
         .onAppear {
@@ -131,7 +139,7 @@ struct OnboardingView: View {
                         .trim(from: 0, to: signed ? 1 : 0)
                         .stroke(InkColor.inkDrop, style: StrokeStyle(lineWidth: 2.6, lineCap: .round, lineJoin: .round))
                         .frame(height: 40)
-                        .animation(reduceMotion ? nil : .easeOut(duration: 0.6), value: signed)
+                        .animation(reduceMotion ? nil : .easeOut(duration: 0.6).delay(0.25), value: signed)
                     Rectangle().fill(InkColor.ink).frame(height: 2)
                     Text(L10n.t("onboarding.signature"))
                         .font(.inkUI(11, relativeTo: .caption2))
@@ -148,6 +156,7 @@ struct OnboardingView: View {
             }
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(L10n.t("onboarding.signature"))
+            .id(Self.signatureID)
         }
         .padding(.leading, 40)
         .padding(.trailing, 16)
@@ -180,6 +189,8 @@ struct OnboardingView: View {
     }
 
     // MARK: Behaviour
+
+    private static let signatureID = "onboarding.signatureLine"
 
     private var bubble: String {
         let name = username.trimmingCharacters(in: .whitespaces)

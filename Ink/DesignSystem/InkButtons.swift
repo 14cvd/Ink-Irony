@@ -47,6 +47,19 @@ struct InkSecondaryButtonStyle: ButtonStyle {
     }
 }
 
+/// Cards that open something: the sheet gives a little under the finger.
+struct PaperPressButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 0.97 : 1)
+            .animation(.easeOut(duration: 0.15), value: configuration.isPressed)
+    }
+}
+
+extension ButtonStyle where Self == PaperPressButtonStyle {
+    static var paperPress: PaperPressButtonStyle { PaperPressButtonStyle() }
+}
+
 extension ButtonStyle where Self == InkPrimaryButtonStyle {
     static var inkPrimary: InkPrimaryButtonStyle { InkPrimaryButtonStyle() }
 }

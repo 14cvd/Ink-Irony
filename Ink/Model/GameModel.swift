@@ -36,7 +36,8 @@ final class GameModel {
             lives: Self.lives(for: request.mode),
             ink: app.progress.ink,
             powerUpsAllowed: Self.powerUpsAllowed(for: request.mode),
-            locale: request.language.locale
+            locale: request.language.locale,
+            alphabet: request.language.alphabet
         )
         let isFinal: Bool = if case .semester(_, let w) = request.mode { SemesterPlan.isFinalExam(word: w) } else { false }
         line = app.teacherLine(isFinal ? .finalExamStart : .wordStart)

@@ -197,6 +197,7 @@ enum L10n {
         "free.lives": row("{0} lives", "{0} can", "{0} can", "жизней: {0}", "{0} vidas"),
         "free.start": row("Start", "Başla", "Başla", "Начать", "Empezar"),
         "onboarding.intro": row("I am Ms. Irony. I grade in red pen. Pick your language and try not to disappoint me.", "Ben Bayan İroni. Kırmızı kalemle not veririm. Dilini seç ve beni hayal kırıklığına uğratma.", "Mən Xanım İroniyəm. Qırmızı qələmlə qiymət yazıram. Dilini seç və məni məyus etməməyə çalış.", "Я мисс Ирония. Ставлю оценки красной ручкой. Выбери язык и постарайся меня не разочаровать.", "Soy la señorita Ironía. Califico con bolígrafo rojo. Elige tu idioma e intenta no decepcionarme."),
+        "splash.tagline": row("Class is in session.", "Ders başladı.", "Dərs başladı.", "Урок начался.", "Empieza la clase."),
         "intro.skip": row("Skip", "Geç", "Keç", "Пропустить", "Saltar"),
         "intro.next": row("Next page", "Sonraki sayfa", "Növbəti səhifə", "Дальше", "Siguiente"),
         "intro.toForm": row("To the enrollment form", "Kayıt formuna", "Qeydiyyat formasına", "К анкете", "A la matrícula"),

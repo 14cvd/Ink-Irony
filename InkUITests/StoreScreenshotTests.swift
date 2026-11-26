@@ -64,7 +64,7 @@ final class StoreScreenshotTests: XCTestCase {
     private func launch(_ language: String, theme: String, onboarded: Bool, name: String) {
         app = XCUIApplication()
         app.launchArguments = [
-            "-storeDemo", "YES", "-onboardedV2", onboarded ? "YES" : "NO",
+            "-skipSplash", "YES", "-storeDemo", "YES", "-onboardedV2", onboarded ? "YES" : "NO",
             "-uiLanguage", language, "-appTheme", theme, "-username", name,
             "-teacherTone", "strict",
         ]

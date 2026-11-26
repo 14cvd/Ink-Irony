@@ -31,18 +31,31 @@ struct InkApp: App {
 
 struct RootView: View {
     @Environment(AppState.self) private var app
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    // UI tests launch with `-skipSplash YES` so their first tap reaches the app.
+    @State private var showSplash = !UserDefaults.standard.bool(forKey: "skipSplash")
 
     var body: some View {
         @Bindable var app = app
-        Group {
-            if app.hasOnboarded {
-                MainTabsView()
-            } else {
-                FirstLaunchView()
-                    .transition(.opacity)
+        ZStack {
+            Group {
+                if app.hasOnboarded {
+                    MainTabsView()
+                } else {
+                    FirstLaunchView()
+                        .transition(.opacity)
+                }
+            }
+            .animation(.easeInOut(duration: 0.3), value: app.hasOnboarded)
+
+            if showSplash {
+                SplashView {
+                    withAnimation(.easeOut(duration: 0.22)) { showSplash = false }
+                }
+                .transition(reduceMotion ? .opacity : .opacity.combined(with: .scale(scale: 1.02)))
+                .zIndex(1)
             }
         }
-        .animation(.easeInOut(duration: 0.3), value: app.hasOnboarded)
         .fullScreenCover(item: $app.playRequest) { request in
             PlayFlowView(request: request)
         }
