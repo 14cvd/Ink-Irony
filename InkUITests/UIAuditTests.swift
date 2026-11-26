@@ -65,7 +65,7 @@ final class UIAuditTests: XCTestCase {
         if let size = ProcessInfo.processInfo.environment["AUDIT_TEXT"], !size.isEmpty {
             arguments += ["-UIPreferredContentSizeCategoryName", size]
         }
-        app.launchArguments = arguments
+        app.launchArguments = arguments + ["-skipSplash", "YES"]
         app.launch()
     }
 

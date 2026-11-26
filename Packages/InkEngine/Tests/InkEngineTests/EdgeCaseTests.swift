@@ -80,6 +80,26 @@ struct EdgeCaseTests {
         #expect(game.status == .won)
     }
 
+    @Test("Accented letters not on the keyboard are found with their plain letter")
+    func accentsFoldToKeyboard() {
+        let spanish = Array("ABCDEFGHIJKLMNÑOPQRSTUVWXYZ")
+        var game = GameEngine(word: "JAPÓN", lives: 6, ink: 0, locale: Locale(identifier: "es"), alphabet: spanish)
+        #expect(game.lettersToFind == Set("JAPON"))
+        #expect(game.guess("O") == .hit(occurrences: 1, multiplier: 1, points: Rules.pointsPerLetter))
+        #expect(game.slots[3] == "Ó")
+        for letter in "JAPN" { game.guess(letter) }
+        #expect(game.status == .won)
+    }
+
+    @Test("Letters on the keyboard stay distinct: Ñ is not N, Ç is not C")
+    func keyboardLettersStayDistinct() {
+        var spanish = GameEngine(word: "AÑO", lives: 6, ink: 0, locale: Locale(identifier: "es"), alphabet: Array("ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"))
+        #expect(spanish.guess("N") == .miss(livesLeft: 5))
+        var turkish = GameEngine(word: "ÇAY", lives: 6, ink: 0, locale: Locale(identifier: "tr"), alphabet: Array("ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"))
+        #expect(turkish.guess("C") == .miss(livesLeft: 5))
+        #expect(turkish.lettersToFind == Set("ÇAY"))
+    }
+
     @Test("E-02 fixed: decoding a semester validates like init")
     func invalidSemesterJSON() throws {
         #expect(throws: DecodingError.self) {

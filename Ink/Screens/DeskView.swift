@@ -26,7 +26,7 @@ struct DeskView: View {
                     } label: {
                         DailyCard()
                     }
-                    .buttonStyle(.plain)
+                    .buttonStyle(.paperPress)
                     .accessibilityIdentifier("desk.daily")
                     modes
                 }
@@ -69,8 +69,8 @@ struct DeskView: View {
             ModeTile(symbol: "slider.horizontal.3", title: L10n.t("mode.free"), subtitle: L10n.t("mode.free.sub"), identifier: "desk.free") {
                 showFreePlay = true
             }
-            ModeTile(symbol: "timer", title: L10n.t("mode.blitz"), subtitle: L10n.t("mode.soon"), identifier: "desk.blitz", locked: true) {}
-            ModeTile(symbol: "person.2", title: L10n.t("mode.duel"), subtitle: L10n.t("mode.soon"), identifier: "desk.duel", locked: true) {}
+            ModeTile(symbol: "timer", title: L10n.t("mode.blitz"), subtitle: nil, identifier: "desk.blitz", locked: true) {}
+            ModeTile(symbol: "person.2", title: L10n.t("mode.duel"), subtitle: nil, identifier: "desk.duel", locked: true) {}
             ModeTile(symbol: "book.closed", title: L10n.t("mode.notebook"), subtitle: L10n.t("mode.notebook.sub", app.progress.wordsSolved), identifier: "desk.notebook", locked: true) {}
         }
     }
@@ -189,45 +189,74 @@ struct DateBlock: View {
     }
 }
 
+/// A mode on the Desk. Open modes are inked cards; the ones still to come are
+/// only sketched in pencil, with the teacher's "coming soon" stamp on them.
 private struct ModeTile: View {
     let symbol: String
     let title: String
-    let subtitle: String
+    let subtitle: String?
     let identifier: String
     var locked = false
     let action: () -> Void
 
+    private var pencil: Color { InkColor.secondary }
+
     var body: some View {
         Button(action: action) {
             VStack(alignment: .leading, spacing: 4) {
-                HStack {
+                HStack(alignment: .top) {
                     Image(systemName: symbol)
-                        .font(.system(size: 22, weight: .semibold))
-                        .foregroundStyle(InkColor.ink)
-                    Spacer()
+                        .font(.system(size: 22, weight: locked ? .regular : .semibold))
+                        .foregroundStyle(locked ? pencil : InkColor.ink)
+                    Spacer(minLength: 4)
                     if locked {
-                        Image(systemName: "lock.fill")
-                            .font(.system(size: 12))
-                            .foregroundStyle(InkColor.secondary)
+                        Text(L10n.t("mode.soon").uppercased(with: L10n.locale))
+                            .font(.inkVoice(11, relativeTo: .caption2))
+                            .foregroundStyle(InkColor.teacher)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.7)
+                            .padding(.horizontal, 5)
+                            .padding(.vertical, 2)
+                            .overlay(RoundedRectangle(cornerRadius: 4).strokeBorder(InkColor.teacher, lineWidth: 1.5))
+                            .rotationEffect(.degrees(-7))
                     }
                 }
                 Text(handwritten: title)
                     .font(.inkDisplay(24, relativeTo: .title3))
-                    .foregroundStyle(InkColor.ink)
+                    .foregroundStyle(locked ? pencil : InkColor.ink)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
-                Text(subtitle)
-                    .font(.inkUI(11, relativeTo: .caption2))
-                    .foregroundStyle(InkColor.secondary)
-                    .lineLimit(2)
+                if let subtitle {
+                    Text(subtitle)
+                        .font(.inkUI(11, relativeTo: .caption2))
+                        .foregroundStyle(InkColor.secondary)
+                        .lineLimit(2)
+                }
             }
             .padding(12)
             .frame(maxWidth: .infinity, minHeight: 96, alignment: .topLeading)
-            .inkCard(radius: 14)
-            .opacity(locked ? 0.6 : 1)
+            .background {
+                if locked {
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .strokeBorder(pencil.opacity(0.7), style: StrokeStyle(lineWidth: 1.5, lineCap: .round, dash: [5, 4]))
+                }
+            }
+            .modifier(OpenTile(open: !locked))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(.paperPress)
         .disabled(locked)
         .accessibilityIdentifier(identifier)
+    }
+}
+
+private struct OpenTile: ViewModifier {
+    let open: Bool
+
+    func body(content: Content) -> some View {
+        if open {
+            content.inkCard(radius: 14, raised: true)
+        } else {
+            content
+        }
     }
 }

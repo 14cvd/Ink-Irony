@@ -41,6 +41,9 @@ public struct GameEngine: Sendable {
     public let lives: Int
     public let powerUpsAllowed: Bool
     private let locale: Locale
+    /// The keyboard's letters. A letter of the word that is not on it (Á in a Spanish
+    /// word) is found with its plain form (A). Empty: every letter counts as itself.
+    private let keys: Set<Character>
 
     // MARK: State
 
@@ -59,9 +62,10 @@ public struct GameEngine: Sendable {
     public private(set) var isHintShown = false
     public private(set) var ink: Int
 
-    public init(word: String, lives: Int, ink: Int, powerUpsAllowed: Bool = true, locale: Locale = Locale(identifier: "en")) {
+    public init(word: String, lives: Int, ink: Int, powerUpsAllowed: Bool = true, locale: Locale = Locale(identifier: "en"), alphabet: [Character] = []) {
         precondition(lives > 0, "A word needs at least one life")
         self.locale = locale
+        self.keys = Set(alphabet)
         self.word = word.uppercased(with: locale)
         self.lives = lives
         self.ink = ink
@@ -74,7 +78,7 @@ public struct GameEngine: Sendable {
 
     /// Letters the player has to find. Spaces, hyphens and apostrophes are shown from the start.
     public var lettersToFind: Set<Character> {
-        Set(word.filter(\.isLetter))
+        Set(word.filter(\.isLetter).map { key(for: $0) })
     }
 
     public var mistakes: Int { misses.count }
@@ -90,7 +94,8 @@ public struct GameEngine: Sendable {
     public var slots: [Character?] {
         word.map { char in
             guard char.isLetter else { return char }
-            return (hits.contains(char) || revealed.contains(char)) ? char : nil
+            let plain = key(for: char)
+            return (hits.contains(plain) || revealed.contains(plain)) ? char : nil
         }
     }
 
@@ -101,7 +106,7 @@ public struct GameEngine: Sendable {
         let letter = normalized(letter)
         guard status == .playing, letter.isLetter, !isUsed(letter) else { return .ignored }
 
-        let occurrences = word.filter { $0 == letter }.count
+        let occurrences = word.filter { key(for: $0) == letter }.count
         guard occurrences > 0 else {
             misses.append(letter)
             combo = 0
@@ -135,7 +140,7 @@ public struct GameEngine: Sendable {
             erased.insert(last)
         case .reveal:
             // First missing letter in reading order, so the result is predictable for the player and for tests.
-            guard let letter = word.first(where: { $0.isLetter && !hits.contains($0) && !revealed.contains($0) }) else {
+            guard let letter = word.filter(\.isLetter).map { key(for: $0) }.first(where: { !hits.contains($0) && !revealed.contains($0) }) else {
                 throw .wordIsOver
             }
             revealed.insert(letter)
@@ -182,6 +187,14 @@ public struct GameEngine: Sendable {
 
     private func normalized(_ letter: Character) -> Character {
         String(letter).uppercased(with: locale).first ?? letter
+    }
+
+    /// The keyboard letter that finds `char`: itself, or its plain form when only that is on the keyboard.
+    private func key(for char: Character) -> Character {
+        guard !keys.isEmpty, !keys.contains(char) else { return char }
+        let plain = String(char).folding(options: .diacriticInsensitive, locale: locale).uppercased(with: locale)
+        guard plain.count == 1, let base = plain.first, keys.contains(base) else { return char }
+        return base
     }
 
     private mutating func finishIfSolved() {

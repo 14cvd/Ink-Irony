@@ -30,7 +30,7 @@ final class InkSmokeUITests: XCTestCase {
     // MARK: Helpers
 
     private func launch(onboarded: Bool = true, language: String = "EN") {
-        app.launchArguments = ["-onboardedV2", onboarded ? "YES" : "NO", "-uiLanguage", language]
+        app.launchArguments = ["-skipSplash", "YES", "-onboardedV2", onboarded ? "YES" : "NO", "-uiLanguage", language]
         app.launch()
     }
 

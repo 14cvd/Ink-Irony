@@ -145,8 +145,10 @@ struct WordSlots: View {
             VStack(spacing: 6) {
                 ForEach(lines.indices, id: \.self) { lineIndex in
                     let line = lines[lineIndex]
-                    let slotWidth = min(32, max(18, (proxy.size.width - CGFloat(line.items.count - 1) * 5) / CGFloat(max(line.items.count, 1))))
-                    HStack(spacing: 5) {
+                    // Long single words (KİNEMATOQRAFİYA, 15 letters) close the gaps to fit an SE.
+                    let gap: CGFloat = line.items.count > 12 ? 3 : 5
+                    let slotWidth = min(32, max(16, (proxy.size.width - CGFloat(line.items.count - 1) * gap) / CGFloat(max(line.items.count, 1))))
+                    HStack(spacing: gap) {
                         ForEach(line.items.indices, id: \.self) { i in
                             slot(line.items[i], width: slotWidth, lineCount: lines.count)
                         }
